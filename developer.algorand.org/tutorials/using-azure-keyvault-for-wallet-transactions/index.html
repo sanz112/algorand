@@ -1,0 +1,1259 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 May 2022 11:38:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"> 
+  <!-- End Google Fonts -->
+
+  
+  
+    
+  
+  <!-- Google Tag Manager dataLayer -->
+  <script>
+    dataLayer = [{
+      'user_id': '',
+    }];
+  </script>
+  <!-- End Google Tag Manager dataLayer -->
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer',"GTM-MRRLKW9");</script>
+	<!-- End Google Tag Manager -->
+  
+  
+  
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <link rel=" stylesheet" href="../../../cdn.jsdelivr.net/npm/instantsearch.css%407/themes/algolia-min.css" />
+  <link type="text/css" href="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/dist/algorand-app.940bb983994be47d52c0.css" rel="stylesheet" />
+  
+ 
+<link rel="stylesheet" type="text/css" href="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/css/codehilite.css">
+<link rel="stylesheet" type="text/css" href="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/css/codehilite.dark-theme.css">
+<link rel="stylesheet" type="text/css" href="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/css/fenced_code.css">
+<link rel="stylesheet" type="text/css" href="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/css/martor.min.css">
+
+  
+  
+  <title>Using Azure Key Vault for Wallet Transactions using JavaScript | Algorand Developer Portal</title>
+  <meta name="description" content="The aim of this tutorial to teach how to use Azure KeyVault to store secret and retrieve the secret to sign transactions and recover account." />
+  <link rel="canonical" href="index.html" />
+  <meta property="og:image" content="https://algorand-developer-portal.tryprism.com/static/Posts/2022/03/26 02:03/Group_39.png?w=1200&cmd=resize_then_crop&height=630&quality=70">
+  <meta property="og:image:alt" content="Algorand Developer Portal">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/" />
+  <meta property="og:title" content="Using Azure Key Vault for Wallet Transactions using JavaScript" />
+  <meta property="og:description" content="The aim of this tutorial to teach how to use Azure KeyVault to store secret and retrieve the secret to sign transactions and recover account.">
+  <meta property="og:type" content="article" />
+  
+  
+  <script type="text/javascript" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/dist/theme-c24995e8d46f56838af8.js" ></script>
+  <script src="../../../ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+  <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2-legacy.js"></script>
+  
+        <script src="../../jsi18n/index.html"></script>
+  
+  <script type="text/javascript">
+    var CURRENT_LANGUAGE = "en";
+    var BASE_URL = "../../index.html";
+    var STATIC_URL = "https://algorand-devloper-portal-app.s3.amazonaws.com/static/";
+    var SEARCH_FILTER_VALUE =  "all" ;
+  </script>
+<script async src='../../cdn-cgi/bm/cv/669835187/api.js'></script></head>
+
+<body>
+  
+  
+    
+  
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRRLKW9&amp;user_id="
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+  
+  
+  
+
+
+  <div class="page-header-container">
+    
+  
+    
+      
+
+
+<!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&amp;text=&amp;#8599" rel="stylesheet">
+<!-- End Google Fonts -->
+
+
+<nav class="page-header" data-md-component="header" id="page-header">
+    <div class="page-header__section">    
+        <a href="../../index.html" aria-label="Homepage" id="homepage-link" class="page-header__home-link">
+            <svg class="" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 32H27.0095L23.7387 19.9201L16.725 32H11.1275L21.9515 13.2913L20.1981 6.76341L5.59747 32H0L18.5121 0H23.4352L25.5595 7.97476H30.6175L27.1781 13.9642L32 32Z" fill="var(--text-main)"/>
+</svg>
+
+            <span class="page-header__title">developer portal</span>
+        </a>        
+        <button aria-label="Menu" class="page-header__menu-button" id="header-menu-button">
+            <svg class="page-header__menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 6H21" stroke="#18181B" stroke-width="2"/>
+<path d="M3 12H21" stroke="#18181B" stroke-width="2"/>
+<path d="M3 18H21" stroke="#18181B" stroke-width="2"/>
+</svg>
+
+        </button>
+    </div>
+        
+    
+    <button aria-label="Open search modal" class="page-header__search-button" id="header-search-button" type="button">
+        <svg class="page-header__search-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.4351 14.0629H14.7124L14.4563 13.8159C15.3528 12.773 15.8925 11.4191 15.8925 9.94625C15.8925 6.66209 13.2304 4 9.94625 4C6.66209 4 4 6.66209 4 9.94625C4 13.2304 6.66209 15.8925 9.94625 15.8925C11.4191 15.8925 12.773 15.3528 13.8159 14.4563L14.0629 14.7124V15.4351L18.6369 20L20 18.6369L15.4351 14.0629ZM9.94625 14.0629C7.66838 14.0629 5.82962 12.2241 5.82962 9.94625C5.82962 7.66838 7.66838 5.82962 9.94625 5.82962C12.2241 5.82962 14.0629 7.66838 14.0629 9.94625C14.0629 12.2241 12.2241 14.0629 9.94625 14.0629Z" fill="#18181B"/>
+</svg>
+
+    </button>
+    <div class="search-overlay__container" id="search-overlay-container"></div>
+    <div class="ais-InstantSearch">
+        <div class="search-overlay__search-bar"> 
+            <svg class="search-overlay__search-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.4351 14.0629H14.7124L14.4563 13.8159C15.3528 12.773 15.8925 11.4191 15.8925 9.94625C15.8925 6.66209 13.2304 4 9.94625 4C6.66209 4 4 6.66209 4 9.94625C4 13.2304 6.66209 15.8925 9.94625 15.8925C11.4191 15.8925 12.773 15.3528 13.8159 14.4563L14.0629 14.7124V15.4351L18.6369 20L20 18.6369L15.4351 14.0629ZM9.94625 14.0629C7.66838 14.0629 5.82962 12.2241 5.82962 9.94625C5.82962 7.66838 7.66838 5.82962 9.94625 5.82962C12.2241 5.82962 14.0629 7.66838 14.0629 9.94625C14.0629 12.2241 12.2241 14.0629 9.94625 14.0629Z" fill="#18181B"/>
+</svg>
+
+            <button aria-label="Close search modal" class="search-overlay__close-button" id="search-overlay-close-button" type="button">
+                <svg class="search-overlay__close-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+            </button>     
+            <div id="searchbox" class="search-overlay__search-box">
+                <span class="back-arrow"></span>
+            </div>
+            <div id="toggle-refinement" class="search-toggle-refinement "></div>
+        </div>
+
+            <div id="search-overlay-content" class="search-overlay__content">
+                <div class="search-overlay__stats" id="stats">
+                    <span class="search-overlay__stats-text typography--caption text-color--gray-lighter"></span>
+                </div>
+                <div id="hits" class="search-overlay__hits"></div>
+            </div>
+    </div>
+    
+        
+    <div class="page-header__section">
+        <div class="page-header__responsive-menu-container" id="header-menu-container"></div>
+        <div class="page-header__responsive-menu" id="header-menu">
+            <ul class="page-header__responsive-menu-list" role="menu">
+                <li class="page-header__responsive-menu-list-item">
+                    <button aria-label="close menu" class="page-header__menu-close-button" id="header-menu-close-button">
+                        <svg class="" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+                    </button>
+                </li>
+                <li class="page-header__responsive-menu-list-item page-header__responsive-menu-list-item--home">
+                    <a href="../../index.html" class="page-header__anchor typography--medium-button">home</a>
+                </li> 
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="../../docs/index.html" id="docs-link" class="page-header__anchor typography--medium-button">Docs</a>
+                </li>                
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="../../blog/index.html" class="page-header__anchor typography--medium-button">Blog</a>
+                </li>                    
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="../../ecosystem-projects/index.html" class="page-header__anchor typography--medium-button">Tools</a>
+                </li>                    
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="https://metrics.algorand.org/" rel="noopener" target="_blank"class="page-header__anchor typography--medium-button">Metrics</a>
+                </li>                
+                <li class="page-header__responsive-menu-list-item page-header__responsive-menu-list-item--discord">
+                    <a href="https://discord.gg/84AActu3at" rel="noopener" target="_blank" class="page-header__anchor typography--medium-button page-header__anchor--discord">Discord&#8599;</a>
+                </li>                
+                <li class="page-header__responsive-menu-list-item">
+                    <button class="page-header__theme-button" aria-label="Change theme" type="button" id="theme-button">
+                        <svg class="page-header__theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 15.3971C19.6814 18.6838 16.5224 21 12.8294 21C7.95346 21.0011 4 16.9627 4 11.9808C4 7.26274 7.54741 3.39674 12.0658 3C9.81599 6.16268 10.0786 10.6091 12.8702 13.4607C15.0704 15.7082 18.2393 16.3473 21 15.3971Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                    </button>
+                </li>
+            </ul>
+        </div>
+        
+        
+            <a href="../../accounts/login/index.html" class="button--light button--medium page-header__signin-button">Sign In</a>
+            <a href="../../accounts/signup/index.html" class="button--primary button--medium page-header__signup-button"> Sign Up</a>
+        
+    </div>
+</nav>
+
+    
+  </div>
+
+  
+
+<div id="create-publication-overlay" class="create-publication__overlay">
+<div class="create-publication__container">
+  <section class="create-publication__modal" id="create-publication__modal" tabindex="-1">
+    <button type="button" class="create-publication__close-button" id="create-publication-close-button">
+      <svg class="create-publication__close-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+    </button>
+    <h2 class="typography--h2 text-color--main create-publication__title">Create Publication</h2>
+
+    <p class="typography--large-body text-color--gray create-publication__decription">
+      
+      We are looking for publications that demonstrate building dApps or smart contracts! 
+      </br> 
+      See the full list of 
+      <a 
+        href="https://gitcoin.co/explorer?network=mainnet&amp;idx_status=open&amp;applicants=ALL&amp;keywords=algodev&amp;order_by=-web3_created&amp;org=algorandfoundation" 
+        rel="noopener"
+        target="_blank">
+          Gitcoin bounties
+      </a> 
+      that are eligible for rewards.
+      
+    </p>
+    <ul class="create-publication__type-list">
+      <li class="create-publication__type-list-item">
+        <a href="../../me/posts/tutorials/new/index.html" class="create-publication__type-item">
+          <div class="create-publication__type-icon-container create-publication__type-icon-container--tutorial">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="72" height="72" rx="8" fill="#8755D5"/>
+<path d="M36 25.5L21 32.646L36 39L51 32.646L36 25.5Z" stroke="#FEF3F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 33L21 42" stroke="#FEF3F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 36V43.3742C26.998 43.7308 27.1051 44.0796 27.3072 44.3752C27.5092 44.6708 27.797 44.8995 28.1328 45.0313L35.3328 47.8721C35.7616 48.0426 36.2408 48.0426 36.6696 47.8721L43.8696 45.0313C44.2051 44.8994 44.4926 44.6706 44.6942 44.375C44.8959 44.0793 45.0025 43.7305 45 43.3742V36" stroke="#FEF3F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
+          <div class="create-publication__type-info-container">
+            <span class="typography--large-button text-color--main">Tutorial</span>
+            <p class="create-publication__type-description typography--regular-body text-color--gray-lighter">Step-by-step guides for developers.</p>
+          </div>
+        </a>
+      </li>
+      <li class="create-publication__type-list-item">
+        <a href="../../me/posts/solutions/new/index.html" class="create-publication__type-item">
+          <div class="create-publication__type-icon-container create-publication__type-icon-container--solution">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="72" height="72" rx="8" fill="#B15D7D"/>
+<path d="M39.5069 49.5V44.1116C40.9373 43.6633 42.2429 42.9335 43.3319 41.9736C44.4208 41.0137 45.2666 39.847 45.8097 38.5556C46.3527 37.2642 46.5799 35.8796 46.4751 34.4992C46.3704 33.1188 45.9363 31.7762 45.2034 30.5659C45.2034 30.5659 40.4299 35.0285 39.9241 35.6215C39.6459 35.9494 39.2947 36.2194 38.8938 36.4137C38.4929 36.6079 38.0514 36.7219 37.5987 36.7481C37.146 36.7743 36.6924 36.7122 36.2679 36.5658C35.8434 36.4193 35.4578 36.192 35.1367 35.8988C34.8167 35.6049 34.5687 35.2521 34.4089 34.8639C34.2492 34.4756 34.1814 34.0607 34.21 33.6466C34.2387 33.2326 34.3631 32.8288 34.5751 32.4621C34.7871 32.0954 35.0818 31.7741 35.4397 31.5194C36.0876 31.0544 40.9637 26.6878 40.9637 26.6878C39.6257 26.0013 38.1353 25.601 36.6042 25.5168C35.0732 25.4325 33.5411 25.6666 32.1229 26.2014C30.1375 26.9151 28.4385 28.1684 27.2548 29.7925C26.0711 31.4166 25.4594 33.3336 25.5021 35.2855C25.5447 37.2374 26.2397 39.1305 27.4934 40.71C28.7471 42.2895 30.4994 43.4796 32.5145 44.1201V49.5" stroke="#FEE5E3" stroke-width="2" stroke-linecap="round"/>
+</svg>
+
+          </div>
+          <div class="create-publication__type-info-container">
+            <span class="typography--large-button text-color--main">Solution</span>
+            <p class="create-publication__type-description typography--regular-body text-color--gray-lighter">Sample code and explanations for common use cases on Algorand.</p>
+          </div>
+        </a>
+      </li>
+      <li class="create-publication__type-list-item">
+        <a href="../../me/posts/articles/new/index.html" class="create-publication__type-item">
+          <div class="create-publication__type-icon-container create-publication__type-icon-container--articles">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="72" height="72" rx="8" fill="#FF6D5F"/>
+<path d="M48 32.5695V44.9835C48 46.65 46.6935 48 45.081 48H26.919C25.3065 48 24 46.65 24 44.985V28.515C24 26.85 25.3065 25.5 26.919 25.5H33.4455" stroke="#FFECDF" stroke-width="2" stroke-linecap="round"/>
+<path d="M45.093 21.7566C46.101 20.7486 47.736 20.7471 48.744 21.7566C49.752 22.7646 49.752 24.3996 48.7425 25.4076L40.0815 34.0611C39.801 34.3416 39.42 34.4991 39.0225 34.4991H36V31.4766C36 31.0791 36.1575 30.6981 36.4395 30.4161L45.093 21.7566V21.7566Z" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31.5 34.5H28.5" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.5 40.5H43.5" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47.145 27.0005L43.5 23.3555" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
+          <div class="create-publication__type-info-container">
+            <span class="typography--large-button text-color--main">Article</span>
+            <p class="create-publication__type-description typography--regular-body text-color--gray-lighter">The latest developer-related news on Algorand.</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+</div>
+
+
+  
+<div class="page-content-wrapper">
+  
+  
+
+
+
+  
+  
+
+
+<script>
+   $(document).ready(function () {
+
+      $('#delete').click(function (e) {
+         if (!confirm("'Are you sure you want to delete this tutorial?'")) {
+             e.preventDefault();
+         }
+      });
+   });
+</script>
+
+  
+  
+  <div class="post-detail__page-content">
+     
+      
+
+
+     
+    
+    <article>
+      <div class="tutorial-detail__steps-overlay" id="toggle-menu">
+        <button aria-label="Close tutorial step list" class="tutorial-detail__steps-overlay__close-button">
+          <svg class="tutorial-detail__steps-overlay__close-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+        </button>
+        <ul class="tutorial-detail__steps-overlay-list">
+          
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#1-package-installation-and-environment-setup" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              1. Package Installation and Environment Setup
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#2-azure-account-setup" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              2. Azure Account Setup
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#3-create-resource-group" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              3. Create Resource Group
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#4-create-key-vault" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              4. Create Key Vault
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#5-create-secret" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              5. Create Secret
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#6-setup-environment-variables" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              6. Setup Environment Variables
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#7-get-client-secret-from-azure-key-vault" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              7. Get Client Secret From Azure key Vault
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#8-recover-account" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              8. Recover Account
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#9-create-payment-transaction-and-sign-with-secret-retrieved-from-key-vault" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              9. Create Payment Transaction And Sign  With Secret Retrieved From key Vault
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#10-full-code" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              10. Full Code
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#11-run-code" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              11. Run Code
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#12-clear-resource" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              12. Clear Resource
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#13-next-step" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              13. Next step
+            </a>
+          </li>
+          
+          <li class="tutorial-detail__steps-overlay-list-item">
+            <a href="#14-conclusion" class="typography--large-button tutorial-detail__steps-overlay-list-item__title">
+              14. Conclusion
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="post-detail__thumbnail-image-container">     
+        <img src="../../../s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/03/26%2002_03/Group_39.png--resize_then_crop--w__2220--h__1018--q__70.png?w=2220&amp;cmd=resize_then_crop&amp;height=1018&amp;quality=70" class="post-detail__thumbnail-image" alt="Tutorial Thumbnail">
+        <div class="tutorial-detail__tutorial-info">
+          <span class="typography--uppercase-caption hub__post-card__post-level-text--beginner">Beginner</span> &centerdot; <span class="typography--uppercase-caption text-color--gray-lighter">30 minutes</span>
+        </div>
+
+        
+          
+
+
+    <script async src="../../../platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async defer crossorigin="anonymous" src="../../../connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="kyE9Cdtc"></script> 
+
+
+<button id="share-overlay-toggle" aria-expanded="false" class="button--light button--small post-detail__share-overlay-toggle">
+    Share
+    <svg class="post-detail__share-overlay-toggle-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5297 7.52002L9.46973 10.56" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4044 4.64216C17.1979 5.4357 17.1979 6.7223 16.4044 7.51584C15.6108 8.30938 14.3242 8.30938 13.5307 7.51584C12.7372 6.72229 12.7372 5.4357 13.5307 4.64216C14.3243 3.84861 15.6108 3.84861 16.4044 4.64216" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.5297 16.48L9.46973 13.44" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4044 16.4842C17.1979 17.2777 17.1979 18.5643 16.4044 19.3579C15.6108 20.1514 14.3242 20.1514 13.5307 19.3579C12.7372 18.5643 12.7372 17.2777 13.5307 16.4842C14.3243 15.6907 15.6108 15.6907 16.4044 16.4842" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.46542 10.5646C10.2582 11.3574 10.2582 12.6427 9.46542 13.4355C8.67266 14.2282 7.38733 14.2282 6.59457 13.4355C5.80181 12.6427 5.80181 11.3574 6.59457 10.5646C7.38734 9.77184 8.67266 9.77184 9.46542 10.5646" stroke="#18181B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+</button>
+
+<div class="post-detail__share-overlay" id="share-overlay">
+    <header class="post-detail__share-overlay__header">
+        <span class="typography--large-button text-color--main">Share On...</span>
+        <button aria-label="close share overlay" id="share-overlay-close-button" class="post-detail__share-overlay__close-button">
+        <svg class="" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+        </button>
+    </header>
+
+    <ul class="post-detail__share-overlay__social-media-list">
+        <li class="post-detail__share-overlay__social-media-list-item">
+        <a class="post-detail__share-overlay__social-media-button post-detail__share-overlay__social-media-button--twitter" href="https://twitter.com/share?ref_src=twsrc%5Etfw&amp;url=https://developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/&amp;text=Using%20Azure%20Key%20Vault%20for%20Wallet%20Transactions%20using%20JavaScript" data-show-count="false" data-size="large"><svg class="post-detail__share-overlay__social-media-icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.7L3.49843 11.5896C0.684924 8.5561 0.519294 4.18556 2.8 1C3.907 3.059 5.974 4.959 8.2 5.5C8.286 2.9 10.049 1 12.7 1C14.505 1 15.567 1.688 16.3 2.8H19L17.2 5.5H17.199L17.1971 5.80837C17.0812 11.9463 13.4967 16.3 7.3 16.3C3.7 16.3 2.257 14.421 1 12.7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></a>
+    </li>           
+    <li class="post-detail__share-overlay__social-media-list-item">
+        <a class="post-detail__share-overlay__social-media-button post-detail__share-overlay__social-media-button--facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/"><svg class="post-detail__share-overlay__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3H16.504C18.987 3 21 5.013 21 7.496V16.505C21 18.987 18.987 21 16.504 21H7.496C5.013 21 3 18.987 3 16.504V7.5C3 5.015 5.015 3 7.5 3V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.1 12.8984H16.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5 8.39844H15.555C14.089 8.39844 12.9 9.58744 12.9 11.0534V11.9984V20.9984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+        </li>
+        <li class="post-detail__share-overlay__social-media-list-item">
+            <a class="post-detail__share-overlay__social-media-button post-detail__share-overlay__social-media-button--linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/&amp;title=Using%20Azure%20Key%20Vault%20for%20Wallet%20Transactions%20using%20JavaScript" data-show-count="false" data-size="large"><svg class="post-detail__share-overlay__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3H16.504C18.987 3 21 5.013 21 7.496V16.505C21 18.987 18.987 21 16.504 21H7.496C5.013 21 3 18.987 3 16.504V7.5C3 5.015 5.015 3 7.5 3V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.12 11.1016V16.5016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.719 16.5016V13.3516C11.719 12.1086 12.726 11.1016 13.969 11.1016C15.212 11.1016 16.219 12.1086 16.219 13.3516V16.5016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.118 7.83984C7.994 7.83984 7.893 7.94084 7.894 8.06484C7.894 8.18884 7.995 8.28984 8.119 8.28984C8.243 8.28984 8.344 8.18884 8.344 8.06484C8.344 7.93984 8.243 7.83984 8.118 7.83984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+        </li>
+        <li class="post-detail__share-overlay__social-media-list-item">
+            <button class="post-detail__share-overlay__social-media-button post-detail__share-overlay__social-media-button--url" id="url-copy-button">
+                <svg class="post-detail__share-overlay__url-copy-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="8.75" y="8.75" width="11.5" height="11.5" rx="1.25" stroke-width="1.5"/>
+<path d="M6.14286 14H5C3.89543 14 3 13.1046 3 12V5C3 3.89543 3.89522 3 4.99979 3C6.80405 3 9.54403 3 12.0007 3C13.1053 3 14 3.89543 14 5V5.35714" stroke-width="1.5"/>
+</svg>
+
+                <span class="typography--caption post-detail__share-overlay__url-copy-text">Copied!</span>
+            </button>
+        </li>
+        
+    </ul>
+</div>
+          
+      </div>
+
+      <div class="post-detail__content-container">
+        <h1 class="typography--h1 text-color--main post-detail__title">Using Azure Key Vault for Wallet Transactions using JavaScript</h1>
+
+        <div class="markdown-content"><p>The most important piece of information for every Algorand wallet owner, is the private key. It is the most important because loss of that private key will result in the owner not being able to access the tokens associated to that wallet, without any possibility of recovery.</p>
+<p>With Azure Key Vault one can store, retrieve and recover an account using your private key using the cloud, so you won’t loose it. In addition, iOS/Android wallets will be empty if you get a new phone when you transfer everything from the old phone to a new one. You will need your passphrase there too, for account restoration on the new phone wallet. And this can be easily retrieved from the Azure Key Vault.</p>
+<p>This tutorial will provide the necessary information needed to sign Algorand transactions with a private key stored in Azure Key Vault.</p>
+<h2 id="resources">RESOURCES</h2>
+<ul>
+<li><a href="https://github.com/gconnect/algorand-azure-keyvault">Github</a></li>
+<li><a href="https://youtu.be/qS82oYclYY0">Youtube</a></li>
+</ul></div>
+
+        <div class="post-detail__post-info-section">
+          <a class="is-vertically-centered" href="../../u/agatevure/index.html">
+            <img src="../../../s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2021/08/01%2023_01/234_703_231_3948_20210729_232454.jpg--resize_then_crop--w__120--h__120--q__70.jpg?w=120&amp;cmd=resize_then_crop&amp;height=120&amp;quality=70" class="post-detail__author-avatar" alt="Glory Agatevure">
+            
+            <div class="post-detail__author-info">
+              <span class="typography--medium-button text-color--main post-detail__author-name">Glory Agatevure</span>
+              <span class="typography--regular-body text-color--gray-lighter">AfricInnovate</span>
+            </div>
+          </a>
+
+          <span class="typography--regular-body post-detail__date-text">March 31, 2022</span>
+        </div>
+
+        <div class="post-detail__post-info-section">
+          
+
+          <div class="post-detail__additional-info">
+            <div class="post-detail__main-language">
+              <img src="../../../s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Default%20Icons/2021/09/29%2012_34/javascript.png--resize_then_crop--w__106--h__106--q__70.png?w=106&amp;cmd=resize_then_crop&amp;height=106&amp;quality=70" class="post-detail__language-image" alt="JavaScript icon">
+              <span class="typography--regular-body text-color--gray">JavaScript</span>
+            </div>
+
+            
+
+            
+          </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+        <section class="post-detail__tutorial-section">
+          <h2 class="typography--h2 text-color--main">Requirements</h2>
+
+          <div class="markdown-content"><ul>
+<li><a href="https://github.com/algorand/js-algorand-sdk">Algorand JavaScript SDK</a></li>
+<li><a href="https://code.visualstudio.com/">Vs Code</a> or any IDE of your choice</li>
+<li><a href="https://nodejs.org/download/">Node Package Manager</a></li>
+<li><a href="https://azure.microsoft.com/en-us/free/">Create Free Azure Account</a></li>
+<li><a href="https://www.npmjs.com/package/@azure/keyvault-secrets">Azure KeyVault Secret</a> and <a href="https://www.npmjs.com/package/@azure/identity">Azure Identity</a> Client</li>
+</ul></div>
+        </section>
+
+        
+        <section class="post-detail__tutorial-section">
+          <h2 class="typography--h2 text-color--main">Background</h2>
+
+          <div class="markdown-content"><p>Azure Key Vault is a cloud service that provides a secure store for secrets. You can securely store keys, passwords, certificates, and other secrets. Azure key vaults may be created and managed through the Azure portal. In this tutorial, you create a key vault, then use it to store a secret and retrieve the secret to sign transactions on Algorand.</p>
+<p>Azure Key Vault, and  its Hardware Security Modules (HSM) offering, allows management and usage of cryptographic key pairs, without the private key ever leaving the vault, unless it’s for backup and restore operations, meaning, the risk of loss or exposure of the private key is reduced.</p>
+<p>This tutorial will cover setting up of Azure account, creating Key Vault, Creating Payment Transaction, signing the transaction with secret key retrieved from Azure Key Vault and also recovering of private key.</p></div>
+        </section>
+        
+
+        <section class="post-detail__tutorial-section">
+          <h2 class="typography--h2 text-color--main">Steps</h2>
+
+          <ul class="tutorial-detail__steps-list">
+            
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#1-package-installation-and-environment-setup" class="tutorial-detail__step-title typography--large-button">
+                1. Package Installation and Environment Setup
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#2-azure-account-setup" class="tutorial-detail__step-title typography--large-button">
+                2. Azure Account Setup
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#3-create-resource-group" class="tutorial-detail__step-title typography--large-button">
+                3. Create Resource Group
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#4-create-key-vault" class="tutorial-detail__step-title typography--large-button">
+                4. Create Key Vault
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#5-create-secret" class="tutorial-detail__step-title typography--large-button">
+                5. Create Secret
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#6-setup-environment-variables" class="tutorial-detail__step-title typography--large-button">
+                6. Setup Environment Variables
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#7-get-client-secret-from-azure-key-vault" class="tutorial-detail__step-title typography--large-button">
+                7. Get Client Secret From Azure key Vault
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#8-recover-account" class="tutorial-detail__step-title typography--large-button">
+                8. Recover Account
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#9-create-payment-transaction-and-sign-with-secret-retrieved-from-key-vault" class="tutorial-detail__step-title typography--large-button">
+                9. Create Payment Transaction And Sign  With Secret Retrieved From key Vault
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#10-full-code" class="tutorial-detail__step-title typography--large-button">
+                10. Full Code
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#11-run-code" class="tutorial-detail__step-title typography--large-button">
+                11. Run Code
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#12-clear-resource" class="tutorial-detail__step-title typography--large-button">
+                12. Clear Resource
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#13-next-step" class="tutorial-detail__step-title typography--large-button">
+                13. Next step
+              </a>
+            </li>
+            
+            <li class="tutorial-detail__steps-list-item">
+              <a href="#14-conclusion" class="tutorial-detail__step-title typography--large-button">
+                14. Conclusion
+              </a>
+            </li>
+            
+          </ul>
+        </section>
+
+        <div class="markdown-content"><h3 class="tutorial-detail__sticky-step-title" id="1-package-installation-and-environment-setup">1. Package Installation and Environment Setup</h3>
+<p>To get started create a local folder on your machine for the code, cd (change directory) into that folder<br />
+do <code>npm init</code> and install the following packages</p>
+<p><code>npm install algosdk</code><br />
+This will install the Algorand JavaScript SDK. The algosdk ensures interactions with the Algorand blockchain.<br />
+<img alt="EditorImages/2022/03/25 04:39/Screenshot_2022-03-19_at_03.19.54.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/25%2004_39/Screenshot_2022-03-19_at_03.19.54.png" /> <br />
+<strong>Fig 1-1</strong> Install algosdk</p>
+<p><code>npm install --save @azure/identity</code><br />
+This will install the Azure Identity library. The Azure Identity library provides Azure Active Directory (Azure AD) token authentication through a set of convenient TokenCredential implementations.</p>
+<p><code>npm install @azure/keyvault-secrets</code><br />
+Use the KeyVault Secrets client library to get access to Azure Key Vault.</p>
+<p><img alt="EditorImages/2022/03/25 04:44/Screenshot_2022-03-19_at_02.44.49.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/25%2004_44/Screenshot_2022-03-19_at_02.44.49.png" /> <br />
+<strong>Fig 1-2</strong> Install Azure Identity and KeyVault Secrets</p>
+<p><code>npm install dotenv --save</code><br />
+Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code. You will create a <code>.env</code> file at the root of your project.</p>
+<p><img alt="EditorImages/2022/03/25 04:37/Screenshot_2022-03-23_at_21.49.37.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/25%2004_37/Screenshot_2022-03-23_at_21.49.37.png" /> <br />
+<strong>Fig 1-3</strong> Install dotenv</p>
+<p>On mac do <code>`brew update &amp;&amp; brew install azure-cli</code><br />
+This will enable interactions with azure portal from the command line. If you encounter any error while running the above command you can try to install from source with: <br />
+<code>brew install --build-from-source <a href="../../cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="57272e233f38391764796667">[email&#160;protected]</a></code>.<br />
+If you are having problem installing the CLI this <a href="https://docs.microsoft.com/en-gb/cli/azure/install-azure-cli">installation guide</a> should be helpful.<br />
+<img alt="EditorImages/2022/03/26 03:47/Screenshot_2022-03-19_at_03.01.05.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/26%2003_47/Screenshot_2022-03-19_at_03.01.05.png" /> <br />
+<strong>Fig 1-4</strong> Install azure-cli</p>
+<h2 id="file-structure">File Structure</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Your file structure should look like this. Your <code>.env</code> and <code>node module</code> should be added to <code>.gitignore</code> file so you don&rsquo;t end up exposing your credentials when you push to github.</p>
+<p><img alt="EditorImages/2022/03/31 04:24/Screenshot_2022-03-31_at_05.23.22.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2004_24/Screenshot_2022-03-31_at_05.23.22.png" /> <br />
+<strong>Fig 1-5</strong> File Structure</p>
+<h3 class="tutorial-detail__sticky-step-title" id="2-azure-account-setup">2. Azure Account Setup</h3>
+<p>Create a free Azure account and login to the portal. Create account <a href="https://azure.microsoft.com/en-us/free/search/?&amp;ef_id=CjwKCAjwrfCRBhAXEiwAnkmKmZGyYB-92NNPZrZ8NWPRaJMPif7fcSRt1i5bJptc4LuFZe7fokjGQhoC-HYQAvD_BwE:G:s&amp;OCID=AID2200227_SEM_CjwKCAjwrfCRBhAXEiwAnkmKmZGyYB-92NNPZrZ8NWPRaJMPif7fcSRt1i5bJptc4LuFZe7fokjGQhoC-HYQAvD_BwE:G:s">here</a>. There are two types of account the free account and PayAsYouGo account. The free account gives you access to the Azure portal to access the Azure features for a trial period of 30 days.</p>
+<h2 id="create-azure-account">Create Azure Account</h2>
+<p><img alt="EditorImages/2022/03/25 04:51/Screenshot_2022-03-25_at_05.49.52.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/25%2004_51/Screenshot_2022-03-25_at_05.49.52.png" /> <br />
+<strong>Fig 2-1</strong> Create Account</p>
+<h2 id="login-to-azure-portal">Login to Azure Portal</h2>
+<p>After successful account creation you can then login.<br />
+<img alt="EditorImages/2022/03/25 04:57/Screenshot_2022-03-25_at_05.49.23.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/25%2004_57/Screenshot_2022-03-25_at_05.49.23.png" /> <br />
+<strong>Fig 2-2</strong> Login</p>
+<h3 class="tutorial-detail__sticky-step-title" id="3-create-resource-group">3. Create Resource Group</h3>
+<p>A resource group is a container that holds related resources for an Azure solution.To create resource <br />
+click on Resource Groups on the left pane to bring up Resource groups. <br />
+<img alt="EditorImages/2022/03/31 03:15/Screenshot_2022-03-31_at_04.03.43.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_15/Screenshot_2022-03-31_at_04.03.43.png" /> <br />
+<strong>Fig 3-1</strong> Select Resource Group</p>
+<p>Click on the create button to create a new resource group called <strong>azure-vault-rg</strong><br />
+<img alt="EditorImages/2022/03/31 03:14/Screenshot_2022-03-31_at_02.41.00.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_14/Screenshot_2022-03-31_at_02.41.00.png" /> <br />
+<strong>Fig 3-2</strong> Create Resource Group</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>When creating a resource in Azure, the naming convention is to end the name of the resource with -rg , this way one can easily identify it as resource group. Same w other names -vault, -secret , -vm, etc</p>
+<p>Azure resources tagging allows you to assign a kind of metadata to a resource. Then, you can find all the resources that have the same tag !</p>
+<p>A tag is a Key/Value pair. It can be applied to the resource groups or directly on the resources. It is searchable so it can be used to find resources or resource groups using Powershell or Azure Portal.<br />
+<img alt="EditorImages/2022/03/31 03:18/Screenshot_2022-03-31_at_02.43.20.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_18/Screenshot_2022-03-31_at_02.43.20.png" /> <br />
+<strong>Fig 3-3</strong> Resource Group Tag</p>
+<h3 class="tutorial-detail__sticky-step-title" id="4-create-key-vault">4. Create Key Vault</h3>
+<p>Azure Key Vault is a cloud service that provides a secure store for secrets. You can securely store keys, passwords, certificates, and other secrets. Azure key vaults may be created and managed through the Azure portal.</p>
+<p>There are several ways to create key vault from the azure portal. From your resource group you can hit the + button to create a new resource or you can search for Key Vault using the search bar.</p>
+<p><img alt="EditorImages/2022/03/25 05:02/Screenshot_2022-03-17_at_02.54.16.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/25%2005_02/Screenshot_2022-03-17_at_02.54.16.png" /> <br />
+<strong>Fig 4-1</strong> Search Key Vault</p>
+<p>Select the resource group name, enter the key vault name, select region and pricing tier. Then hit the review and create button.</p>
+<p><img alt="EditorImages/2022/03/31 03:26/Screenshot_2022-03-31_at_02.51.12.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_26/Screenshot_2022-03-31_at_02.51.12.png" /> <br />
+<strong>Fig 4-2</strong> Create Key Vault</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Purge protection is an optional Key Vault behavior and is not enabled by default. Purge protection can only be enabled once soft-delete is enabled. It can be turned on via CLI or PowerShell. Purge protection is recommended when using keys for encryption to prevent data loss.</p>
+<p><img alt="EditorImages/2022/03/31 03:28/Screenshot_2022-03-31_at_03.03.23.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_28/Screenshot_2022-03-31_at_03.03.23.png" /> <br />
+<strong>Fig 4-3</strong> Go to Resource</p>
+<p>When you are done creating the key vault click on the Go to resource button. This will take you to the key vault overview page. Take note of the vault uri, this will be used later on the client app. The vault uri value will be used later in step 6.<br />
+<img alt="EditorImages/2022/03/31 03:32/Screenshot_2022-03-31_at_03.05.34.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_32/Screenshot_2022-03-31_at_03.05.34.png" /> <br />
+<strong>Fig 4-4</strong> Key Vault Overview</p>
+<p>To check the details or properties of the key vault. Click on properties on the left hand panel.<br />
+<img alt="EditorImages/2022/03/31 04:11/Screenshot_2022-03-31_at_03.54.19.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2004_11/Screenshot_2022-03-31_at_03.54.19.png" /> <br />
+<strong>Fig 4-5</strong> Key Vault Properties</p>
+<h3 class="tutorial-detail__sticky-step-title" id="5-create-secret">5. Create Secret</h3>
+<p>To follow up in this tutorial, you will store your mnemonic in secret. This secret will be retrieved later to sign transaction.</p>
+<p>To create secret, click on secret and the + button to generate/import secret.<br />
+<img alt="EditorImages/2022/03/31 03:40/Screenshot_2022-03-31_at_03.06.05.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_40/Screenshot_2022-03-31_at_03.06.05.png" /> <br />
+<strong>Fig 5-1</strong> Create Secret</p>
+<p>Enter the secret name and value. Set activation and expiration date and tag then hit the create button.<br />
+<img alt="EditorImages/2022/03/31 03:42/Screenshot_2022-03-31_at_03.53.28.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_42/Screenshot_2022-03-31_at_03.53.28.png" /> <br />
+<strong>Fig 5-2</strong> Create Secret Form</p>
+<p>The highlighed secret is the secret name which you will use later in client app. This will be the value for the secret name in the environment variables in step 6.<br />
+<img alt="EditorImages/2022/03/31 03:45/Screenshot_2022-03-31_at_03.56.02.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2003_45/Screenshot_2022-03-31_at_03.56.02.png" /> <br />
+<strong>Fig 5-3</strong> Secrets</p>
+<h3 class="tutorial-detail__sticky-step-title" id="6-setup-environment-variables">6. Setup Environment Variables</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Create <code>.env</code> file at the root of your project to store sensitive information. Your <code>.env</code> file should look like this. The values should not be quoted.</p>
+<p>The Purestake client will be used to connect.The API_KEY is gotten from <a href="https://developer.purestake.io/">Purestake API</a>. Once you create account, you will have access to the API Key. </p>
+<p>The secret name is highlighted in fig 5-3 and the vault uri is highlighted in fig 4-4.</p>
+<p> <div class=codehilite><pre><span></span><code>API_KEY = YOUR PURESTAKE API KEY
+KEY_VAULT_URI = https://algo-vault.vault.azure.net/
+SECRET_NAME =   mnemonic-secret
+ALGOD_SERVER = https://testnet-algorand.api.purestake.io/ps2/
+PORT = 
+</code></pre></div></p>
+<h3 class="tutorial-detail__sticky-step-title" id="7-get-client-secret-from-azure-key-vault">7. Get Client Secret From Azure key Vault</h3>
+<p>This handles connecting to the azure identity and secret client and making a request to get the secret.<br />
+// src/VaultSecret.js</p>
+<p> <div class=codehilite><pre><span></span><code><span class=c1>// Azure authentication library to access Azure Key Vault</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=nx>DefaultAzureCredential</span><span class=p>}</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s2>&quot;@azure/identity&quot;</span><span class=p>)</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=nx>SecretClient</span><span class=w> </span><span class=p>}</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s2>&quot;@azure/keyvault-secrets&quot;</span><span class=p>)</span><span class=w></span>
+<span class=nx>require</span><span class=p>(</span><span class=s1>&#39;dotenv&#39;</span><span class=p>).</span><span class=nx>config</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span><span class=w> </span><span class=s1>&#39;../.env&#39;</span><span class=p>})</span><span class=w></span>
+
+<span class=kd>const</span><span class=w> </span><span class=nx>getSecret</span><span class=w> </span><span class=o>=</span><span class=w>  </span><span class=k>async</span><span class=w> </span><span class=p>()</span><span class=w> </span><span class=p>=&gt;{</span><span class=w></span>
+<span class=w>  </span><span class=k>try</span><span class=p>{</span><span class=w></span>
+<span class=w>    </span><span class=c1>// Azure SDK clients accept the credential as a parameter</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>credential</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>DefaultAzureCredential</span><span class=p>();</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>client</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>SecretClient</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>KEY_VAULT_URI</span><span class=p>,</span><span class=w> </span><span class=nx>credential</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>secret</span><span class=w> </span><span class=o>=</span><span class=w>  </span><span class=k>await</span><span class=w>  </span><span class=nx>client</span><span class=p>.</span><span class=nx>getSecret</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>SECRET_NAME</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>value</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>secret</span><span class=p>.</span><span class=nx>value</span><span class=w></span>
+<span class=w>    </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>value</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=k>return</span><span class=w> </span><span class=nx>value</span><span class=w></span>
+<span class=w>  </span><span class=p>}</span><span class=k>catch</span><span class=p>(</span><span class=nx>err</span><span class=p>){</span><span class=w></span>
+<span class=w>    </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>err</span><span class=p>)</span><span class=w></span>
+<span class=w>  </span><span class=p>}</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+<span class=nx>getSecret</span><span class=p>()</span><span class=w></span>
+<span class=nx>module</span><span class=p>.</span><span class=nx>exports</span><span class=w> </span><span class=o>=</span><span class=p>{</span><span class=w></span>
+<span class=w>  </span><span class=nx>getSecret</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+</code></pre></div></p>
+<h3 class="tutorial-detail__sticky-step-title" id="8-recover-account">8. Recover Account</h3>
+<p>This handles recovering of Algorand wallet using the secret from Azure Key Vault.<br />
+// src/RecoverAccount.js</p>
+<p> <div class=codehilite><pre><span></span><code><span class=w>  </span><span class=kd>const</span><span class=w> </span><span class=nx>vault</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./VaultSecret&#39;</span><span class=p>)</span><span class=w> </span>
+<span class=w>  </span><span class=kd>const</span><span class=w> </span><span class=nx>algosdk</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;algosdk&#39;</span><span class=p>)</span><span class=w></span>
+
+<span class=w>  </span><span class=kd>const</span><span class=w> </span><span class=nx>recoverAccount</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>async</span><span class=w> </span><span class=p>()</span><span class=w> </span><span class=p>=&gt;{</span><span class=w></span>
+<span class=w>  </span><span class=kd>const</span><span class=w> </span><span class=nx>mnomenic</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>vault</span><span class=p>.</span><span class=nx>getSecret</span><span class=p>()</span><span class=w></span>
+<span class=w>  </span><span class=kd>const</span><span class=w> </span><span class=nx>recover</span><span class=w> </span><span class=o>=</span><span class=w>  </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>mnemonicToSecretKey</span><span class=p>(</span><span class=nx>mnomenic</span><span class=p>)</span><span class=w></span>
+<span class=w>  </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>recover</span><span class=p>.</span><span class=nx>sk</span><span class=p>)</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+
+<span class=nx>recoverAccount</span><span class=p>()</span><span class=w></span>
+</code></pre></div></p>
+<h3 class="tutorial-detail__sticky-step-title" id="9-create-payment-transaction-and-sign-with-secret-retrieved-from-key-vault">9. Create Payment Transaction And Sign  With Secret Retrieved From key Vault</h3>
+<h2 id="connect-your-client">Connect your client</h2>
+<p>//src/Transaction.js</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kd>const</span><span class=w> </span><span class=nx>algodToken</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=s2>&quot;X-API-Key&quot;</span><span class=o>:</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>API_KEY</span><span class=p>}</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=nx>algodServer</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>ALGOD_SERVER</span><span class=p>;</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=nx>algodPort</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>PORT</span><span class=p>;</span><span class=w></span>
+<span class=kd>let</span><span class=w> </span><span class=nx>algodClient</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>Algodv2</span><span class=p>(</span><span class=nx>algodToken</span><span class=p>,</span><span class=w> </span><span class=nx>algodServer</span><span class=p>,</span><span class=w> </span><span class=nx>algodPort</span><span class=p>);</span><span class=w></span>
+</code></pre></div></p>
+<p>//src/Transaction.js<br />
+The code here handles connecting to the Algorand Purestake API client, creating a payment transaction, Signing the transaction with secret from Azure Key Vault.</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kd>const</span><span class=w> </span><span class=nx>vault</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./VaultSecret&#39;</span><span class=p>)</span><span class=w> </span>
+<span class=kd>const</span><span class=w> </span><span class=nx>algosdk</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;algosdk&#39;</span><span class=p>)</span><span class=w></span>
+<span class=nx>require</span><span class=p>(</span><span class=s1>&#39;dotenv&#39;</span><span class=p>).</span><span class=nx>config</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span><span class=w> </span><span class=s1>&#39;../.env&#39;</span><span class=p>})</span><span class=w></span>
+
+<span class=w>  </span><span class=k>async</span><span class=w> </span><span class=kd>function</span><span class=w> </span><span class=nx>paymentTransaction</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>mnomenic</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>vault</span><span class=p>.</span><span class=nx>getSecret</span><span class=p>()</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>account</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>mnemonicToSecretKey</span><span class=p>(</span><span class=nx>mnomenic</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>senderAddress</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>account</span><span class=p>.</span><span class=nx>addr</span><span class=w></span>
+
+<span class=w>    </span><span class=k>try</span><span class=w> </span><span class=p>{</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>//Check your balance</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>accountInfo</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>accountInformation</span><span class=p>(</span><span class=nx>senderAddress</span><span class=p>).</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Account balance: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>accountInfo</span><span class=p>.</span><span class=nx>amount</span><span class=p>);</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// Construct the transaction</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>params</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>getTransactionParams</span><span class=p>().</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=c1>// comment out the next two lines to use suggested fee</span><span class=w></span>
+<span class=w>        </span><span class=nx>params</span><span class=p>.</span><span class=nx>fee</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>ALGORAND_MIN_TX_FEE</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=nx>params</span><span class=p>.</span><span class=nx>flatFee</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=kc>true</span><span class=p>;</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// receiver defined as TestNet faucet address </span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>receiver</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>&quot;HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA&quot;</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>enc</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>TextEncoder</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>note</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>enc</span><span class=p>.</span><span class=nx>encode</span><span class=p>(</span><span class=s2>&quot;Hello World&quot;</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>amount</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mf>1000000</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>sender</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>senderAddress</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>txn</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>makePaymentTxnWithSuggestedParamsFromObject</span><span class=p>({</span><span class=w></span>
+<span class=w>            </span><span class=kr>from</span><span class=o>:</span><span class=w> </span><span class=nx>sender</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>to</span><span class=o>:</span><span class=w> </span><span class=nx>receiver</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>amount</span><span class=o>:</span><span class=w> </span><span class=nx>amount</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>note</span><span class=o>:</span><span class=w> </span><span class=nx>note</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>suggestedParams</span><span class=o>:</span><span class=w> </span><span class=nx>params</span><span class=w></span>
+<span class=w>        </span><span class=p>});</span><span class=w></span>
+
+
+<span class=w>        </span><span class=c1>// Sign the transaction</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>signedTxn</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>txn</span><span class=p>.</span><span class=nx>signTxn</span><span class=p>(</span><span class=nx>account</span><span class=p>.</span><span class=nx>sk</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>txId</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>txn</span><span class=p>.</span><span class=nx>txID</span><span class=p>().</span><span class=nx>toString</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Signed transaction with txID: %s&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>txId</span><span class=p>);</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// Submit the transaction</span><span class=w></span>
+<span class=w>        </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>sendRawTransaction</span><span class=p>(</span><span class=nx>signedTxn</span><span class=p>).</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// Wait for confirmation</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>waitForConfirmation</span><span class=p>(</span><span class=nx>algodClient</span><span class=p>,</span><span class=w> </span><span class=nx>txId</span><span class=p>,</span><span class=w> </span><span class=mf>4</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=c1>//Get the completed Transaction</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Transaction &quot;</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=nx>txId</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=s2>&quot; confirmed in round &quot;</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=p>[</span><span class=s2>&quot;confirmed-round&quot;</span><span class=p>]);</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>string</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>TextDecoder</span><span class=p>().</span><span class=nx>decode</span><span class=p>(</span><span class=nx>confirmedTxn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>note</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Note field: &quot;</span><span class=p>,</span><span class=w> </span><span class=nx>string</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=nx>accountInfo</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>accountInformation</span><span class=p>(</span><span class=nx>senderAddress</span><span class=p>).</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Transaction Amount: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>amt</span><span class=p>);</span><span class=w>        </span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Transaction Fee: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>fee</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Account balance: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>accountInfo</span><span class=p>.</span><span class=nx>amount</span><span class=p>);</span><span class=w></span>
+<span class=w>    </span><span class=p>}</span><span class=w></span>
+<span class=w>    </span><span class=k>catch</span><span class=w> </span><span class=p>(</span><span class=nx>err</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;err&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>err</span><span class=p>);</span><span class=w></span>
+<span class=w>    </span><span class=p>}</span><span class=w>  </span>
+<span class=w>  </span><span class=p>};</span><span class=w></span>
+<span class=w>  </span><span class=nx>paymentTransaction</span><span class=p>()</span><span class=w></span>
+</code></pre></div></p>
+<h3 class="tutorial-detail__sticky-step-title" id="10-full-code">10. Full Code</h3>
+<p>//src/VaultSecret.js</p>
+<p> <div class=codehilite><pre><span></span><code><span class=c1>// Azure authentication library to access Azure Key Vault</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=nx>DefaultAzureCredential</span><span class=p>}</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s2>&quot;@azure/identity&quot;</span><span class=p>)</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=p>{</span><span class=w> </span><span class=nx>SecretClient</span><span class=w> </span><span class=p>}</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s2>&quot;@azure/keyvault-secrets&quot;</span><span class=p>)</span><span class=w></span>
+<span class=nx>require</span><span class=p>(</span><span class=s1>&#39;dotenv&#39;</span><span class=p>).</span><span class=nx>config</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span><span class=w> </span><span class=s1>&#39;../.env&#39;</span><span class=p>})</span><span class=w></span>
+
+<span class=kd>const</span><span class=w> </span><span class=nx>getSecret</span><span class=w> </span><span class=o>=</span><span class=w>  </span><span class=k>async</span><span class=w> </span><span class=p>()</span><span class=w> </span><span class=p>=&gt;{</span><span class=w></span>
+<span class=w>  </span><span class=k>try</span><span class=p>{</span><span class=w></span>
+<span class=w>    </span><span class=c1>// Azure SDK clients accept the credential as a parameter</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>credential</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>DefaultAzureCredential</span><span class=p>();</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>client</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>SecretClient</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>KEY_VAULT_URI</span><span class=p>,</span><span class=w> </span><span class=nx>credential</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>secret</span><span class=w> </span><span class=o>=</span><span class=w>  </span><span class=k>await</span><span class=w>  </span><span class=nx>client</span><span class=p>.</span><span class=nx>getSecret</span><span class=p>(</span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>SECRET_NAME</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>value</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>secret</span><span class=p>.</span><span class=nx>value</span><span class=w></span>
+<span class=w>    </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>value</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=k>return</span><span class=w> </span><span class=nx>value</span><span class=w></span>
+<span class=w>  </span><span class=p>}</span><span class=k>catch</span><span class=p>(</span><span class=nx>err</span><span class=p>){</span><span class=w></span>
+<span class=w>    </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>err</span><span class=p>)</span><span class=w></span>
+<span class=w>  </span><span class=p>}</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+<span class=nx>getSecret</span><span class=p>()</span><span class=w></span>
+<span class=nx>module</span><span class=p>.</span><span class=nx>exports</span><span class=w> </span><span class=o>=</span><span class=p>{</span><span class=w></span>
+<span class=w>  </span><span class=nx>getSecret</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+</code></pre></div></p>
+<p>// src/RecoverAccount.js</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kd>const</span><span class=w> </span><span class=nx>vault</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./VaultSecret&#39;</span><span class=p>)</span><span class=w> </span>
+<span class=kd>const</span><span class=w> </span><span class=nx>algosdk</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;algosdk&#39;</span><span class=p>)</span><span class=w></span>
+
+<span class=kd>const</span><span class=w> </span><span class=nx>recoverAccount</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>async</span><span class=w> </span><span class=p>()</span><span class=w> </span><span class=p>=&gt;{</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=nx>mnomenic</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>vault</span><span class=p>.</span><span class=nx>getSecret</span><span class=p>()</span><span class=w></span>
+<span class=kd>const</span><span class=w> </span><span class=nx>recover</span><span class=w> </span><span class=o>=</span><span class=w>  </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>mnemonicToSecretKey</span><span class=p>(</span><span class=nx>mnomenic</span><span class=p>)</span><span class=w></span>
+<span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>recover</span><span class=p>.</span><span class=nx>sk</span><span class=p>)</span><span class=w></span>
+<span class=p>}</span><span class=w></span>
+
+<span class=nx>recoverAccount</span><span class=p>()</span><span class=w></span>
+</code></pre></div></p>
+<p>// src/Transaction.js</p>
+<p> <div class=codehilite><pre><span></span><code><span class=kd>const</span><span class=w> </span><span class=nx>vault</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;./VaultSecret&#39;</span><span class=p>)</span><span class=w> </span>
+<span class=kd>const</span><span class=w> </span><span class=nx>algosdk</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>require</span><span class=p>(</span><span class=s1>&#39;algosdk&#39;</span><span class=p>)</span><span class=w></span>
+<span class=nx>require</span><span class=p>(</span><span class=s1>&#39;dotenv&#39;</span><span class=p>).</span><span class=nx>config</span><span class=p>({</span><span class=nx>path</span><span class=o>:</span><span class=w> </span><span class=s1>&#39;../.env&#39;</span><span class=p>})</span><span class=w></span>
+
+<span class=w>  </span><span class=k>async</span><span class=w> </span><span class=kd>function</span><span class=w> </span><span class=nx>paymentTransaction</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>mnomenic</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>vault</span><span class=p>.</span><span class=nx>getSecret</span><span class=p>()</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>account</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>mnemonicToSecretKey</span><span class=p>(</span><span class=nx>mnomenic</span><span class=p>)</span><span class=w></span>
+<span class=w>    </span><span class=kd>const</span><span class=w> </span><span class=nx>senderAddress</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>account</span><span class=p>.</span><span class=nx>addr</span><span class=w></span>
+
+<span class=w>    </span><span class=k>try</span><span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w>        </span><span class=c1>// Connect your client</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>algodToken</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>{</span><span class=s2>&quot;X-API-Key&quot;</span><span class=o>:</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>API_KEY</span><span class=p>}</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>algodServer</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s1>&#39;https://testnet-algorand.api.purestake.io/ps2/&#39;</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>algodPort</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>&quot;&quot;</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>algodClient</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>Algodv2</span><span class=p>(</span><span class=nx>algodToken</span><span class=p>,</span><span class=w> </span><span class=nx>algodServer</span><span class=p>,</span><span class=w> </span><span class=nx>algodPort</span><span class=p>);</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>//Check your balance</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>accountInfo</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>accountInformation</span><span class=p>(</span><span class=nx>senderAddress</span><span class=p>).</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Account balance: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>accountInfo</span><span class=p>.</span><span class=nx>amount</span><span class=p>);</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// Construct the transaction</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>params</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>getTransactionParams</span><span class=p>().</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=c1>// comment out the next two lines to use suggested fee</span><span class=w></span>
+<span class=w>        </span><span class=nx>params</span><span class=p>.</span><span class=nx>fee</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>ALGORAND_MIN_TX_FEE</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=nx>params</span><span class=p>.</span><span class=nx>flatFee</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=kc>true</span><span class=p>;</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// receiver defined as TestNet faucet address </span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>receiver</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=s2>&quot;HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA&quot;</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>enc</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>TextEncoder</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=kd>const</span><span class=w> </span><span class=nx>note</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>enc</span><span class=p>.</span><span class=nx>encode</span><span class=p>(</span><span class=s2>&quot;Hello World&quot;</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>amount</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mf>1000000</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>sender</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>senderAddress</span><span class=p>;</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>txn</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>makePaymentTxnWithSuggestedParamsFromObject</span><span class=p>({</span><span class=w></span>
+<span class=w>            </span><span class=kr>from</span><span class=o>:</span><span class=w> </span><span class=nx>sender</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>to</span><span class=o>:</span><span class=w> </span><span class=nx>receiver</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>amount</span><span class=o>:</span><span class=w> </span><span class=nx>amount</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>note</span><span class=o>:</span><span class=w> </span><span class=nx>note</span><span class=p>,</span><span class=w> </span>
+<span class=w>            </span><span class=nx>suggestedParams</span><span class=o>:</span><span class=w> </span><span class=nx>params</span><span class=w></span>
+<span class=w>        </span><span class=p>});</span><span class=w></span>
+
+
+<span class=w>        </span><span class=c1>// Sign the transaction</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>signedTxn</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>txn</span><span class=p>.</span><span class=nx>signTxn</span><span class=p>(</span><span class=nx>account</span><span class=p>.</span><span class=nx>sk</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>txId</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nx>txn</span><span class=p>.</span><span class=nx>txID</span><span class=p>().</span><span class=nx>toString</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Signed transaction with txID: %s&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>txId</span><span class=p>);</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// Submit the transaction</span><span class=w></span>
+<span class=w>        </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>sendRawTransaction</span><span class=p>(</span><span class=nx>signedTxn</span><span class=p>).</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+
+<span class=w>        </span><span class=c1>// Wait for confirmation</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algosdk</span><span class=p>.</span><span class=nx>waitForConfirmation</span><span class=p>(</span><span class=nx>algodClient</span><span class=p>,</span><span class=w> </span><span class=nx>txId</span><span class=p>,</span><span class=w> </span><span class=mf>4</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=c1>//Get the completed Transaction</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Transaction &quot;</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=nx>txId</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=s2>&quot; confirmed in round &quot;</span><span class=w> </span><span class=o>+</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=p>[</span><span class=s2>&quot;confirmed-round&quot;</span><span class=p>]);</span><span class=w></span>
+<span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=nx>string</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>TextDecoder</span><span class=p>().</span><span class=nx>decode</span><span class=p>(</span><span class=nx>confirmedTxn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>note</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Note field: &quot;</span><span class=p>,</span><span class=w> </span><span class=nx>string</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=nx>accountInfo</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=k>await</span><span class=w> </span><span class=nx>algodClient</span><span class=p>.</span><span class=nx>accountInformation</span><span class=p>(</span><span class=nx>senderAddress</span><span class=p>).</span><span class=k>do</span><span class=p>();</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Transaction Amount: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>amt</span><span class=p>);</span><span class=w>        </span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Transaction Fee: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>confirmedTxn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>txn</span><span class=p>.</span><span class=nx>fee</span><span class=p>);</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;Account balance: %d microAlgos&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>accountInfo</span><span class=p>.</span><span class=nx>amount</span><span class=p>);</span><span class=w></span>
+<span class=w>    </span><span class=p>}</span><span class=w></span>
+<span class=w>    </span><span class=k>catch</span><span class=w> </span><span class=p>(</span><span class=nx>err</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w></span>
+<span class=w>        </span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&quot;err&quot;</span><span class=p>,</span><span class=w> </span><span class=nx>err</span><span class=p>);</span><span class=w></span>
+<span class=w>    </span><span class=p>}</span><span class=w>  </span>
+<span class=w>  </span><span class=p>};</span><span class=w></span>
+<span class=w>  </span><span class=nx>paymentTransaction</span><span class=p>()</span><span class=w></span>
+</code></pre></div></p>
+<h3 class="tutorial-detail__sticky-step-title" id="11-run-code">11. Run Code</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>To access the secret ensure you are logged in using the azure cli. Type <code>az login</code>.<br />
+If you are not logged in and you try to retrieve the secret you will see something like fig 10-1 below.<br />
+<img alt="EditorImages/2022/03/31 05:02/Screenshot_2022-03-31_at_05.29.52.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2005_02/Screenshot_2022-03-31_at_05.29.52.png" /> <br />
+<strong>Fig 10-1</strong> Unauthorized Error</p>
+<p>Upon successful login your response should look like fig 10-2 below<br />
+<img alt="EditorImages/2022/03/31 05:21/Screenshot_2022-03-31_at_06.17.11.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2005_21/Screenshot_2022-03-31_at_06.17.11.png" /> <br />
+<strong>Fig 10-2</strong> Successful Login</p>
+<p>To run the below codes ensure you are in the <code>src</code> folder</p>
+<h2 id="run-vaultsecret-code">Run VaultSecret Code</h2>
+<p>Run the code using <code>node VaultSecret.js</code><br />
+This will display your vault secret value.<br />
+<img alt="EditorImages/2022/03/31 05:56/Screenshot_2022-03-31_at_06.51.07.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2005_56/Screenshot_2022-03-31_at_06.51.07.png" /> <br />
+<strong>Fig 10-3</strong> Vault Secret</p>
+<h2 id="run-recover-account-code">Run Recover Account Code</h2>
+<p>Run the code using <code>node RecoverAccount.js</code>. The output will be the mnemonic value you stored in azure key vault secret.<br />
+<img alt="EditorImages/2022/03/31 05:20/Screenshot_2022-03-31_at_06.05.52.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/31%2005_20/Screenshot_2022-03-31_at_06.05.52.png" /> <br />
+<strong>Fig 10-4</strong> Recover Account Output</p>
+<h2 id="run-transaction-code">Run Transaction Code</h2>
+<p>Run the code using <code>node Transaction.js</code><br />
+<img alt="EditorImages/2022/03/26 04:02/Screenshot_2022-03-26_at_04.06.35.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/26%2004_02/Screenshot_2022-03-26_at_04.06.35.png" /> <br />
+<strong>Fig 10-5</strong> Result</p>
+<h2 id="algoexplorer">AlgoExplorer</h2>
+<p>Transaction id <code>VMCTXSOCX3DSQUHMGGVMZOSYT4C6H4CXPN3SYSJ5FI2MO47HUBDA</code> you can check the details of the transaction on the explorer.<br />
+<img alt="EditorImages/2022/03/26 04:02/Screenshot_2022-03-26_at_04.06.58.png" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/EditorImages/2022/03/26%2004_02/Screenshot_2022-03-26_at_04.06.58.png" /> <br />
+<strong>Fig 10-6</strong> AlgoExplorer</p>
+<h3 class="tutorial-detail__sticky-step-title" id="12-clear-resource">12. Clear Resource</h3>
+<p>When no longer needed, delete the resource group, which deletes the Key Vault and related resources. To delete the resource group through the portal:</p>
+<p>Enter the name of your resource group in the Search box at the top of the portal. When you see the resource group used in this tutorial in the search results, select it.Select Delete resource group.<br />
+In the TYPE THE RESOURCE GROUP NAME: box type in the name of the resource group and select Delete.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>It is important to note that once a secret, key, certificate, or key vault is deleted, it will remain recoverable for a configurable period of 7 to 90 calendar days. If no configuration is specified the default recovery period will be set to 90 days. This provides users with sufficient time to notice an accidental secret deletion and respond. For more information about deleting and recovering key vaults and key vault objects, see Azure Key Vault <a href="https://docs.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview">soft-delete overview</a>.</p>
+<h3 class="tutorial-detail__sticky-step-title" id="13-next-step">13. Next step</h3>
+<p>To learn more on Azure Key Vault and Transactions on Algorand. Checkout the links below;</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/key-vault/secrets/quick-create-portal">Set and retrieve a secret from Azure Key Vault using the Azure portal</a></li>
+<li><a href="https://docs.microsoft.com/en-us/javascript/api/overview/azure/key-vault-index?view=azure-node-latest">Azure Key Vault JavaScript Library</a></li>
+<li><a href="https://docs.microsoft.com/en-us/javascript/api/overview/azure/identity-readme?view=azure-node-latest">Azure Identity CLient Library</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/key-vault/general/security-features">Secure Access to Key Vault</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/key-vault/general/tutorial-net-create-vault-azure-web-app">Use Key Vault with App Service Web App</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/key-vault/general/developers-guide">Azure Key Vault developer&rsquo;s guide</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/key-vault/general/security-features">Key Vault security overview</a></li>
+<li><a href="../deploying-a-sandbox-development-environment-to-a-linux-virtual-machine-in-azure/index.html">Deploying Sandbox to a Linux VM in Azure<br />
+</a></li>
+<li><a href="../../docs/sdks/javascript/index.html">Creating your First Transaction on Algorand</a></li>
+</ul>
+<h3 class="tutorial-detail__sticky-step-title" id="14-conclusion">14. Conclusion</h3>
+<p>This tutorial covers the basics on how to create Key Vault, sign transactions with retrieved secret value and recover private key.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>This tutorial is intended for learning purposes only. It does not cover error checking and other edge cases. Therefore, it should not be used as a production application.</p></div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/dist/postDetail-846404d4a4f3cb51d416.js" ></script>
+<script type="text/javascript" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/dist/tutorialDetail-61696664095adb4f6e2a.js" ></script>
+
+
+  
+  <footer class="footer">
+    
+
+<div class="footer-content">
+    <div class="footer__row">
+        <div class="footer__column">
+            <svg class="footer-algorand-icon" width="98" height="26" viewBox="0 0 98 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.3033 5.4704V20.3632H21.286V5.4704H24.3033Z" />
+<path d="M36.6 10.3168V20.384C36.6 23.504 34.182 25.4176 31.2267 25.4176C28.3747 25.4176 26.246 23.6288 26.0393 21.112L29.036 21.1328C29.16 22.1936 30.09 22.672 31.33 22.672C32.4873 22.672 33.5827 22.048 33.5827 20.4048V19.136C32.818 19.6352 31.826 19.9264 30.7307 19.9264C27.982 19.9264 25.7707 17.68 25.7707 15.1008C25.7707 12.1056 27.982 10.088 30.7307 10.088C31.826 10.088 32.818 10.3792 33.5827 10.8784V10.3376L36.6 10.3168ZM33.5827 16.2448V13.7904C32.9627 12.896 32.1153 12.584 31.268 12.584C29.78 12.584 28.7673 13.5824 28.7673 15.1008C28.7673 16.224 29.8007 17.4304 31.268 17.4304C32.1153 17.4512 32.9833 17.1392 33.5827 16.2448Z"/>
+<path d="M48.628 15.2256C48.628 18.3248 46.3547 20.5296 43.296 20.5296C40.2167 20.5296 37.9433 18.3248 37.9433 15.2256C37.9433 12.1472 40.2167 9.90076 43.296 9.90076C46.3547 9.90076 48.628 12.1472 48.628 15.2256ZM45.714 15.2256C45.714 13.7696 44.7633 12.584 43.296 12.584C41.808 12.584 40.8573 13.7696 40.8573 15.2256C40.8573 16.7232 41.808 17.8464 43.296 17.8464C44.7633 17.8256 45.714 16.7232 45.714 15.2256Z" />
+<path d="M67.352 10.3376V20.3424L64.3967 20.3632V19.8016C63.632 20.3008 62.64 20.6128 61.5447 20.6128C58.796 20.6128 56.5847 18.2624 56.5847 15.3712C56.5847 12.4592 58.796 10.1088 61.5447 10.1088C62.64 10.1088 63.632 10.4208 64.3967 10.92V10.3584L67.352 10.3376ZM64.376 16.8896V13.832C63.756 12.9376 62.888 12.688 62.02 12.688C60.5113 12.688 59.4573 13.9152 59.4573 15.3712C59.4573 16.8064 60.5113 18.0336 62.02 18.0336C62.888 18.0336 63.756 17.784 64.376 16.8896Z" />
+<path d="M79.504 14.9344V20.3632H76.59V15.288C76.59 13.6448 75.784 12.792 74.3373 12.792C73.5933 12.792 72.746 13.2288 72.0433 14.0608V20.3632H69.0673V10.3584H72.0433V11.1072C72.8493 10.4624 73.8 10.1088 74.916 10.1088C77.5613 10.1088 79.504 11.9808 79.504 14.9344Z" />
+<path d="M94.57 5.84479H93.826V7.61279H93.392V5.84479H92.648V5.44958H94.5493V5.84479H94.57Z" />
+<path d="M97.0914 7.63358H96.6574V6.40639L96.0994 7.30079H95.8307L95.252 6.38558V7.61279H94.818V5.44958H95.128L95.9547 6.75999L96.7814 5.44958H97.0914V7.63358Z" />
+<path d="M19.9013 20.3424H16.8427L14.838 12.8752L10.5393 20.3424H7.10867L13.7427 8.77758L12.668 4.74239L3.71933 20.3424H0.288666L11.6347 0.561584H14.652L15.954 5.49119H19.054L16.946 9.19358L19.9013 20.3424Z" />
+<path d="M91.5113 5.4704V20.3632H88.494V19.8016C87.7293 20.3008 86.7373 20.6128 85.642 20.6128C82.8933 20.6128 80.682 18.2624 80.682 15.3504C80.682 12.4592 82.8933 10.1088 85.642 10.1088C86.7373 10.1088 87.7293 10.4208 88.494 10.92V5.4704H91.5113ZM88.494 16.8896V13.8112C87.874 12.9168 86.9853 12.6672 86.1173 12.6672C84.588 12.6672 83.534 13.8944 83.534 15.3504C83.534 16.8272 84.588 18.0544 86.1173 18.0544C86.9853 18.0544 87.8533 17.8048 88.494 16.8896Z" />
+<path d="M56.0267 12.8752C55.3654 12.9584 53.836 13.0416 52.9267 14.2896V20.3632H49.9507V10.3792H52.9267V11.128C53.6087 10.5456 54.6214 10.192 56.0267 10.3376" />
+</svg>
+            <span class="typography--small-body footer__copy-right-text">© 2022 Algorand. All rights reserved.</span>
+            <ul class="footer__social-media-featured-list"> 
+                <li class="footer__social-media-featured-list-item">
+                    <a class="footer__social-media-link footer__social-media-link--featured" href="https://discord.gg/84AActu3at" aria-label="discord" rel="noopener" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="1" y="3" width="22" height="18" fill="black">
+<rect fill="white" x="1" y="3" width="22" height="18"/>
+<path d="M20.9503 15.2752L18.4014 6.58758C18.3503 6.41246 18.2616 6.25125 18.1417 6.11578C18.0217 5.98031 17.8737 5.87401 17.7083 5.8047C17.543 5.73539 18.6023 7.1582 18.6023 7.1582L17.7092 5.80249C16.8726 5.45371 16.0048 5.1889 15.1181 5.01178C15.0408 4.99607 14.9613 4.99607 14.884 5.0118C14.8066 5.02753 14.7331 5.05868 14.6676 5.10346C14.6021 5.14825 14.5458 5.20579 14.502 5.27281C14.4582 5.33983 14.4278 5.41501 14.4124 5.49406C14.397 5.57311 14.397 5.65448 14.4124 5.73353C14.4278 5.81257 14.4583 5.88775 14.5021 5.95476C14.5459 6.02177 14.6021 6.0793 14.6677 6.12407C14.7332 6.16885 14.8067 6.19998 14.8841 6.21569C15.2205 6.28409 15.5502 6.36458 15.8733 6.45715C15.9998 6.52102 16.1001 6.62853 16.1567 6.7607C16.2132 6.89287 16.2222 7.04122 16.1822 7.17955C16.1422 7.31788 16.0557 7.43731 15.9379 7.51676C15.8201 7.59621 15.6787 7.63058 15.5386 7.61379C13.2441 7.01106 10.8384 7.00622 8.54156 7.59971C8.39885 7.63559 8.24823 7.61665 8.11827 7.54649C7.98831 7.47633 7.88807 7.35982 7.83656 7.21909C7.78505 7.07835 7.78586 6.92318 7.83884 6.78302C7.89183 6.64285 7.99329 6.52746 8.12397 6.45872L8.12654 6.45962C8.44936 6.36718 8.77949 6.28658 9.11694 6.21783C9.27305 6.18607 9.41044 6.0922 9.49887 5.95687C9.58731 5.82155 9.61955 5.65585 9.58851 5.49621C9.55747 5.33658 9.46569 5.19609 9.33336 5.10564C9.20102 5.0152 9.03897 4.9822 8.88285 5.01392C7.99614 5.19105 7.12837 5.45586 6.29175 5.80463C6.1264 5.87395 5.97833 5.98025 5.85839 6.11572C5.73846 6.25119 5.6497 6.41239 5.59864 6.58751L3.04971 15.2752C2.98387 15.5025 2.98342 15.7444 3.04844 15.972C3.11346 16.1995 3.24118 16.4031 3.41635 16.5584C3.48797 16.6221 3.56138 16.6846 3.63582 16.7465C3.63758 16.7479 3.63908 16.7496 3.64084 16.7511C4.85856 17.7611 6.45459 18.5328 8.25637 18.9825C8.41101 19.0211 8.57431 18.9953 8.71035 18.9108C8.8464 18.8263 8.94404 18.69 8.9818 18.5319C9.01955 18.3737 8.99433 18.2068 8.91168 18.0677C8.82903 17.9286 8.69573 17.8287 8.54109 17.7901C7.73078 17.591 6.94284 17.3064 6.18991 16.9412L6.19486 16.9415C6.08928 16.8437 6.02122 16.7105 6.00286 16.566C5.9845 16.4215 6.01704 16.2751 6.09465 16.1529C6.17226 16.0307 6.28988 15.9407 6.42645 15.899C6.56303 15.8574 6.70963 15.8668 6.84002 15.9257C8.26443 16.5744 10.054 16.9776 12 16.9776C13.946 16.9776 15.7368 16.5739 17.1612 15.9252C17.2916 15.8667 17.4381 15.8576 17.5745 15.8994C17.7109 15.9412 17.8283 16.0313 17.9057 16.1535C17.9831 16.2757 18.0155 16.422 17.9971 16.5664C17.9787 16.7108 17.9106 16.8437 17.8051 16.9415L17.8101 16.9412C17.0572 17.3064 16.2692 17.591 15.4589 17.7901C15.3043 17.8287 15.171 17.9286 15.0883 18.0677C15.0057 18.2068 14.9805 18.3737 15.0182 18.5319C15.056 18.69 15.1536 18.8263 15.2896 18.9108C15.4257 18.9953 15.589 19.0211 15.7436 18.9825C17.5454 18.5328 19.1414 17.7611 20.3592 16.7511C20.361 16.7496 20.3625 16.7479 20.3643 16.7463C20.4387 16.6845 20.5121 16.622 20.5837 16.5583C20.7589 16.403 20.8866 16.1994 20.9516 15.9719C21.0166 15.7444 21.0161 15.5025 20.9503 15.2752Z"/>
+</mask>
+<path d="M20.9503 15.2752L22.3911 14.8579L22.3896 14.8529L20.9503 15.2752ZM18.4014 6.58758L16.9613 7.00725L16.962 7.00987L18.4014 6.58758ZM18.6023 7.1582L17.3992 8.05401L19.8549 6.33299L18.6023 7.1582ZM17.7092 5.80249L18.9618 4.97728L18.7096 4.59442L18.2864 4.41799L17.7092 5.80249ZM15.1181 5.01178L14.8193 6.48172L14.8243 6.48273L15.1181 5.01178ZM14.8841 6.21569L15.1829 4.74576L15.1829 4.74576L14.8841 6.21569ZM15.8733 6.45715L16.5493 5.11813L16.4228 5.05425L16.2865 5.0152L15.8733 6.45715ZM15.5386 7.61379L15.1575 9.06457L15.2575 9.09084L15.3602 9.10314L15.5386 7.61379ZM8.54156 7.59971L8.90733 9.05446L8.91683 9.05201L8.54156 7.59971ZM8.12397 6.45872L8.62022 5.04319L8.00383 4.8271L7.42574 5.13114L8.12397 6.45872ZM8.12654 6.45962L7.63029 7.87516L8.08068 8.03305L8.5395 7.90166L8.12654 6.45962ZM9.11694 6.21783L8.81789 4.74794L8.8175 4.74802L9.11694 6.21783ZM8.88285 5.01392L9.17669 6.48486L9.18145 6.4839L8.88285 5.01392ZM6.29175 5.80463L5.71458 4.42011L5.71177 4.42129L6.29175 5.80463ZM5.59864 6.58751L7.03797 7.0098L7.03866 7.00742L5.59864 6.58751ZM3.04971 15.2752L1.61037 14.8529L1.60895 14.8579L3.04971 15.2752ZM3.41635 16.5584L4.41305 15.4374L4.41146 15.436L3.41635 16.5584ZM3.63582 16.7465L2.67693 17.9L2.67862 17.9014L3.63582 16.7465ZM3.64084 16.7511L2.68161 17.9043L2.68322 17.9056L3.64084 16.7511ZM8.25637 18.9825L8.61969 17.5272L8.61962 17.5271L8.25637 18.9825ZM8.54109 17.7901L8.90441 16.3348L8.89909 16.3335L8.54109 17.7901ZM6.18991 16.9412L6.3032 15.4454L5.53515 18.2907L6.18991 16.9412ZM6.19486 16.9415L6.08157 18.4372L10.3646 18.7616L7.21463 15.8415L6.19486 16.9415ZM6.84002 15.9257L7.46175 14.5606L7.45669 14.5583L6.84002 15.9257ZM17.1612 15.9252L16.5476 14.5564L16.5395 14.5601L17.1612 15.9252ZM17.8051 16.9415L16.7854 15.8415L13.6353 18.7616L17.9184 18.4372L17.8051 16.9415ZM17.8101 16.9412L18.4649 18.2907L17.6968 15.4454L17.8101 16.9412ZM15.4589 17.7901L15.1009 16.3334L15.0956 16.3348L15.4589 17.7901ZM15.7436 18.9825L15.3804 17.5271L15.3803 17.5272L15.7436 18.9825ZM20.3592 16.7511L19.4094 15.5901L19.4015 15.5966L20.3592 16.7511ZM20.3643 16.7463L19.4052 15.593L19.3974 15.5996L19.3896 15.6062L20.3643 16.7463ZM20.5837 16.5583L19.5885 15.436L19.5871 15.4373L20.5837 16.5583ZM22.3896 14.8529L19.8407 6.16529L16.962 7.00987L19.511 15.6975L22.3896 14.8529ZM19.8415 6.16791C19.729 5.78201 19.5327 5.42417 19.2648 5.12152L17.0185 7.11004C16.9905 7.07833 16.9717 7.04291 16.9613 7.00725L19.8415 6.16791ZM19.2648 5.12152C18.9968 4.81875 18.6636 4.57867 18.2882 4.42133L17.1284 7.18807C17.0838 7.16936 17.0467 7.14187 17.0185 7.11004L19.2648 5.12152ZM18.2882 4.42133C18.2078 4.38761 17.8353 4.23052 17.3577 4.34121C17.0743 4.4069 16.785 4.56147 16.5588 4.82271C16.3455 5.06914 16.257 5.33064 16.2203 5.51404C16.1551 5.83965 16.2163 6.09983 16.2334 6.17107C16.259 6.27823 16.2912 6.36238 16.3101 6.40871C16.3749 6.56795 16.4632 6.71195 16.5007 6.77291C16.6027 6.93875 16.7425 7.14224 16.8665 7.3186C16.9959 7.5024 17.129 7.68611 17.2285 7.82228C17.2786 7.89076 17.3208 7.94811 17.3507 7.98855C17.3657 8.00879 17.3775 8.02483 17.3858 8.03597C17.3899 8.04154 17.3932 8.04589 17.3954 8.04893C17.3966 8.05044 17.3974 8.05163 17.3981 8.05248C17.3984 8.05291 17.3986 8.05325 17.3988 8.0535C17.3989 8.05363 17.399 8.05374 17.3991 8.05382C17.3991 8.05386 17.3991 8.05391 17.3991 8.05393C17.3992 8.05397 17.3992 8.05401 18.6023 7.1582C19.8055 6.2624 19.8055 6.26242 19.8055 6.26244C19.8055 6.26244 19.8055 6.26246 19.8055 6.26246C19.8055 6.26245 19.8055 6.26243 19.8055 6.26238C19.8054 6.26229 19.8053 6.26212 19.8051 6.26186C19.8047 6.26134 19.8041 6.26049 19.8032 6.25932C19.8014 6.25697 19.7987 6.25334 19.7952 6.24851C19.788 6.23884 19.7773 6.22438 19.7636 6.20585C19.7362 6.16875 19.6969 6.11549 19.6503 6.05167C19.5564 5.92322 19.435 5.75556 19.3201 5.59231C19.2 5.42164 19.106 5.28242 19.0559 5.20098C19.0173 5.1383 19.0499 5.18251 19.0885 5.2772C19.1008 5.3074 19.1282 5.37762 19.1511 5.47323C19.1654 5.53291 19.2258 5.78392 19.1619 6.10292C19.1259 6.28301 19.0386 6.54185 18.827 6.78627C18.6026 7.0455 18.3156 7.19873 18.035 7.26376C17.7775 7.32342 17.5614 7.30185 17.431 7.27795C17.2967 7.25332 17.1924 7.21489 17.1284 7.18807L18.2882 4.42133ZM19.8549 6.33299L18.9618 4.97728L16.4566 6.6277L17.3497 7.98341L19.8549 6.33299ZM18.2864 4.41799C17.3587 4.03121 16.396 3.73739 15.412 3.54084L14.8243 6.48273C15.6137 6.6404 16.3866 6.87621 17.132 7.18699L18.2864 4.41799ZM15.417 3.54185C15.1424 3.48602 14.8594 3.48605 14.5849 3.54193L15.183 6.48168C15.0631 6.5061 14.9393 6.50611 14.8193 6.48172L15.417 3.54185ZM14.5849 3.54193C14.3103 3.59779 14.0509 3.70808 13.8213 3.86501L15.5139 6.34192C15.4153 6.40928 15.303 6.45728 15.183 6.48168L14.5849 3.54193ZM13.8213 3.86501C13.5917 4.02187 13.3968 4.22194 13.2463 4.45238L15.7577 6.09324C15.6948 6.18964 15.6124 6.27462 15.5139 6.34192L13.8213 3.86501ZM13.2463 4.45238C13.0957 4.68274 12.9921 4.93949 12.94 5.20776L15.8848 5.78036C15.8634 5.89053 15.8207 5.99691 15.7577 6.09324L13.2463 4.45238ZM12.94 5.20776C12.8878 5.476 12.8878 5.75188 12.94 6.02009L15.8848 5.44696C15.9062 5.55708 15.9062 5.67021 15.8848 5.78036L12.94 5.20776ZM12.94 6.02009C12.9923 6.28834 13.0959 6.54507 13.2465 6.77542L15.7577 5.1341C15.8206 5.23042 15.8633 5.3368 15.8848 5.44696L12.94 6.02009ZM13.2465 6.77542C13.3971 7.00583 13.592 7.20586 13.8216 7.36269L15.5137 4.88546C15.6122 4.95274 15.6946 5.03771 15.7577 5.1341L13.2465 6.77542ZM13.8216 7.36269C14.0513 7.51957 14.3107 7.62981 14.5852 7.68563L15.1829 4.74576C15.3028 4.77014 15.4152 4.81812 15.5137 4.88546L13.8216 7.36269ZM14.5852 7.68563C14.884 7.74637 15.1756 7.81758 15.46 7.8991L16.2865 5.0152C15.9249 4.91157 15.557 4.82182 15.1829 4.74576L14.5852 7.68563ZM15.1972 7.79617C15.0035 7.69838 14.8577 7.53796 14.7775 7.35055L17.5358 6.17085C17.3426 5.71909 16.996 5.34366 16.5493 5.11813L15.1972 7.79617ZM14.7775 7.35055C14.6976 7.16372 14.6853 6.95633 14.7413 6.76265L17.6231 7.59645C17.7592 7.1261 17.7288 6.62202 17.5358 6.17085L14.7775 7.35055ZM14.7413 6.76265C14.7975 6.56855 14.9211 6.39331 15.099 6.27331L16.7769 8.76021C17.1902 8.48131 17.4869 8.06721 17.6231 7.59645L14.7413 6.76265ZM15.099 6.27331C15.2776 6.15276 15.4969 6.09807 15.717 6.12444L15.3602 9.10314C15.8605 9.16308 16.3627 9.03967 16.7769 8.76021L15.099 6.27331ZM15.9197 6.16301C13.3773 5.49518 10.7112 5.48981 8.1663 6.14741L8.91683 9.05201C10.9655 8.52263 13.1108 8.52695 15.1575 9.06457L15.9197 6.16301ZM8.1758 6.14498C8.39823 6.08906 8.6322 6.11931 8.83087 6.22656L7.40567 8.86641C7.86426 9.114 8.39948 9.18212 8.90733 9.05443L8.1758 6.14498ZM8.83087 6.22656C9.02859 6.33331 9.17278 6.50572 9.24518 6.70354L6.42794 7.73463C6.60335 8.21392 6.94803 8.61934 7.40567 8.86641L8.83087 6.22656ZM9.24518 6.70354C9.31736 6.90076 9.31626 7.11681 9.24195 7.31338L6.43574 6.25265C6.25547 6.72955 6.25274 7.25595 6.42794 7.73463L9.24518 6.70354ZM9.24195 7.31338C9.16741 7.51058 9.02126 7.68161 8.8222 7.78631L7.42574 5.13114C6.96531 5.3733 6.61624 5.77512 6.43574 6.25265L9.24195 7.31338ZM7.62773 7.87426L7.63029 7.87516L8.62278 5.04409L8.62022 5.04319L7.62773 7.87426ZM8.5395 7.90166C8.82391 7.82021 9.11615 7.7488 9.41638 7.68764L8.8175 4.74802C8.44283 4.82435 8.0748 4.91414 7.71357 5.01759L8.5395 7.90166ZM9.41599 7.68772C9.97139 7.57472 10.4504 7.24278 10.7545 6.77744L8.24322 5.13631C8.37044 4.94162 8.57472 4.79741 8.81789 4.74794L9.41599 7.68772ZM10.7545 6.77744C11.0579 6.31324 11.166 5.7501 11.0609 5.20991L8.11609 5.78251C8.07313 5.56159 8.11673 5.32986 8.24322 5.13631L10.7545 6.77744ZM11.0609 5.20991C10.9558 4.66924 10.6432 4.18396 10.1798 3.86725L8.48697 6.34404C8.28824 6.20821 8.15914 6.00392 8.11609 5.78251L11.0609 5.20991ZM10.1798 3.86725C9.71505 3.54964 9.1404 3.43097 8.58425 3.54394L9.18145 6.4839C8.93755 6.53344 8.687 6.48075 8.48697 6.34404L10.1798 3.86725ZM8.58901 3.54298C7.605 3.73955 6.64233 4.03336 5.71458 4.42011L6.86893 7.18914C7.6144 6.87837 8.38728 6.64255 9.17669 6.48485L8.58901 3.54298ZM5.71177 4.42129C5.33648 4.57864 5.00331 4.81868 4.7353 5.1214L6.98148 7.11004C6.95334 7.14182 6.91633 7.16927 6.87174 7.18796L5.71177 4.42129ZM4.7353 5.1214C4.4674 5.424 4.27112 5.78176 4.15861 6.16759L7.03866 7.00742C7.02828 7.04302 7.00951 7.07837 6.98148 7.11004L4.7353 5.1214ZM4.15931 6.16521L1.61038 14.8529L4.48904 15.6975L7.03797 7.0098L4.15931 6.16521ZM1.60895 14.8579C1.46464 15.356 1.46367 15.8854 1.60616 16.3841L4.49072 15.5599C4.50317 15.6034 4.50309 15.649 4.49047 15.6926L1.60895 14.8579ZM1.60616 16.3841C1.74869 16.8829 2.03 17.3339 2.42124 17.6808L4.41146 15.436C4.45237 15.4723 4.47822 15.5161 4.49072 15.5599L1.60616 16.3841ZM2.41965 17.6794C2.50705 17.7571 2.59371 17.8308 2.67693 17.9L4.59471 15.593C4.52905 15.5384 4.46888 15.4871 4.41305 15.4374L2.41965 17.6794ZM2.67862 17.9014C2.65084 17.8783 2.62926 17.8587 2.61625 17.8466C2.60963 17.8405 2.60436 17.8355 2.60122 17.8325C2.59835 17.8297 2.59598 17.8274 2.59651 17.828C2.59651 17.828 2.59658 17.828 2.59664 17.8281C2.5967 17.8281 2.5968 17.8282 2.59692 17.8284C2.59716 17.8286 2.59753 17.8289 2.59797 17.8294C2.59885 17.8302 2.60026 17.8316 2.60199 17.8332C2.60538 17.8365 2.6109 17.8417 2.61777 17.8481C2.63128 17.8607 2.65336 17.8808 2.68161 17.9043L4.60007 15.5979C4.62744 15.6207 4.64867 15.64 4.66135 15.6518C4.6678 15.6578 4.67292 15.6627 4.6759 15.6655C4.67857 15.6681 4.68087 15.6703 4.68015 15.6696C4.68011 15.6696 4.67935 15.6688 4.67846 15.668C4.6775 15.6671 4.67602 15.6656 4.67421 15.6639C4.67066 15.6605 4.66499 15.6551 4.65795 15.6486C4.64411 15.6357 4.62168 15.6153 4.59302 15.5916L2.67862 17.9014ZM2.68322 17.9056C4.10158 19.0821 5.91082 19.9431 7.89311 20.4378L8.61962 17.5271C6.99836 17.1225 5.61553 16.4402 4.59846 15.5966L2.68322 17.9056ZM7.89304 20.4378C8.44343 20.5752 9.02309 20.4824 9.50185 20.185L7.91885 17.6366C8.12554 17.5082 8.37859 17.467 8.61969 17.5272L7.89304 20.4378ZM9.50185 20.185C9.97931 19.8884 10.3128 19.4164 10.4408 18.8802L7.52281 18.1835C7.57532 17.9636 7.71349 17.7642 7.91885 17.6366L9.50185 20.185ZM10.4408 18.8802C10.5687 18.3447 10.4842 17.7777 10.2012 17.3015L7.62212 18.8338C7.50448 18.6358 7.47045 18.4028 7.52281 18.1835L10.4408 18.8802ZM10.2012 17.3015C9.91765 16.8242 9.45396 16.472 8.90441 16.3348L8.17776 19.2454C7.9375 19.1855 7.74042 19.0329 7.62212 18.8338L10.2012 17.3015ZM8.89909 16.3335C8.19149 16.1595 7.503 15.911 6.84467 15.5916L5.53515 18.2907C6.38268 18.7019 7.27006 19.0224 8.18308 19.2468L8.89909 16.3335ZM6.07662 18.4369L6.08157 18.4372L6.30814 15.4458L6.3032 15.4454L6.07662 18.4369ZM7.21463 15.8415C7.37051 15.986 7.46546 16.1768 7.49089 16.377L4.51482 16.7551C4.57698 17.2443 4.80805 17.7013 5.17509 18.0416L7.21463 15.8415ZM7.49089 16.377C7.5163 16.5769 7.47194 16.7821 7.36088 16.957L4.82842 15.3487C4.56213 15.768 4.45269 16.2661 4.51482 16.7551L7.49089 16.377ZM7.36088 16.957C7.24935 17.1326 7.07523 17.2694 6.86383 17.3339L5.98908 14.4642C5.50454 14.6119 5.09518 14.9287 4.82842 15.3487L7.36088 16.957ZM6.86383 17.3339C6.65179 17.3985 6.42384 17.3834 6.22335 17.293L7.45669 14.5583C6.99542 14.3502 6.47426 14.3163 5.98908 14.4642L6.86383 17.3339ZM6.21829 17.2907C7.85123 18.0345 9.85467 18.4776 12 18.4776V15.4776C10.2534 15.4776 8.67762 15.1143 7.46174 14.5606L6.21829 17.2907ZM12 18.4776C14.1455 18.4776 16.1501 18.0339 17.783 17.2903L16.5395 14.5601C15.3235 15.1139 13.7465 15.4776 12 15.4776V18.4776ZM17.7749 17.2939C17.5743 17.3838 17.3465 17.3984 17.1347 17.3335L18.0143 14.4653C17.5298 14.3167 17.009 14.3496 16.5476 14.5564L17.7749 17.2939ZM17.1347 17.3335C16.9236 17.2687 16.7499 17.1318 16.6386 16.9562L19.1728 15.3507C18.9067 14.9307 18.4982 14.6137 18.0143 14.4653L17.1347 17.3335ZM16.6386 16.9562C16.5278 16.7814 16.4837 16.5763 16.5092 16.3765L19.485 16.7563C19.5474 16.2677 19.4384 15.7699 19.1728 15.3507L16.6386 16.9562ZM16.5092 16.3765C16.5347 16.1765 16.6296 15.9859 16.7854 15.8415L18.8249 18.0416C19.1917 17.7016 19.4227 17.245 19.485 16.7563L16.5092 16.3765ZM17.9184 18.4372L17.9234 18.4369L17.6968 15.4454L17.6919 15.4458L17.9184 18.4372ZM17.1553 15.5916C16.497 15.911 15.8085 16.1595 15.1009 16.3335L15.8169 19.2468C16.7299 19.0224 17.6173 18.7019 18.4649 18.2907L17.1553 15.5916ZM15.0956 16.3348C14.5461 16.472 14.0824 16.8242 13.7988 17.3015L16.3779 18.8338C16.2596 19.033 16.0625 19.1855 15.8222 19.2454L15.0956 16.3348ZM13.7988 17.3015C13.5158 17.7777 13.4313 18.3447 13.5592 18.8802L16.4772 18.1835C16.5296 18.4028 16.4955 18.6358 16.3779 18.8338L13.7988 17.3015ZM13.5592 18.8802C13.6872 19.4164 14.0207 19.8884 14.4981 20.185L16.0812 17.6366C16.2865 17.7642 16.4247 17.9636 16.4772 18.1835L13.5592 18.8802ZM14.4981 20.185C14.9769 20.4824 15.5566 20.5752 16.107 20.4378L15.3803 17.5272C15.6214 17.467 15.8745 17.5082 16.0812 17.6366L14.4981 20.185ZM16.1069 20.4378C18.0892 19.9431 19.8984 19.0821 21.3168 17.9056L19.4015 15.5966C18.3845 16.4402 17.0016 17.1225 15.3804 17.5271L16.1069 20.4378ZM21.309 17.9121C21.3385 17.8879 21.3619 17.8669 21.3773 17.8527C21.3851 17.8455 21.3915 17.8395 21.3959 17.8353C21.4002 17.8312 21.4035 17.828 21.4045 17.827C21.4067 17.8249 21.4042 17.8273 21.4031 17.8283C21.4012 17.8302 21.3972 17.8341 21.3919 17.839C21.3817 17.8487 21.3631 17.8659 21.3391 17.8865L19.3896 15.6062C19.3646 15.6275 19.3452 15.6455 19.3341 15.656C19.3285 15.6614 19.324 15.6657 19.3216 15.6679C19.3204 15.6691 19.3195 15.67 19.3191 15.6703C19.319 15.6705 19.3189 15.6705 19.3189 15.6706C19.3188 15.6706 19.3188 15.6706 19.3188 15.6706C19.3188 15.6707 19.3188 15.6707 19.3188 15.6707C19.3188 15.6707 19.3189 15.6706 19.3191 15.6704C19.3196 15.6699 19.3225 15.6671 19.3264 15.6634C19.3303 15.6596 19.3363 15.654 19.3437 15.6472C19.3582 15.6338 19.3807 15.6135 19.4094 15.5901L21.309 17.9121ZM21.3234 17.8996C21.4062 17.8308 21.4929 17.7571 21.5804 17.6793L19.5871 15.4373C19.5314 15.4868 19.4712 15.5382 19.4052 15.593L21.3234 17.8996ZM21.579 17.6806C21.9701 17.3337 22.2514 16.8828 22.3939 16.3839L19.5093 15.5599C19.5218 15.5161 19.5476 15.4723 19.5885 15.436L21.579 17.6806ZM22.3939 16.3839C22.5363 15.8853 22.5354 15.356 22.3911 14.8579L19.5095 15.6926C19.4969 15.649 19.4968 15.6034 19.5093 15.5599L22.3939 16.3839Z" fill="#9D9EA2" mask="url(#path-1-outside-1)"/>
+<circle cx="8.5" cy="12.5" r="1.25" stroke="#9D9EA2" stroke-width="1.5"/>
+<circle cx="15.5" cy="12.5" r="1.25" stroke="#9D9EA2" stroke-width="1.5"/>
+</svg>
+<span class="typography--uppercase-caption footer__social-media-name">discord</span></a> 
+                </li>                
+                <li class="footer__social-media-featured-list-item">
+                    <a class="footer__social-media-link footer__social-media-link--featured" href="https://forum.algorand.org/"
+                rel="noopener" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" stroke="#9D9EA2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="typography--uppercase-caption footer__social-media-name">forum</span></a>
+                </li>
+            </ul>
+            <ul class="footer__social-media-list">
+                <li>
+                    <a class="footer__social-media-link" href="https://www.youtube.com/algorand/" aria-label="youtube" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.583 6.37141C21.354 5.36741 20.676 4.57541 19.814 4.30341C18.255 3.81641 12 3.81641 12 3.81641C12 3.81641 5.748 3.81641 4.186 4.30341C3.327 4.57141 2.649 5.36341 2.417 6.37141C2 8.19341 2 11.9984 2 11.9984C2 11.9984 2 15.8034 2.417 17.6254C2.646 18.6294 3.324 19.4214 4.186 19.6934C5.748 20.1804 12 20.1804 12 20.1804C12 20.1804 18.255 20.1804 19.814 19.6934C20.673 19.4254 21.351 18.6334 21.583 17.6254C22 15.8034 22 11.9984 22 11.9984C22 11.9984 22 8.19341 21.583 6.37141Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.002 15L15.198 12L10.002 9V15Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li>            
+                <li>
+                    <a class="footer__social-media-link" href="https://twitter.com/Algorand/" aria-label="twitter" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.7L3.49843 11.5896C0.684924 8.5561 0.519294 4.18556 2.8 1C3.907 3.059 5.974 4.959 8.2 5.5C8.286 2.9 10.049 1 12.7 1C14.505 1 15.567 1.688 16.3 2.8H19L17.2 5.5H17.199L17.1971 5.80837C17.0812 11.9463 13.4967 16.3 7.3 16.3C3.7 16.3 2.257 14.421 1 12.7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></a>
+                </li>  
+                <li>
+                    <a class="footer__social-media-link" href="https://www.facebook.com/algorand/" aria-label="facebook" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3H16.504C18.987 3 21 5.013 21 7.496V16.505C21 18.987 18.987 21 16.504 21H7.496C5.013 21 3 18.987 3 16.504V7.5C3 5.015 5.015 3 7.5 3V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.1 12.8984H16.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5 8.39844H15.555C14.089 8.39844 12.9 9.58744 12.9 11.0534V11.9984V20.9984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li>  
+                <li>
+                    <a class="footer__social-media-link" href="https://t.me/algorand/" aria-label="telegram" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.795 16.9066L9.73 18.9156C9.372 19.2636 8.773 19.1096 8.628 18.6316L7.252 14.1016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.104 10.9275C14.104 10.9275 11.515 13.2635 10.187 14.4625C9.79 14.8205 9.823 15.4505 10.253 15.7675L15.631 19.7405C16.16 20.1315 16.916 19.8445 17.053 19.2005L19.694 6.75348C19.822 6.15148 19.231 5.64848 18.657 5.86948L3.142 11.8535C2.685 12.0295 2.707 12.6825 3.174 12.8285L7.251 14.1005" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li>  
+                <li>
+                    <a class="footer__social-media-link" href="https://www.linkedin.com/company/algorand/" aria-label="linkedin" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3H16.504C18.987 3 21 5.013 21 7.496V16.505C21 18.987 18.987 21 16.504 21H7.496C5.013 21 3 18.987 3 16.504V7.5C3 5.015 5.015 3 7.5 3V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.12 11.1016V16.5016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.719 16.5016V13.3516C11.719 12.1086 12.726 11.1016 13.969 11.1016C15.212 11.1016 16.219 12.1086 16.219 13.3516V16.5016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.118 7.83984C7.994 7.83984 7.893 7.94084 7.894 8.06484C7.894 8.18884 7.995 8.28984 8.119 8.28984C8.243 8.28984 8.344 8.18884 8.344 8.06484C8.344 7.93984 8.243 7.83984 8.118 7.83984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li> 
+                <li>
+                    <a class="footer__social-media-link" href="https://www.reddit.com/r/AlgorandOfficial/" aria-label="reddit" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.498 13C15.222 13 14.998 13.224 15 13.5C15 13.776 15.224 14 15.5 14C15.776 14 16 13.776 16 13.5C16 13.224 15.776 13 15.498 13Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.498 13C8.222 13 7.99801 13.224 8.00001 13.5C8.00001 13.776 8.224 14 8.5 14C8.776 14 8.99999 13.776 8.99999 13.5C8.99999 13.224 8.776 13 8.498 13Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.054 5.24875C18.2 5.10175 18.199 4.86475 18.053 4.71875C17.906 4.57275 17.669 4.57275 17.523 4.71975C17.377 4.86675 17.377 5.10375 17.523 5.24975C17.669 5.39575 17.907 5.39575 18.054 5.24875" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.284 16.4062C14.32 16.7592 13.22 16.9692 12 16.9692C10.78 16.9692 9.68 16.7592 8.716 16.4062" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.70109 14.3836C3.71362 14.0417 3.53974 13.7261 3.29 13.4923V13.4923C2.468 12.7183 2.428 11.4253 3.202 10.6033C3.967 9.79028 5.24 9.74528 6.064 10.4943C7.563 9.42028 9.655 8.73828 12 8.73828C14.345 8.73828 16.437 9.42028 17.936 10.4933C18.759 9.74428 20.032 9.78928 20.798 10.6023C21.572 11.4243 21.532 12.7183 20.71 13.4913C20.57 13.6233 20.405 13.7243 20.234 13.8113C20.274 14.0373 20.301 14.2653 20.301 14.4963C20.301 17.5883 16.641 20.2553 12 20.2553C7.359 20.2553 3.699 17.5883 3.699 14.4963C3.699 14.4586 3.69972 14.4211 3.70109 14.3836Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 8.73861L12.629 5.93361C12.867 4.87261 13.908 4.19661 14.974 4.41061L17.429 4.90261" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li> 
+                <li>
+                    <a class="footer__social-media-link" href="https://github.com/algorand/" aria-label="github" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.496 21H9V19.964C9 19.964 8.983 18.343 9.874 16.973C7.843 16.831 6.231 15.019 6.231 12.782C6.231 11.997 6.529 11.265 7.04 10.635L7.092 8.702C7.105 8.211 7.596 7.876 8.058 8.043L10.133 8.793C10.719 8.647 11.346 8.564 12 8.564C12.654 8.564 13.281 8.647 13.867 8.794L15.942 8.044C16.404 7.877 16.895 8.212 16.908 8.703L16.96 10.635C17.47 11.265 17.769 11.997 17.769 12.782C17.769 15.019 16.157 16.831 14.126 16.973C15.017 18.343 15 19.964 15 19.964V21H16.504C18.987 21 21 18.987 21 16.505V7.496C21 5.013 18.987 3 16.504 3H7.5C5.015 3 3 5.015 3 7.5V16.504C3 18.987 5.013 21 7.496 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li> 
+            </ul>
+        </div>
+        <div class="footer__column footer__column--discover">
+            <h4 class="typography--large-button footer__column__title">Discover</h4>
+            <ul class="footer__list">
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="../../docs/index.html">Documentation</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="../../blog/index.html">Developer Blog</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="../../ecosystem-projects/index.html">Ecosystem Projects</a>
+                </li>          
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://metrics.algorand.org/" rel="noopener" target="_blank">MainNet Metrics</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__column footer__column--partner-sites">
+            <h4 class="typography--large-button footer__column__title">Partner Sites</h4>
+            <ul class="footer__list">
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://www.algorand.com/" rel="noopener"
+                    target="_blank">Algorand</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://algorand.foundation/" rel="noopener"
+                    target="_blank">Algorand Foundation</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://algorandwallet.com/" rel="noopener"
+                    target="_blank">Algorand Wallet</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__column">
+            <div id="hubspot-newsletter-form-root" class="footer__hubspot-newsletter-form-root"></div>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <ul class="footer__bottom__list">            
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="../../pages/support/index.html">Support</a>
+            </li>
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="../../pages/contact-us/index.html">Contact Us</a>
+            </li>            
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="../../pages/terms-of-use/index.html">Terms of Use</a>
+            </li>
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="../../pages/privacy-policy/index.html">Privacy Policy</a>
+            </li>
+        </ul>
+
+        
+            
+
+<div class="language-section__container" id="language-section-container"></div>
+<div class="language-section" id="language-section">
+    <button aria-label="Toggle language option" aria-expanded="false" class="button language-section__button" id="language-section-button">
+        <span id="language-section-button-text" class="typography--small-button language-section__button__text"></span>
+        <svg class="language-section__button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 10L12 14L16 10" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+    </button>
+    <div class="language-section__overlay" id="language-section-overlay">
+        <form action="https://developer.algorand.org/i18n/setlang/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="f7ICoY3VjuKoxwQSoHrR02bhd9ZzdHmrRTfhAaltg51x8SWO62Q2b8TUZVLWSqiv">
+            <ul class="language-section__overlay__list">
+                
+                
+                <li class="language-section__overlay__list-item">
+                    <input type="radio" class="language-section__overlay__list-item__input" value="en" name="language"
+                        id="en" onchange="this.form.submit()" 
+                        checked="checked"  data-language-name="English" data-name="language">
+                    <label for="en" class="language-section__overlay__list-item__label">
+                        <span class="typography--medium-button language-section__overlay__list-item__label-text">English</span>
+                    </label>
+                </li>
+            
+                <li class="language-section__overlay__list-item">
+                    <input type="radio" class="language-section__overlay__list-item__input" value="zh-hans" name="language"
+                        id="zh-hans" onchange="this.form.submit()"  data-language-name="简体中文" data-name="language">
+                    <label for="zh-hans" class="language-section__overlay__list-item__label">
+                        <span class="typography--medium-button language-section__overlay__list-item__label-text">简体中文</span>
+                    </label>
+                </li>
+            
+            </ul>
+        </form>
+    </div>
+</div>
+        
+    </div>
+</div>
+  </footer>
+  
+
+  
+  <script type="text/javascript" src="../../../algorand-devloper-portal-app.s3.amazonaws.com/static/dist/algorand-app-c95c91cdb8d4aee4fc62.js" ></script>
+  
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'708a1688ba6bc4f8',m:'DMDkBdXYJOkr3Yz188ihOqKqdPqGrimO1Ko_TaaC73g-1652095669-0-AW/jDNEuGQkKacDZVzVwWMHXKVSrFwgw1V7k6lff5hNd6SEF8Y9CDjju3HIlgru36u5ZqsjdyKaB1kEFxw3CzocLwJ0Tj8qjOIIVWEAXY2gy0IkyaO+gs6Dpx/jv57yoojN19r5Y6OJkNLo/Ge1J3Jigm7TS8lBqGW7ExdETiiul1KaEgpq/6yaZ+myTKAR6VA==',s:[0x085b559f0a,0x26466e90f5],}})();</script></body>
+
+
+<!-- Mirrored from developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 May 2022 07:38:22 GMT -->
+</html>

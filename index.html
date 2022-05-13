@@ -1,0 +1,1713 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from developer.algorand.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 May 2022 11:00:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"> 
+  <!-- End Google Fonts -->
+
+  
+  
+  <!-- Google Tag Manager dataLayer -->
+  <script>
+    dataLayer = [{
+      'user_id': '',
+    }];
+  </script>
+  <!-- End Google Tag Manager dataLayer -->
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer',"GTM-MRRLKW9");</script>
+	<!-- End Google Tag Manager -->
+  
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <link rel=" stylesheet" href="cdn.jsdelivr.net/npm/instantsearch.css%407/themes/algolia-min.css" />
+  <link type="text/css" href="algorand-devloper-portal-app.s3.amazonaws.com/static/dist/algorand-app.940bb983994be47d52c0.css" rel="stylesheet" />
+   
+ 
+<link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+
+  
+  
+  <title>Algorand Developer Portal</title>
+  <meta name="description" content="Algorand Developer Docs, SDKs, REST APIs, CLI tools, ecosystem projects, metrics dashboard and sample code, how-tos, and news from the Algorand developer community" />
+  <link rel="canonical" href="index.html" />
+  <meta property="og:image" content="https://algorand-devloper-portal-app.s3.amazonaws.com/static/img/algorandShareImage.png">
+  <meta property="og:image:alt" content="Algorand Developer Portal">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://developer.algorand.org/" />
+  <meta property="og:title" content="Algorand Developer Portal" />
+  <meta property="og:description" content="Algorand Developer Docs, SDKs, REST APIs, CLI tools, ecosystem projects, metrics dashboard and sample code, how-tos, and news from the Algorand developer community">
+  <meta property="og:type" content="website" />
+  
+  
+  <script type="text/javascript" src="algorand-devloper-portal-app.s3.amazonaws.com/static/dist/theme-c24995e8d46f56838af8.js" ></script>
+  <script src="ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script charset="utf-8" type="text/javascript" src="js.hsforms.net/forms/v2.js"></script>
+  <script charset="utf-8" type="text/javascript" src="js.hsforms.net/forms/v2-legacy.js"></script>
+  
+        <script src="jsi18n/index.html"></script>
+  
+  <script type="text/javascript">
+    var CURRENT_LANGUAGE = "en";
+    var BASE_URL = "index.html";
+    var STATIC_URL = "https://algorand-devloper-portal-app.s3.amazonaws.com/static/";
+    var SEARCH_FILTER_VALUE =  "all" ;
+  </script>
+<script async src='cdn-cgi/bm/cv/669835187/api.js'></script></head>
+
+<body>
+  
+  
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRRLKW9&amp;user_id="
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+  
+  
+
+  <div class="page-header-container">
+    
+      
+
+<div id="landing-page-banner" class="landing-page__banner landing-page__banner--hidden" style="background-color: #2db6bc!important;">
+  <p>Want to influence the future of development on the Algorand Blockchain? Take this <a href="developer.algorand.org/https://www.surveymonkey.com/r/8SGP2KB" target="_blank">Developer Survey</a> for a chance to win an Algorand Ecosystem NFT!</p>
+
+  <button type="button" class="landing-page__banner__close-button" id="landing-page-banner-close-button">
+    <svg class="landing-page__banner__close-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+  </button>
+</div>
+    
+  
+    
+      
+
+
+<!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&amp;text=&amp;#8599" rel="stylesheet">
+<!-- End Google Fonts -->
+
+
+<nav class="page-header" data-md-component="header" id="page-header">
+    <div class="page-header__section">    
+        <a href="developer.algorand.org/index.html" aria-label="Homepage" id="homepage-link" class="page-header__home-link">
+            <svg class="" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 32H27.0095L23.7387 19.9201L16.725 32H11.1275L21.9515 13.2913L20.1981 6.76341L5.59747 32H0L18.5121 0H23.4352L25.5595 7.97476H30.6175L27.1781 13.9642L32 32Z" fill="var(--text-main)"/>
+</svg>
+
+            <span class="page-header__title">developer portal</span>
+        </a>        
+        <button aria-label="Menu" class="page-header__menu-button" id="header-menu-button">
+            <svg class="page-header__menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 6H21" stroke="#18181B" stroke-width="2"/>
+<path d="M3 12H21" stroke="#18181B" stroke-width="2"/>
+<path d="M3 18H21" stroke="#18181B" stroke-width="2"/>
+</svg>
+
+        </button>
+    </div>
+        
+    
+    <button aria-label="Open search modal" class="page-header__search-button" id="header-search-button" type="button">
+        <svg class="page-header__search-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.4351 14.0629H14.7124L14.4563 13.8159C15.3528 12.773 15.8925 11.4191 15.8925 9.94625C15.8925 6.66209 13.2304 4 9.94625 4C6.66209 4 4 6.66209 4 9.94625C4 13.2304 6.66209 15.8925 9.94625 15.8925C11.4191 15.8925 12.773 15.3528 13.8159 14.4563L14.0629 14.7124V15.4351L18.6369 20L20 18.6369L15.4351 14.0629ZM9.94625 14.0629C7.66838 14.0629 5.82962 12.2241 5.82962 9.94625C5.82962 7.66838 7.66838 5.82962 9.94625 5.82962C12.2241 5.82962 14.0629 7.66838 14.0629 9.94625C14.0629 12.2241 12.2241 14.0629 9.94625 14.0629Z" fill="#18181B"/>
+</svg>
+
+    </button>
+    <div class="search-overlay__container" id="search-overlay-container"></div>
+    <div class="ais-InstantSearch">
+        <div class="search-overlay__search-bar"> 
+            <svg class="search-overlay__search-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.4351 14.0629H14.7124L14.4563 13.8159C15.3528 12.773 15.8925 11.4191 15.8925 9.94625C15.8925 6.66209 13.2304 4 9.94625 4C6.66209 4 4 6.66209 4 9.94625C4 13.2304 6.66209 15.8925 9.94625 15.8925C11.4191 15.8925 12.773 15.3528 13.8159 14.4563L14.0629 14.7124V15.4351L18.6369 20L20 18.6369L15.4351 14.0629ZM9.94625 14.0629C7.66838 14.0629 5.82962 12.2241 5.82962 9.94625C5.82962 7.66838 7.66838 5.82962 9.94625 5.82962C12.2241 5.82962 14.0629 7.66838 14.0629 9.94625C14.0629 12.2241 12.2241 14.0629 9.94625 14.0629Z" fill="#18181B"/>
+</svg>
+
+            <button aria-label="Close search modal" class="search-overlay__close-button" id="search-overlay-close-button" type="button">
+                <svg class="search-overlay__close-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+            </button>     
+            <div id="searchbox" class="search-overlay__search-box">
+                <span class="back-arrow"></span>
+            </div>
+            <div id="toggle-refinement" class="search-toggle-refinement "></div>
+        </div>
+
+            <div id="search-overlay-content" class="search-overlay__content">
+                <div class="search-overlay__stats" id="stats">
+                    <span class="search-overlay__stats-text typography--caption text-color--gray-lighter"></span>
+                </div>
+                <div id="hits" class="search-overlay__hits"></div>
+            </div>
+    </div>
+    
+        
+    <div class="page-header__section">
+        <div class="page-header__responsive-menu-container" id="header-menu-container"></div>
+        <div class="page-header__responsive-menu" id="header-menu">
+            <ul class="page-header__responsive-menu-list" role="menu">
+                <li class="page-header__responsive-menu-list-item">
+                    <button aria-label="close menu" class="page-header__menu-close-button" id="header-menu-close-button">
+                        <svg class="" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+                    </button>
+                </li>
+                <li class="page-header__responsive-menu-list-item page-header__responsive-menu-list-item--home">
+                    <a href="developer.algorand.org/index.html" class="page-header__anchor typography--medium-button">home</a>
+                </li> 
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="developer.algorand.org/docs/index.html" id="docs-link" class="page-header__anchor typography--medium-button">Docs</a>
+                </li>                
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="developer.algorand.org/blog/index.html" class="page-header__anchor typography--medium-button">Blog</a>
+                </li>                    
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="developer.algorand.org/ecosystem-projects/index.html" class="page-header__anchor typography--medium-button">Tools</a>
+                </li>                    
+                <li class="page-header__responsive-menu-list-item">
+                    <a href="developer.algorand.org/https://metrics.algorand.org/" rel="noopener" target="_blank"class="page-header__anchor typography--medium-button">Metrics</a>
+                </li>                
+                <li class="page-header__responsive-menu-list-item page-header__responsive-menu-list-item--discord">
+                    <a href="developer.algorand.org/https://discord.gg/84AActu3at" rel="noopener" target="_blank" class="page-header__anchor typography--medium-button page-header__anchor--discord">Discord&#8599;</a>
+                </li>                
+                <li class="page-header__responsive-menu-list-item">
+                    <button class="page-header__theme-button" aria-label="Change theme" type="button" id="theme-button">
+                        <svg class="page-header__theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 15.3971C19.6814 18.6838 16.5224 21 12.8294 21C7.95346 21.0011 4 16.9627 4 11.9808C4 7.26274 7.54741 3.39674 12.0658 3C9.81599 6.16268 10.0786 10.6091 12.8702 13.4607C15.0704 15.7082 18.2393 16.3473 21 15.3971Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                    </button>
+                </li>
+            </ul>
+        </div>
+        
+        
+            <a href="developer.algorand.org/accounts/login/index.html" class="button--light button--medium page-header__signin-button">Sign In</a>
+            <a href="developer.algorand.org/accounts/signup/index.html" class="button--primary button--medium page-header__signup-button"> Sign Up</a>
+        
+    </div>
+</nav>
+
+    
+  </div>
+
+  
+
+<div id="create-publication-overlay" class="create-publication__overlay">
+<div class="create-publication__container">
+  <section class="create-publication__modal" id="create-publication__modal" tabindex="-1">
+    <button type="button" class="create-publication__close-button" id="create-publication-close-button">
+      <svg class="create-publication__close-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6L18 18M6 18L18 6" stroke="var(--text-main)" stroke-width="1.5"/>
+</svg>
+
+    </button>
+    <h2 class="typography--h2 text-color--main create-publication__title">Create Publication</h2>
+
+    <p class="typography--large-body text-color--gray create-publication__decription">
+      
+      We are looking for publications that demonstrate building dApps or smart contracts! 
+      </br> 
+      See the full list of 
+      <a 
+        href="https://gitcoin.co/explorer?network=mainnet&amp;idx_status=open&amp;applicants=ALL&amp;keywords=algodev&amp;order_by=-web3_created&amp;org=algorandfoundation" 
+        rel="noopener"
+        target="_blank">
+          Gitcoin bounties
+      </a> 
+      that are eligible for rewards.
+      
+    </p>
+    <ul class="create-publication__type-list">
+      <li class="create-publication__type-list-item">
+        <a href="developer.algorand.org/me/posts/tutorials/new/index.html" class="create-publication__type-item">
+          <div class="create-publication__type-icon-container create-publication__type-icon-container--tutorial">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="72" height="72" rx="8" fill="#8755D5"/>
+<path d="M36 25.5L21 32.646L36 39L51 32.646L36 25.5Z" stroke="#FEF3F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 33L21 42" stroke="#FEF3F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 36V43.3742C26.998 43.7308 27.1051 44.0796 27.3072 44.3752C27.5092 44.6708 27.797 44.8995 28.1328 45.0313L35.3328 47.8721C35.7616 48.0426 36.2408 48.0426 36.6696 47.8721L43.8696 45.0313C44.2051 44.8994 44.4926 44.6706 44.6942 44.375C44.8959 44.0793 45.0025 43.7305 45 43.3742V36" stroke="#FEF3F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
+          <div class="create-publication__type-info-container">
+            <span class="typography--large-button text-color--main">Tutorial</span>
+            <p class="create-publication__type-description typography--regular-body text-color--gray-lighter">Step-by-step guides for developers.</p>
+          </div>
+        </a>
+      </li>
+      <li class="create-publication__type-list-item">
+        <a href="developer.algorand.org/me/posts/solutions/new/index.html" class="create-publication__type-item">
+          <div class="create-publication__type-icon-container create-publication__type-icon-container--solution">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="72" height="72" rx="8" fill="#B15D7D"/>
+<path d="M39.5069 49.5V44.1116C40.9373 43.6633 42.2429 42.9335 43.3319 41.9736C44.4208 41.0137 45.2666 39.847 45.8097 38.5556C46.3527 37.2642 46.5799 35.8796 46.4751 34.4992C46.3704 33.1188 45.9363 31.7762 45.2034 30.5659C45.2034 30.5659 40.4299 35.0285 39.9241 35.6215C39.6459 35.9494 39.2947 36.2194 38.8938 36.4137C38.4929 36.6079 38.0514 36.7219 37.5987 36.7481C37.146 36.7743 36.6924 36.7122 36.2679 36.5658C35.8434 36.4193 35.4578 36.192 35.1367 35.8988C34.8167 35.6049 34.5687 35.2521 34.4089 34.8639C34.2492 34.4756 34.1814 34.0607 34.21 33.6466C34.2387 33.2326 34.3631 32.8288 34.5751 32.4621C34.7871 32.0954 35.0818 31.7741 35.4397 31.5194C36.0876 31.0544 40.9637 26.6878 40.9637 26.6878C39.6257 26.0013 38.1353 25.601 36.6042 25.5168C35.0732 25.4325 33.5411 25.6666 32.1229 26.2014C30.1375 26.9151 28.4385 28.1684 27.2548 29.7925C26.0711 31.4166 25.4594 33.3336 25.5021 35.2855C25.5447 37.2374 26.2397 39.1305 27.4934 40.71C28.7471 42.2895 30.4994 43.4796 32.5145 44.1201V49.5" stroke="#FEE5E3" stroke-width="2" stroke-linecap="round"/>
+</svg>
+
+          </div>
+          <div class="create-publication__type-info-container">
+            <span class="typography--large-button text-color--main">Solution</span>
+            <p class="create-publication__type-description typography--regular-body text-color--gray-lighter">Sample code and explanations for common use cases on Algorand.</p>
+          </div>
+        </a>
+      </li>
+      <li class="create-publication__type-list-item">
+        <a href="developer.algorand.org/me/posts/articles/new/index.html" class="create-publication__type-item">
+          <div class="create-publication__type-icon-container create-publication__type-icon-container--articles">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="72" height="72" rx="8" fill="#FF6D5F"/>
+<path d="M48 32.5695V44.9835C48 46.65 46.6935 48 45.081 48H26.919C25.3065 48 24 46.65 24 44.985V28.515C24 26.85 25.3065 25.5 26.919 25.5H33.4455" stroke="#FFECDF" stroke-width="2" stroke-linecap="round"/>
+<path d="M45.093 21.7566C46.101 20.7486 47.736 20.7471 48.744 21.7566C49.752 22.7646 49.752 24.3996 48.7425 25.4076L40.0815 34.0611C39.801 34.3416 39.42 34.4991 39.0225 34.4991H36V31.4766C36 31.0791 36.1575 30.6981 36.4395 30.4161L45.093 21.7566V21.7566Z" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31.5 34.5H28.5" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.5 40.5H43.5" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47.145 27.0005L43.5 23.3555" stroke="#FFECDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
+          <div class="create-publication__type-info-container">
+            <span class="typography--large-button text-color--main">Article</span>
+            <p class="create-publication__type-description typography--regular-body text-color--gray-lighter">The latest developer-related news on Algorand.</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+</div>
+
+
+  
+<div class="page-content-wrapper page-content-wrapper--landing-page">
+  <div class="page-content page-content--landing-page">
+      
+      
+
+
+     
+
+    <section class="landing-page__hero-section">
+      <div class="landing-page__hero-section__gradient"></div>
+      <div class="landing-page__hero-section__description-column">
+        <h1 class="typography--display text-color--main landing-page__hero-section__title">Build the future on <span class="landing-page__hero-section__text--colored">Algorand</span></h1>
+        <ul class="landing-page__hero-section__feature-list">
+          <li class="typography--subtitle text-color--main landing-page__hero-section__feature-list-item">Defi at global scale</li>
+          <li class="typography--subtitle text-color--main landing-page__hero-section__feature-list-item">Rapidly growing ecosystem</li>
+          <li class="typography--subtitle text-color--main landing-page__hero-section__feature-list-item">Sub 5-second finality, low fees</li>
+        </ul>
+      </div>
+      <div class="landing-page__hero-section__globes">
+        <span class="landing-page__hero-section__globe--110"></span>
+        <span class="landing-page__hero-section__globe--111"></span>
+        <span class="landing-page__hero-section__globe--112"></span>
+      </div>
+      <div class="landing-page__hero-section__terminal">
+        <div class="landing-page__hero-section__terminal__header">
+          <span class="landing-page__hero-section__terminal__header-button"></span>
+          <span class="landing-page__hero-section__terminal__header-button"></span>
+          <span class="landing-page__hero-section__terminal__header-button"></span>
+        </div>
+        <div class="landing-page__hero-section__terminal__body">
+          <p class="typography--mono-body text-color--gray landing-page__hero-section__terminal__typewriting-animated-text">Welcome to <span class="landing-page__hero-section__text--colored">Algorand Developer Portal</span>!</p>
+          <p class="typography--mono-body text-color--gray landing-page__hero-section__terminal__body-text landing-page__hero-section__terminal__typewriting-animated-text">Let’s get started...</p>
+          <div class="typography--mono-body landing-page__hero-section__text--colored landing-page__hero-section__terminal__prompt-text-container"><svg class="landing-page__hero-section__terminal__algorand-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 32H27.0095L23.7387 19.9201L16.725 32H11.1275L21.9515 13.2913L20.1981 6.76341L5.59747 32H0L18.5121 0H23.4352L25.5595 7.97476H30.6175L27.1781 13.9642L32 32Z" fill="var(--text-main)"/>
+</svg>
+(dev-portal) ><p class="landing-page__hero-section__terminal__typewriting-animated-text">docs 🚀</p></div>
+
+          <div class="landing-page__hero-section__terminal__list">
+            <div class="landing-page__hero-section__terminal__list-description">
+              <p class="typography--mono-body typography--italic text-color--gray">Select a category</p>
+
+              <ul class="landing-page__hero-section__terminal__arrow-buttons">
+                <li class="landing-page__hero-section__terminal__arrow-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 13L12 16L15 13" stroke="var(--text-gray-lightest)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 8L12 16" stroke="var(--text-gray-lightest)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="0.75" y="0.75" width="22.5" height="22.5" rx="3.25" stroke="var(--border-medium)" stroke-width="1.5"/>
+</svg>
+</li>
+                <li class="landing-page__hero-section__terminal__arrow-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 11L12 8L15 11" stroke="var(--text-gray-lightest)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 16L12 8" stroke="var(--text-gray-lightest)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="0.75" y="0.75" width="22.5" height="22.5" rx="3.25" stroke="var(--border-medium)" stroke-width="1.5"/>
+</svg>
+</li>
+                <li class="landing-page__hero-section__terminal__arrow-button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11 11L8 14L11 17" stroke="var(--text-gray-lightest)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 8V14H9" stroke="var(--text-gray-lightest)"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="0.75" y="0.75" width="22.5" height="22.5" rx="3.25" stroke="var(--border-medium)" stroke-width="1.5"/>
+</svg>
+</li>
+              </ul>
+            </div>
+
+            <ul class="landing-page__hero-section__terminal__featured-items">
+              <li class="landing-page__hero-section__terminal__featured-item">
+                <a class="typography--mono-body text-color--gray landing-page__hero-section__terminal__featured-item-anchor" href="docs/get-started/basics/what_is_blockchain/index.html"><span>1</span>Blockchain basics <svg class="landing-page__hero-section__terminal__featured-item-anchor-chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+</a>
+              </li>
+              <li class="landing-page__hero-section__terminal__featured-item">
+                <a class="typography--mono-body text-color--gray landing-page__hero-section__terminal__featured-item-anchor" href="docs/get-started/dapps/index.html"><span>2</span>Smart contracts & dApps <svg class="landing-page__hero-section__terminal__featured-item-anchor-chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+</a>
+              </li>
+              <li class="landing-page__hero-section__terminal__featured-item">
+                <a class="typography--mono-body text-color--gray landing-page__hero-section__terminal__featured-item-anchor" href="docs/get-started/tokenization/nft/index.html"><span>3</span>Tokenization <svg class="landing-page__hero-section__terminal__featured-item-anchor-chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+</a>
+              </li>
+              <li class="landing-page__hero-section__terminal__featured-item">
+                <a class="typography--mono-body text-color--gray landing-page__hero-section__terminal__featured-item-anchor" href="docs/get-started/integration/assets/index.html"><span>4</span>Integration <svg class="landing-page__hero-section__terminal__featured-item-anchor-chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+</a>
+              </li>
+              <li class="landing-page__hero-section__terminal__featured-item">
+                <a class="typography--mono-body text-color--gray landing-page__hero-section__terminal__featured-item-anchor" href="docs/index.html"><span>5</span>See all <svg class="landing-page__hero-section__terminal__featured-item-anchor-chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-page__documentation-section">
+      <h2 class="typography--h1 text-color--main landing-page__documentation-section__title">Get started with Algorand</h2>
+      <p class="landing-page__documentation-section__description typography--subtitle text-color--main">Explore the developer documentation</p>
+
+      <div class="landing-page__documentation-section__subsection">
+        <img src="https://algorand-devloper-portal-app.s3.amazonaws.com/static/img/basics.svg" class="landing-page__documentation-section__subsection-icon" alt="Blockchain basics icon">
+
+        <div class="landing-page__documentation-section__subsection-content">
+          <h3 class="typography--h2 text-color--main landing-page__documentation-section__subsection-title">Blockchain basics</h3>
+          <p class="landing-page__documentation-section__description typography--subtitle text-color--gray-lighter">Learn about blockchain and how it could benefit your application</p>
+
+          <ul class="landing-page__documentation-section__list">
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/basics/what_is_blockchain/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.5 34L2 30.25V22.75M8.5 34V26.5M8.5 34L15 30.25V22.75M8.5 26.5L2 22.75M8.5 26.5L11.75 24.625L15 22.75M2 22.75L8.5 19L15 22.75" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.5 34L21 30.25V22.75M27.5 34V26.5M27.5 34L34 30.25V22.75M27.5 26.5L21 22.75M27.5 26.5L34 22.75M21 22.75L27.5 19L34 22.75" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.5 17L12 13.25V5.75M18.5 17V9.5M18.5 17L25 13.25V5.75M18.5 9.5L12 5.75M18.5 9.5L25 5.75M12 5.75L18.5 2L25 5.75" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.5 16V12.6667L5.41667 11" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.5 16V12.6667L30.5833 11" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+                <div>
+                  <span class="typography--large-button text-color--main">What is a blockchain?</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Discover the technology that innovates on how we exchange value</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>            
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/basics/why_algorand/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M29 29H25.569L23.3203 20.6951L18.4984 29H14.6502L22.0917 16.1377L20.8862 11.6498L10.8483 29H7L19.7271 7H23.1117L24.5722 12.4827H28.0495L25.6849 16.6004L29 29Z" fill="#FF6D5F"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Why Algorand?</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Pure Proof-of-Stake, no forking, immediate transaction finality</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/basics/where_to_start/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.5185 14.5545L24 12L21.4815 21.4455L12 24L14.5185 14.5545Z" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.5459 8.45406C32.818 13.7261 32.818 22.2739 27.5459 27.5459C22.2738 32.818 13.7261 32.818 8.45406 27.5459C3.18198 22.2738 3.18198 13.7261 8.45406 8.45406C13.7261 3.18198 22.2739 3.18198 27.5459 8.45406" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.4795 21.4508L14.5195 14.5508" stroke="#FF6D5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Where do I start?</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Learn how to navigate this site for your use case</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="landing-page__documentation-section__subsection">
+        <img src="https://algorand-devloper-portal-app.s3.amazonaws.com/static/img/dapps.svg" class="landing-page__documentation-section__subsection-icon" alt="Smart contracts & dApps icon">
+
+        <div class="landing-page__documentation-section__subsection-content">
+          <h3 class="typography--h2 text-color--main landing-page__documentation-section__subsection-title">Smart contracts & dApps</h3>
+          <p class="landing-page__documentation-section__description typography--subtitle text-color--gray-lighter">Create a simple dApp on Algorand</p>
+
+          <ul class="landing-page__documentation-section__list">
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/dapps/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 4.5H21" stroke="#8755D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 29V29.25C27 31.3219 25.389 33 23.4 33H12.6C10.611 33 9 31.3219 9 29.25V6.75C9 4.67812 10.611 3 12.6 3H23.4C25.389 3 27 4.67812 27 6.75V8" stroke="#8755D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.6875 22.1412L28.6875 14.7127L22.1875 10.9984L15.6876 14.7127L15.6876 22.1412L22.1875 25.8555L28.6875 22.1412Z" stroke="#8755D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22.1875 18.4297L28.6875 14.7154L22.1875 11.0012L15.6876 14.7154L22.1875 18.4297Z" stroke="#8755D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22.1875 18.4297V25.8582" stroke="#8755D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">What is a dApp?</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Learn about decentralized app design</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>            
+            <!-- <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="/docs/get-started/dapps/reach/">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5177 6L18.2219 5.29006C17.8321 4.90331 17.2033 4.90331 16.8134 5.29006L17.5177 6ZM25.2187 13.6394L25.9229 14.3493C26.1122 14.1616 26.2187 13.906 26.2187 13.6394C26.2187 13.3728 26.1122 13.1172 25.9229 12.9295L25.2187 13.6394ZM2 21.3935L1.29574 20.6836C1.10646 20.8713 1 21.1269 1 21.3935C1 21.6601 1.10646 21.9157 1.29574 22.1035L2 21.3935ZM9.70101 29.0329L8.99675 29.7429C9.38661 30.1296 10.0154 30.1296 10.4053 29.7429L9.70101 29.0329ZM25.8783 14.6794L25.1743 13.9692L25.174 13.9695L25.8783 14.6794ZM26.0578 14.5015L26.762 13.7916C26.3722 13.4049 25.7436 13.4048 25.3537 13.7913L26.0578 14.5015ZM25.8777 28.8374L25.1734 29.5473L25.1737 29.5475L25.8777 28.8374ZM26.1118 29.0695L25.4077 29.7796C25.7976 30.1662 26.4263 30.1661 26.8161 29.7794L26.1118 29.0695ZM33.4275 21.8123L34.1318 22.5222C34.321 22.3345 34.4275 22.0789 34.4275 21.8123C34.4275 21.5457 34.321 21.2901 34.1318 21.1024L33.4275 21.8123ZM16.8134 6.70994L24.5144 14.3493L25.9229 12.9295L18.2219 5.29006L16.8134 6.70994ZM2.70426 22.1035L18.2219 6.70994L16.8134 5.29006L1.29574 20.6836L2.70426 22.1035ZM10.4053 28.323L2.70426 20.6836L1.29574 22.1035L8.99675 29.7429L10.4053 28.323ZM24.5144 12.9295L8.99675 28.323L10.4053 29.7429L25.9229 14.3493L24.5144 12.9295ZM26.5823 15.3896L26.7618 15.2117L25.3537 13.7913L25.1743 13.9692L26.5823 15.3896ZM26.5821 28.1276C23.0356 24.6088 23.0358 18.9078 26.5826 15.3893L25.174 13.9695C20.8387 18.2702 20.8385 25.2462 25.1734 29.5473L26.5821 28.1276ZM26.8159 28.3594L26.5818 28.1273L25.1737 29.5475L25.4077 29.7796L26.8159 28.3594ZM32.7232 21.1024L25.4075 28.3595L26.8161 29.7794L34.1318 22.5222L32.7232 21.1024ZM25.3535 15.2114L32.7232 22.5222L34.1318 21.1024L26.762 13.7916L25.3535 15.2114Z" fill="#8755D5"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Build with Reach</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Build an NFT auction dApp with Reach, a JavaScript-like language</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li> -->
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/dapps/pyteal/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 12V4C12 4 14.5 3 18 3C21.5 3 24 4 24 4V12M12 12L4 12C4 12 3 14.5 3 18C3 21.5 4 24 4 24L12 24M12 12H16.9995M24 12H32C32 12 33 14.5 33 18C33 21.5 32 24 32 24H24M24 12V14C24 16.2091 22.2091 18 20 18H16C13.7909 18 12 19.7909 12 22V24M24 24V32C24 32 21.5 33 18 33C14.5 33 12 32 12 32L12 24M24 24H19" stroke="#8755D5" stroke-width="2" stroke-linecap="square"/>
+<circle cx="17.9995" cy="28" r="1" fill="#8755D5"/>
+<circle cx="17.9995" cy="7" r="1" fill="#8755D5"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Build with Python</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Write smart contracts in Python</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="landing-page__documentation-section__subsection">
+        <img src="https://algorand-devloper-portal-app.s3.amazonaws.com/static/img/tokenization.svg" class="landing-page__documentation-section__subsection-icon" alt="Tokenization icon">
+
+        <div class="landing-page__documentation-section__subsection-content">
+          <h3 class="typography--h2 text-color--main landing-page__documentation-section__subsection-title">Tokenization</h3>
+          <p class="landing-page__documentation-section__description typography--subtitle text-color--gray-lighter">Create your assets on Algorand with ASA technology</p>
+
+          <ul class="landing-page__documentation-section__list">
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/tokenization/nft/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31.9333 30.2844C32.04 30.5337 32.0738 30.8082 32.0309 31.076C31.9879 31.3438 31.87 31.5939 31.6907 31.7974C31.51 32.0012 31.2754 32.1498 31.0139 32.2262C30.7525 32.3026 30.4748 32.3036 30.2128 32.2291L28.4806 31.7361C28.2219 31.6618 27.9476 31.6618 27.6889 31.7361L23.4379 32.9452C23.1791 33.0183 22.905 33.0183 22.6462 32.9452L18.3913 31.7361C18.1326 31.6618 17.8583 31.6618 17.5996 31.7361L13.3486 32.9452C13.0898 33.0183 12.8157 33.0183 12.5569 32.9452L8.30592 31.7361C8.04723 31.6618 7.77287 31.6618 7.51417 31.7361L5.78197 32.2291C5.51997 32.3036 5.24228 32.3026 4.98083 32.2262C4.71939 32.1498 4.48482 32.0012 4.30412 31.7974C4.12506 31.594 4.00724 31.3441 3.96431 31.0766C3.92137 30.8091 3.95507 30.5348 4.06151 30.2857L4.78543 28.6031C4.86186 28.4246 4.90127 28.2324 4.90127 28.0383C4.90127 27.8441 4.86186 27.652 4.78543 27.4735L3.11584 23.5839C3.03941 23.4054 3 23.2133 3 23.0191C3 22.825 3.03941 22.6328 3.11584 22.4544L4.79065 18.5648C4.86708 18.3863 4.90649 18.1942 4.90649 18C4.90649 17.8058 4.86708 17.6137 4.79065 17.4352L3.11584 13.5456C3.03941 13.3672 3 13.175 3 12.9809C3 12.7867 3.03941 12.5946 3.11584 12.4161L4.79065 8.52651C4.86708 8.34802 4.90649 8.15588 4.90649 7.96172C4.90649 7.76756 4.86708 7.57543 4.79065 7.39694L4.06672 5.71433C3.9596 5.46563 3.92504 5.19168 3.96705 4.92417C4.00906 4.65665 4.12592 4.40649 4.30412 4.20259C4.48482 3.99879 4.71939 3.85015 4.98083 3.77377C5.24228 3.6974 5.51997 3.69638 5.78197 3.77085L7.51417 4.26389C7.77287 4.33815 8.04723 4.33815 8.30592 4.26389L12.5621 3.05476C12.8209 2.98175 13.095 2.98175 13.3538 3.05476L17.6048 4.26389C17.8635 4.33815 18.1378 4.33815 18.3965 4.26389L22.6462 3.05476C22.905 2.98175 23.1791 2.98175 23.4379 3.05476L27.6889 4.26389C27.9476 4.33815 28.2219 4.33815 28.4806 4.26389L30.2128 3.77085C30.4748 3.69638 30.7525 3.6974 31.0139 3.77377C31.2754 3.85015 31.51 3.99879 31.6907 4.20259C31.8697 4.40595 31.9875 4.65586 32.0305 4.92339C32.0734 5.19093 32.0397 5.46515 31.9333 5.71433L31.2094 7.39694C31.1329 7.57543 31.0935 7.76756 31.0935 7.96172C31.0935 8.15588 31.1329 8.34802 31.2094 8.52651L32.8842 12.4161C32.9606 12.5946 33 12.7867 33 12.9809C33 13.175 32.9606 13.3672 32.8842 13.5456L31.2094 17.4352C31.1329 17.6137 31.0935 17.8058 31.0935 18C31.0935 18.1942 31.1329 18.3863 31.2094 18.5648L32.8842 22.4544C32.9606 22.6328 33 22.825 33 23.0191C33 23.2133 32.9606 23.4054 32.8842 23.5839L31.2094 27.4735C31.1329 27.652 31.0935 27.8441 31.0935 28.0383C31.0935 28.2324 31.1329 28.4246 31.2094 28.6031L31.9333 30.2844Z" stroke="#1F8E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 8H8V28H28V8Z" stroke="#1F8E9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 15.5C21 15.5 19 17 18 17C17 17 15 15.5 15 15.5C15 15.5 17 14 18 14C19 14 21 15.5 21 15.5Z" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 16V18" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 14L22 13" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19 13L20 12" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 14L14 13" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 13L16 12" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 19L21.354 19.646C21.3074 19.6924 21.2705 19.7476 21.2453 19.8084C21.2201 19.8691 21.2071 19.9342 21.2071 20C21.2071 20.0658 21.2201 20.1309 21.2453 20.1916C21.2705 20.2524 21.3074 20.3076 21.354 20.354L21.646 20.646C21.6926 20.6924 21.7295 20.7476 21.7547 20.8084C21.7799 20.8691 21.7929 20.9342 21.7929 21C21.7929 21.0658 21.7799 21.1309 21.7547 21.1916C21.7295 21.2524 21.6926 21.3076 21.646 21.354L21 22" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.2069 18L13.1342 19.7525C12.8274 20.2549 13.0646 20.6667 13.6629 20.6667H15.8387V22.8H17.4706C18.0689 22.8 18.1766 23.0997 17.7088 23.4667L15.8387 24.9333V26" stroke="#1F8E9D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Create NFTs</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Digital art, music, collectibles</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>            
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/tokenization/ft/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M26.3543 12.4267C28.559 11.4092 29 10.4065 29 10C29 9.59348 28.559 8.59084 26.3543 7.57328C24.3194 6.63413 21.3678 6 18 6C14.6322 6 11.6806 6.63413 9.64573 7.57328C7.441 8.59084 7 9.59348 7 10C7 10.4065 7.441 11.4092 9.64573 12.4267C11.6806 13.3659 14.6322 14 18 14C21.3678 14 24.3194 13.3659 26.3543 12.4267ZM5 10V15.5302V20.6385V25.7061V26.0007H5.01399C5.33183 29.34 11.0243 32 18 32C24.9757 32 30.6682 29.34 30.986 26.0007H31V25.7061V20.6385V15.5302V10C31 6.68629 25.1797 4 18 4C10.8203 4 5 6.68629 5 10ZM7 25.7061C7 26.2444 7.51438 27.3084 9.67914 28.3564C11.7052 29.3373 14.6446 30 18 30C21.3554 30 24.2948 29.3373 26.3209 28.3564C28.4856 27.3084 29 26.2444 29 25.7061C29 25.1355 28.9792 24.593 28.9392 24.077C26.6263 25.8354 22.5911 27 18 27C13.4025 27 9.36249 25.8322 7.05111 24.0696C7.01747 24.5876 7 25.1326 7 25.7061ZM18 16C22.2912 16 26.0968 15.0404 28.4644 13.5607C28.8545 14.4798 29 15.1613 29 15.5302C29 16.1462 28.4447 17.2478 26.3013 18.3145C24.2802 19.3204 21.348 20 18 20C14.652 20 11.7198 19.3204 9.69871 18.3145C7.5553 17.2478 7 16.1462 7 15.5302C7 15.1613 7.14555 14.4798 7.53564 13.5607C9.90316 15.0404 13.7088 16 18 16ZM7 20.6385C7 21.2068 7.53035 22.2851 9.68669 23.3403C11.7108 24.3308 14.6474 25 18 25C21.3526 25 24.2892 24.3308 26.3133 23.3403C28.4697 22.2851 29 21.2068 29 20.6385C29 20.3577 28.9125 19.8688 28.6951 19.2092C26.3487 20.8955 22.4335 22 18 22C13.5665 22 9.65134 20.8955 7.30493 19.2092C7.08751 19.8688 7 20.3577 7 20.6385ZM17.5 12C17.5802 12 17.6603 12.0004 17.7402 12.0013C16.4451 12.014 15.1963 12.1214 14.0206 12.3102C15.1155 12.0976 16.2809 12 17.5 12Z" fill="#1F8E9D"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Create fungible tokens</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Stablecoins, reward points, in-game tokens</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/tokenization/security_token/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 4C5.44772 4 5 4.44772 5 5V7C6.65685 7 8 5.65685 8 4H6ZM5 20V9C7.76142 9 10 6.76142 10 4H25C25 6.76142 27.2386 9 30 9V12.4381C30 12.9904 30.4477 13.4381 31 13.4381C31.5523 13.4381 32 12.9904 32 12.4381V5C32 3.34314 30.6569 2 29 2H6C4.34315 2 3 3.34315 3 5V23C3 24.6569 4.34315 26 6 26H17.5H19.9606C20.5129 26 20.9606 25.5523 20.9606 25C20.9606 24.4477 20.5129 24 19.9606 24H17.5H9.89998C9.43671 21.7178 7.41896 20 5 20ZM5 22V23C5 23.5523 5.44771 24 6 24H7.82929C7.41746 22.8348 6.30622 22 5 22ZM27 4C27 5.65685 28.3431 7 30 7V5C30 4.44771 29.5523 4 29 4H27ZM28 15C24.6863 15 22 17.6863 22 21C22 22.777 22.7725 24.3736 24 25.4722V33.7826C24 34.7224 25.1023 35.2294 25.8159 34.6178L28 32.7456L30.1841 34.6178C30.8977 35.2294 32 34.7224 32 33.7826V25.4722C33.2275 24.3736 34 22.777 34 21C34 17.6863 31.3137 15 28 15ZM30 26.6586C29.3744 26.8797 28.7013 27 28 27C27.2987 27 26.6256 26.8797 26 26.6586V31.8258L27.2841 30.7251C27.6961 30.372 28.3039 30.372 28.7159 30.7251L30 31.8258V26.6586ZM24 21C24 18.7909 25.7909 17 28 17C30.2091 17 32 18.7909 32 21C32 23.2091 30.2091 25 28 25C25.7909 25 24 23.2091 24 21Z" fill="#1F8E9D"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Create security tokens</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Stocks, bonds, real estate</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="landing-page__documentation-section__subsection">
+        <img src="https://algorand-devloper-portal-app.s3.amazonaws.com/static/img/integrations.svg" class="landing-page__documentation-section__subsection-icon" alt="Integration icon">
+
+        <div class="landing-page__documentation-section__subsection-content">
+          <h3 class="typography--h2 text-color--main landing-page__documentation-section__subsection-title">Integration</h3>
+          <p class="landing-page__documentation-section__description typography--subtitle text-color--gray-lighter">Connect your application to Algorand's on-chain ecosystem</p>
+
+          <ul class="landing-page__documentation-section__list">
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/integration/assets/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<path d="M16.4896 2.30294C16.8042 2.11619 17.1958 2.11619 17.5104 2.30294L22.16 5.06262L26.8748 7.70945C27.1938 7.88856 27.3896 8.22762 27.3852 8.59349L27.32 14L27.3852 19.4065C27.3896 19.7724 27.1938 20.1114 26.8748 20.2905L22.16 22.9374L17.5104 25.6971C17.1958 25.8838 16.8042 25.8838 16.4896 25.6971L11.84 22.9374L7.12525 20.2905C6.80619 20.1114 6.61044 19.7724 6.61485 19.4065L6.68 14L6.61485 8.59349C6.61044 8.22762 6.8062 7.88856 7.12525 7.70945L11.84 5.06262L16.4896 2.30294Z" stroke="#8E3B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 19H20.4405L19.4183 15.225L17.2266 19H15.4773L18.8599 13.1535L18.3119 11.1136L13.7492 19H12L17.785 9H19.3235L19.9874 11.4921H21.568L20.4932 13.3638L22 19Z" fill="#8E3B63"/>
+<path d="M40.4896 2.30294C40.8042 2.11619 41.1958 2.11619 41.5104 2.30294L46.16 5.06262L50.8748 7.70945C51.1938 7.88856 51.3896 8.22762 51.3852 8.59349L51.32 14L51.3852 19.4065C51.3896 19.7724 51.1938 20.1114 50.8748 20.2905L46.16 22.9374L41.5104 25.6971C41.1958 25.8838 40.8042 25.8838 40.4896 25.6971L35.84 22.9374L31.1252 20.2905C30.8062 20.1114 30.6104 19.7724 30.6148 19.4065L30.68 14L30.6148 8.59349C30.6104 8.22762 30.8062 7.88856 31.1252 7.70945L35.84 5.06262L40.4896 2.30294Z" stroke="#8E3B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.4896 23.3029C4.80424 23.1162 5.19576 23.1162 5.5104 23.3029L10.16 26.0626L14.8748 28.7094C15.1938 28.8886 15.3896 29.2276 15.3852 29.5935L15.32 35L15.3852 40.4065C15.3896 40.7724 15.1938 41.1114 14.8748 41.2905L10.16 43.9374L5.5104 46.6971C5.19576 46.8838 4.80424 46.8838 4.4896 46.6971L-0.16 43.9374L-4.87475 41.2905C-5.19381 41.1114 -5.38956 40.7724 -5.38515 40.4065L-5.32 35L-5.38515 29.5935C-5.38956 29.2276 -5.1938 28.8886 -4.87475 28.7095L-0.16 26.0626L4.4896 23.3029Z" stroke="#8E3B63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="36" height="36" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Integrate with Algos and ASAs</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Give your users access to Algos and other assets</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>            
+            <li class="landing-page__documentation-section__list-item">
+              <a class="landing-page__documentation-section__list-item-anchor" href="docs/get-started/integration/searching_data/index.html">
+                <div class="is-centered landing-page__documentation-section__list-item-anchor__icon-container"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.8333 13.7513L23.8333 10.8346L13.9166 5.0013L3.99992 10.8346L3.99992 21.6263L13.9166 27.168L15.1562 26.4753L15.776 26.1289" stroke="#8E3B63" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.9166 16.668L23.8333 10.8346L13.9166 5.0013L3.99992 10.8346L13.9166 16.668Z" stroke="#8E3B63" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.3333 16.668V26.0013" stroke="#8E3B63" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.1248 19.5409C31.6482 22.0644 31.376 26.3201 28.3121 28.4722C26.3622 29.8409 23.6386 29.8409 21.6887 28.4722C18.6229 26.322 18.3527 22.0644 20.8761 19.5409C23.1545 17.2624 26.8482 17.2624 29.1248 19.5409" stroke="#8E3B63" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.0001 30.6654L29.6667 28.332Z" fill="white"/>
+<path d="M32.0001 30.6654L29.6667 28.332" stroke="#8E3B63" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+                <div>
+                  <span class="typography--large-button text-color--main">Search on-chain data</span>
+                  <p class="typography--regular-body text-color--gray-lighter landing-page__documentation-section__list-item-anchor__description">Search and display data about transactions, assets, blocks, and more</p>
+                </div>
+                <svg class="landing-page__documentation-section__list-item-anchor__chevron-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="landing-page__documentation-section__sdks">
+      <h3 class="typography--h2 is-text-centered">SDKs</h3>
+      <p class="landing-page__documentation-section__sdks__description text-color--main typography--subtitle is-text-centered">Choose your favorite programming language to interact with the Algorand blockchain</p>
+
+      <ul class="landing-page__documentation-section__sdks__list">
+        <li>
+          <a href="developer.algorand.org/docs/sdks/java/index.html" class="landing-page__documentation-section__sdks__anchor">
+            <span class="typography--large-button text-color--main landing-page__documentation-section__sdks__title">Java</span>
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="8" fill="#FF7F22" fill-opacity="0.1"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M36.9146 40.4545H41.2105C43.3034 40.4545 45 38.1087 45 36C45 33.8913 43.3034 31.5455 41.2105 31.5455H39.9474V29H21V33.4545C21 38.7264 25.2415 43 30.4737 43C32.9609 43 35.2243 42.0342 36.9146 40.4545ZM38.8547 37.9091C39.4596 36.756 39.837 35.4631 39.9267 34.0909H41.2105C41.9081 34.0909 42.4737 35.2971 42.4737 36C42.4737 36.7029 41.9081 37.9091 41.2105 37.9091H38.8547Z" fill="#FF7F22"/>
+<path opacity="0.3" d="M22.2 46H37.8C38.4627 46 39 46.4477 39 47C39 47.5523 38.4627 48 37.8 48H22.2C21.5373 48 21 47.5523 21 47C21 46.4477 21.5373 46 22.2 46Z" fill="#FF7F22"/>
+<path opacity="0.3" d="M35.1404 17L33.2113 18.692C34.637 19.9529 34.6322 21.9931 33.2006 23.2488C33.078 23.3563 32.9469 23.456 32.8082 23.5472L32 24.0789L33.6292 26L34.4374 25.4683C34.6792 25.3093 34.9078 25.1353 35.1217 24.9478C37.6188 22.7576 37.6272 19.1993 35.1404 17Z" fill="#FF7F22"/>
+<path opacity="0.3" d="M27.5123 18L25.969 19.692C27.1096 20.9529 27.1058 22.9931 25.9604 24.2488C25.8624 24.3563 25.7575 24.456 25.6466 24.5472L25 25.0789L26.3033 27L26.9499 26.4683C27.1433 26.3093 27.3263 26.1353 27.4973 25.9478C29.495 23.7576 29.5017 20.1993 27.5123 18Z" fill="#FF7F22"/>
+</svg>
+
+          </a>
+        </li>        
+        <li>
+          <a href="developer.algorand.org/docs/sdks/javascript/index.html" class="landing-page__documentation-section__sdks__anchor">
+            <span class="typography--large-button text-color--main landing-page__documentation-section__sdks__title">JavaScript</span>
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="8" fill="#E9C610" fill-opacity="0.1"/>
+<path d="M35.5929 36.6962C36.5099 38.1723 37.7028 39.2572 39.8127 39.2572C41.5851 39.2572 42.7174 38.3838 42.7174 37.1771C42.7174 35.731 41.5541 35.2188 39.6031 34.3775L38.5338 33.9251C35.447 32.6286 33.3963 31.0044 33.3963 27.5707C33.3963 24.4078 35.8408 22 39.6609 22C42.3807 22 44.3359 22.9332 45.7449 25.3766L42.4139 27.4853C41.6805 26.1887 40.8893 25.678 39.6609 25.678C38.408 25.678 37.6139 26.4616 37.6139 27.4853C37.6139 28.7504 38.4088 29.2626 40.2441 30.0462L41.3134 30.4979C44.9479 32.0345 47 33.601 47 37.1229C47 40.9199 43.9746 43 39.9117 43C35.939 43 33.3725 41.1336 32.1167 38.6873L35.5929 36.6962ZM20.482 37.0617C21.154 38.2371 21.7653 39.2308 23.235 39.2308C24.6404 39.2308 25.5269 38.6887 25.5269 36.5808V22.2408H29.8045V36.6378C29.8045 41.0046 27.2076 42.9922 23.4171 42.9922C19.9921 42.9922 18.0087 41.2447 17 39.14L20.482 37.0617Z" fill="#E9C610"/>
+</svg>
+
+          </a>
+        </li>       
+        <li>
+          <a href="developer.algorand.org/docs/sdks/go/index.html" class="landing-page__documentation-section__sdks__anchor">
+            <span class="typography--large-button text-color--main landing-page__documentation-section__sdks__title">Go</span>
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="8" fill="#53D0F8" fill-opacity="0.1"/>
+<path d="M15.0154 29.6274C14.9375 29.6274 14.918 29.5876 14.957 29.5278L15.3659 28.9902C15.4049 28.9304 15.5023 28.8906 15.5802 28.8906H22.5325C22.6104 28.8906 22.6299 28.9504 22.5909 29.0101L22.2599 29.5278C22.2209 29.5876 22.1236 29.6473 22.0651 29.6473L15.0154 29.6274Z" fill="#53D0F8"/>
+<path d="M12.0779 31.4594C12 31.4594 11.9805 31.4196 12.0195 31.3599L12.4284 30.8222C12.4674 30.7625 12.5648 30.7227 12.6427 30.7227H21.523C21.6009 30.7227 21.6398 30.7824 21.6204 30.8421L21.4646 31.32C21.4451 31.3997 21.3672 31.4395 21.2893 31.4395L12.0779 31.4594Z" fill="#53D0F8"/>
+<path d="M16.7927 33.2914C16.7148 33.2914 16.6954 33.2317 16.7343 33.172L17.007 32.6742C17.0459 32.6144 17.1238 32.5547 17.2017 32.5547H21.0966C21.1745 32.5547 21.2134 32.6144 21.2134 32.6941L21.1745 33.172C21.1745 33.2516 21.0966 33.3114 21.0382 33.3114L16.7927 33.2914Z" fill="#53D0F8"/>
+<path d="M37.005 29.2681C35.7781 29.5867 34.9407 29.8257 33.7333 30.1443C33.4412 30.2239 33.4217 30.2438 33.1685 29.9451C32.8764 29.6066 32.6622 29.3876 32.2533 29.1885C31.0264 28.5712 29.8384 28.7504 28.7284 29.4871C27.4041 30.3633 26.7225 31.6576 26.742 33.2705C26.7615 34.8635 27.8326 36.1777 29.371 36.3968C30.6953 36.576 31.8053 36.0981 32.6817 35.0826C32.857 34.8635 33.0128 34.6246 33.2075 34.3458C32.5064 34.3458 31.6301 34.3458 29.4489 34.3458C29.04 34.3458 28.9426 34.0869 29.0789 33.7484C29.3321 33.1311 29.7995 32.0957 30.0721 31.578C30.1305 31.4585 30.2669 31.2594 30.559 31.2594C31.5522 31.2594 35.2134 31.2594 37.6477 31.2594C37.6087 31.797 37.6087 32.3346 37.5308 32.8723C37.3166 34.306 36.7908 35.6202 35.9339 36.7751C34.5318 38.6668 32.7012 39.8416 30.3837 40.1602C28.4752 40.4191 26.703 40.0408 25.1451 38.846C23.704 37.7309 22.8861 36.2574 22.6718 34.4254C22.4187 32.255 23.0419 30.3036 24.3272 28.5911C25.7099 26.7392 27.5404 25.5644 29.78 25.1462C31.6106 24.8077 33.3633 25.0267 34.9407 26.1219C35.9729 26.8189 36.7129 27.7747 37.1997 28.9296C37.3166 29.1088 37.2387 29.2084 37.005 29.2681Z" fill="#53D0F8"/>
+<path d="M43.452 40.2789C41.6799 40.2391 40.0635 39.7214 38.7003 38.5266C37.5513 37.5111 36.8307 36.2168 36.597 34.6835C36.2465 32.4334 36.8502 30.4422 38.1745 28.6699C39.5961 26.7583 41.3098 25.7627 43.6273 25.3446C45.6137 24.9861 47.4832 25.1853 49.1775 26.3601C50.716 27.4354 51.6702 28.889 51.9234 30.8006C52.2544 33.4888 51.4949 35.6791 49.6838 37.5509C48.3985 38.885 46.8211 39.7214 45.01 40.0997C44.4842 40.1993 43.9584 40.2192 43.452 40.2789ZM48.0869 32.2343C48.0675 31.9754 48.0675 31.7763 48.0285 31.5772C47.678 29.6058 45.9058 28.4907 44.0557 28.9288C42.2446 29.347 41.0761 30.5218 40.6477 32.3936C40.2972 33.9468 41.0372 35.5198 42.4394 36.157C43.5104 36.6349 44.5815 36.5752 45.6137 36.0376C47.1522 35.2212 47.9896 33.9468 48.0869 32.2343Z" fill="#53D0F8"/>
+</svg>
+
+          </a>
+        </li>       
+        <li>
+          <a href="developer.algorand.org/docs/sdks/python/index.html" class="landing-page__documentation-section__sdks__anchor">
+            <span class="typography--large-button text-color--main landing-page__documentation-section__sdks__title">Python</span>
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="8" fill="#2B99FF" fill-opacity="0.05"/>
+<path d="M32.3839 16.5C24.2607 16.5 24.768 20.0413 24.768 20.0413L24.777 23.71H32.5288V24.8115H21.6981C21.6981 24.8115 16.5 24.2189 16.5 32.4584C16.5 40.698 21.037 40.4058 21.037 40.4058H23.7447V36.5823C23.7447 36.5823 23.5987 32.0215 28.2092 32.0215C32.8197 32.0215 35.8976 32.0215 35.8976 32.0215C35.8976 32.0215 40.2172 32.0917 40.2172 27.8248C40.2172 23.5579 40.2172 20.7695 40.2172 20.7695C40.2172 20.7695 40.8731 16.5 32.3839 16.5ZM28.1096 18.967C28.8808 18.967 29.5042 19.5937 29.5042 20.369C29.5042 21.1443 28.8808 21.7709 28.1096 21.7709C27.3383 21.7709 26.715 21.1443 26.715 20.369C26.715 19.5937 27.3383 18.967 28.1096 18.967Z" fill="#2B99FF"/>
+<path d="M32.6146 48.5008C40.7378 48.5008 40.2305 44.9596 40.2305 44.9596L40.2215 41.2909H32.4697V40.1893H43.3005C43.3005 40.1893 48.4985 40.7819 48.4985 32.5424C48.4985 24.3028 43.9615 24.595 43.9615 24.595H41.2538V28.4185C41.2538 28.4185 41.3998 32.9794 36.7893 32.9794C32.1788 32.9794 29.1009 32.9794 29.1009 32.9794C29.1009 32.9794 24.7813 32.9092 24.7813 37.1761C24.7813 41.443 24.7813 44.2313 24.7813 44.2313C24.7813 44.2313 24.1254 48.5008 32.6146 48.5008ZM36.8889 46.0338C36.1177 46.0338 35.4943 45.4072 35.4943 44.6318C35.4943 43.8565 36.1177 43.2299 36.8889 43.2299C37.6602 43.2299 38.2835 43.8565 38.2835 44.6318C38.2835 45.4072 37.6602 46.0338 36.8889 46.0338Z" fill="#2B99FF" fill-opacity="0.6"/>
+</svg>
+
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="landing-page__community-content-section">
+    <div class="landing-page__community-content-section__background"></div>
+    <div class="landing-page__community-content-section__content">
+    <div class="hub__info-section">
+      <div class="hub__info-section__row">
+          <h2 class="typography--h1">Community Content & Code</h2>
+          <p class="hub__info-section__description typography--subtitle text-color--main">Browse tutorials, ideas, and prototypes from the Algorand developer community</p>
+      </div>
+      <a class="button--secondary button--large hub__contribute-button landing-page__community-content-section__explore-all-button" href="blog/index.html">
+          Explore All
+          <svg class="landing-page__community-content-section__explore-all-button-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+      </a>
+    </div>
+
+      <div class="landing-page__community-content-section__featured-posts-container">
+      
+        <ul class="landing-page__community-content-section__featured-posts" id="landing-page-featured-posts-slider">
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/tutorials/algosearch-setup/index.html" title="Algosearch Setup" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <div class="hub__post-card__thumbnail-container">
+      <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/03/03%2016_36/algosearch_front_page.PNG--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+      <div class="hub__post-card__tutorial-info">
+        <span class="typography--uppercase-caption hub__post-card__post-level-text--beginner">Beginner</span> &centerdot; <span class="typography--uppercase-caption hub__post-card__post-time-text">15 minutes or less</span>
+      </div>
+      
+        <div class="hub__post-card__thumbnail-icon-container">
+          <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Default%20Icons/2021/09/29%2012_34/go.png--resize_then_crop--w__106--h__106--q__70.png?w=106&amp;cmd=resize_then_crop&amp;height=106&amp;quality=70" class="hub__post-card__thumbnail-language-image" alt="Golang icon">
+        </div>
+      
+    </div> 
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Algosearch Setup</h2>
+      <p class="hub__post-card__description typography--regular-body">A how to guide on set up AlgoSearch using Docker compose</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/thomas4/index.html" title="Thomas Upfield">
+        <img src="algorand-devloper-portal-app.s3.amazonaws.com/static/img/no-avatar.png" class="hub__post-card__author-avatar"
+          alt="Thomas Upfield">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Thomas Upfield</span>
+          <span class="hub__post-card__author-company typography--small-body"></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/articles/using-a-smart-contract-to-spawn-additional-smart-contracts-2/index.html" title="Using a Smart Contract to Spawn Additional Smart Contracts" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/05/05%2014_40/050322-family.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Using a Smart Contract to Spawn Additional Smart Contracts</h2>
+      <p class="hub__post-card__description typography--regular-body">This article explains spawning child smart contracts from a parent contract using inner transactions.</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/jason/index.html" title="Jason Weathersby">
+        <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2020/04/09%2019_56/jason.png--resize_then_crop--w__80--h__80--q__70.png?w=80&amp;cmd=resize_then_crop&amp;height=80&amp;quality=70" class="hub__post-card__author-avatar"
+          alt="Jason Weathersby">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Jason Weathersby</span>
+          <span class="hub__post-card__author-company typography--small-body">Algorand</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/articles/royalty-payments-using-arc18/index.html" title="Royalty payments using ARC18" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/04/28%2016_51/042822-royalty_payments.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Royalty payments using ARC18</h2>
+      <p class="hub__post-card__description typography--regular-body">This article summarizes the royalty payments ARC18 specification for Algorand Standard Assets(ASA) .</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/jason/index.html" title="Jason Weathersby">
+        <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2020/04/09%2019_56/jason.png--resize_then_crop--w__80--h__80--q__70.png?w=80&amp;cmd=resize_then_crop&amp;height=80&amp;quality=70" class="hub__post-card__author-avatar"
+          alt="Jason Weathersby">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Jason Weathersby</span>
+          <span class="hub__post-card__author-company typography--small-body">Algorand</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/solutions/artificial-intelligence-on-algorand/index.html" title="Artificial Intelligence on Algorand" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <div class="hub__post-card__thumbnail-container">
+      <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2021/11/22%2000_03/Group_1_2.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+      
+        <div class="hub__post-card__thumbnail-icon-container">
+          <svg class="" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 0C7.16533 0 0 7.164 0 16C0 23.0693 4.584 29.0667 10.9427 31.1827C11.7413 31.3307 12 30.8347 12 30.4133V27.4347C7.54933 28.4027 6.62267 25.5467 6.62267 25.5467C5.89467 23.6973 4.84533 23.2053 4.84533 23.2053C3.39333 22.212 4.956 22.2333 4.956 22.2333C6.56267 22.3453 7.408 23.8827 7.408 23.8827C8.83467 26.328 11.1507 25.6213 12.064 25.212C12.2067 24.1787 12.6213 23.472 13.08 23.0733C9.52667 22.6667 5.79067 21.2947 5.79067 15.1653C5.79067 13.4173 6.416 11.9907 7.43867 10.8707C7.27333 10.4667 6.72533 8.83867 7.59467 6.636C7.59467 6.636 8.93867 6.20667 11.996 8.276C13.272 7.92133 14.64 7.744 16 7.73733C17.36 7.744 18.7293 7.92133 20.008 8.276C23.0627 6.20667 24.404 6.636 24.404 6.636C25.2747 8.84 24.7267 10.468 24.5613 10.8707C25.588 11.9907 26.208 13.4187 26.208 15.1653C26.208 21.3107 22.4653 22.664 18.9027 23.06C19.476 23.556 20 24.5293 20 26.0227V30.4133C20 30.8387 20.256 31.3387 21.068 31.1813C27.4213 29.0627 32 23.0667 32 16C32 7.164 24.836 0 16 0Z" fill="white"/>
+</svg>
+
+        </div>
+      
+    </div> 
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Artificial Intelligence on Algorand</h2>
+      <p class="hub__post-card__description typography--regular-body">In this solution we discuss Algorand as a shared database, utility of an indexer and how  Machine Learning benefits the ecosystem.</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/pfed_prog/index.html" title="Pavel Fedotov">
+        <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2021/11/20%2020_10/Group_1.png--resize_then_crop--w__80--h__80--q__70.png?w=80&amp;cmd=resize_then_crop&amp;height=80&amp;quality=70" class="hub__post-card__author-avatar"
+          alt="Pavel Fedotov">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Pavel Fedotov</span>
+          <span class="hub__post-card__author-company typography--small-body">dspyt.com</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/tutorials/create-an-algorand-node-on-microsoft-azure-and-sign-transaction-with-azure-key-vault/index.html" title="Create a Node on Azure &amp; Sign Transactions with Azure Key Vault and Python" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <div class="hub__post-card__thumbnail-container">
+      <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/04/14%2023_58/cover_art.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+      <div class="hub__post-card__tutorial-info">
+        <span class="typography--uppercase-caption hub__post-card__post-level-text--beginner">Beginner</span> &centerdot; <span class="typography--uppercase-caption hub__post-card__post-time-text">1 hour</span>
+      </div>
+      
+        <div class="hub__post-card__thumbnail-icon-container">
+          <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Default%20Icons/2021/09/29%2012_34/python.png--resize_then_crop--w__106--h__106--q__70.png?w=106&amp;cmd=resize_then_crop&amp;height=106&amp;quality=70" class="hub__post-card__thumbnail-language-image" alt="Python icon">
+        </div>
+      
+    </div> 
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Create a Node on Azure &amp; Sign Transactions with Azure Key Vault and Python</h2>
+      <p class="hub__post-card__description typography--regular-body">In this tutorial, you will learn how to deploy an Azure Linux Virtual Machine and install an Algorand node on it. This tutorial will also go over how to sign a Transaction with Azure KeyVault.</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/pete/index.html" title="Pete Martinez">
+        <img src="algorand-devloper-portal-app.s3.amazonaws.com/static/img/no-avatar.png" class="hub__post-card__author-avatar"
+          alt="Pete Martinez">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Pete Martinez</span>
+          <span class="hub__post-card__author-company typography--small-body"></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/tutorials/run-algorand-indexer-on-azure/index.html" title="Run Algorand Indexer on Azure with Azure CLI" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <div class="hub__post-card__thumbnail-container">
+      <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/03/13%2019_12/tutorial_logo.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+      <div class="hub__post-card__tutorial-info">
+        <span class="typography--uppercase-caption hub__post-card__post-level-text--intermediate">Intermediate</span> &centerdot; <span class="typography--uppercase-caption hub__post-card__post-time-text">1 hour</span>
+      </div>
+      
+        <div class="hub__post-card__thumbnail-icon-container">
+          <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Default%20Icons/2021/09/29%2012_33/curl.png--resize_then_crop--w__106--h__106--q__70.png?w=106&amp;cmd=resize_then_crop&amp;height=106&amp;quality=70" class="hub__post-card__thumbnail-language-image" alt="cURL icon">
+        </div>
+      
+    </div> 
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Run Algorand Indexer on Azure with Azure CLI</h2>
+      <p class="hub__post-card__description typography--regular-body">This tutorial is a step by step guide on how to deploy and run an Algorand Indexer on Microsoft Azure using Azure CLI</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/damees/index.html" title="Dame Seiel">
+        <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2022/01/23%2019_58/avatar_algorand4.png--resize_then_crop--w__80--h__80--q__70.png?w=80&amp;cmd=resize_then_crop&amp;height=80&amp;quality=70" class="hub__post-card__author-avatar"
+          alt="Dame Seiel">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Dame Seiel</span>
+          <span class="hub__post-card__author-company typography--small-body"></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/articles/algorand-unlimited-assets-and-smart-contracts/index.html" title="Algorand Unlimited Assets and Smart Contracts" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/03/23%2015_30/032122-digital_infinity_symbol.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Algorand Unlimited Assets and Smart Contracts</h2>
+      <p class="hub__post-card__description typography--regular-body">This article details the changes made to both the Algorand Algod (3.5.1) and Indexer (2.10.0) processes. This includes removing limits on Assets and Contracts that can be created or optioned into.</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/jason/index.html" title="Jason Weathersby">
+        <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2020/04/09%2019_56/jason.png--resize_then_crop--w__80--h__80--q__70.png?w=80&amp;cmd=resize_then_crop&amp;height=80&amp;quality=70" class="hub__post-card__author-avatar"
+          alt="Jason Weathersby">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Jason Weathersby</span>
+          <span class="hub__post-card__author-company typography--small-body">Algorand</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/articles/how-to-participate-in-algorand-state-proof-generation-register-state-proof-keys/index.html" title="How to Participate in Algorand State Proof Generation (Register State Proof Keys)" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/03/15%2016_52/State_Proofs.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">How to Participate in Algorand State Proof Generation (Register State Proof Keys)</h2>
+      <p class="hub__post-card__description typography--regular-body">A step-by-step tutorial on how to generate and register an account&#x27;s online keys to participate in consensus and State Proof generation</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/algonoah/index.html" title="Noah Grossman">
+        <img src="algorand-devloper-portal-app.s3.amazonaws.com/static/img/no-avatar.png" class="hub__post-card__author-avatar"
+          alt="Noah Grossman">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Noah Grossman</span>
+          <span class="hub__post-card__author-company typography--small-body">Algorand</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+            
+            
+
+
+<li class="hub__post-card__list-item">
+  <a href="developer.algorand.org/articles/contract-to-contract-calls-and-an-abi-come-to-algorand/index.html" title="Contract to Contract calls and an ABI come to Algorand" class="hub__post-card__anchor"></a>
+  <div class="hub__post-card">
+    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Posts/2022/02/23%2019_24/022322-handshake.png--resize_then_crop--w__700--h__320--q__70.png?w=700&amp;cmd=resize_then_crop&amp;height=320&amp;quality=70" class="hub__post-card__thumbnail-image"
+      alt="Post Thumbnail">
+    <div class="hub__post-card__info">
+      <h2 class="hub__post-card__title typography--large-button">Contract to Contract calls and an ABI come to Algorand</h2>
+      <p class="hub__post-card__description typography--regular-body">This article summarizes many of the features available within the Algorand Virtual Machine (AVM) 1.1 Release.</p>
+    </div>
+    <div class="hub__post-card__author-section">
+      <a class="hub__post-card__author-anchor" href="u/jason/index.html" title="Jason Weathersby">
+        <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/Avatars/2020/04/09%2019_56/jason.png--resize_then_crop--w__80--h__80--q__70.png?w=80&amp;cmd=resize_then_crop&amp;height=80&amp;quality=70" class="hub__post-card__author-avatar"
+          alt="Jason Weathersby">
+          
+        <div class="hub__post-card__author-info" > 
+          <span class="hub__post-card__author-name typography--caption ">Jason Weathersby</span>
+          <span class="hub__post-card__author-company typography--small-body">Algorand</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</li>
+            
+        
+        </ul>
+
+        <div class="landing-page__community-content-section__featured-posts__slider">
+          <button aria-label="Previous featured post" class="landing-page__featured-posts__arrow-button landing-page__featured-posts__arrow-button--left">
+            <svg class="landing-page__featured-posts__arrow-button-icon landing-page__featured-posts__arrow-button-icon--left-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.4 36L40 23M40 24L26.4 12M39 23.5H8" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+          </button>
+          <button aria-label="Next featured post" class="landing-page__featured-posts__arrow-button landing-page__featured-posts__arrow-button--right">
+            <svg class="landing-page__featured-posts__arrow-button-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.4 36L40 23M40 24L26.4 12M39 23.5H8" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+          </button>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+
+  
+
+
+
+<section class="ecosystem-projects-section__wrapper">
+    <div class="ecosystem-projects-section__content">
+        <div class="hub__info-section">
+            <div class="hub__info-section__row">
+                <h2 class="typography--h1">Ecosystem Tools & Projects</h2>
+                <p class="hub__info-section__description typography--subtitle">
+                    Discover the latest developer tools and Algorand-powered applications
+                </p>
+            </div>
+            <a class="button--primary button--large hub__contribute-button ecosystem-projects-section__view-all-button" href="ecosystem-projects/index.html">
+                View All
+                <svg class="ecosystem-projects-section__view-all-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2 18L20 11.5M20 12.5L13.2 6M19.5 12H4" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+            </a>
+        </div>
+
+        <div class="ecosystem-projects-section__categories">
+            <ul class="ecosystem-projects-section__category-list">
+            
+                <li class="ecosystem-projects-section__category-list-item" onclick="handleEcosystemProjectsCategoryListItemClick(1)">
+                    <div class="ecosystem-projects-section__category-list-item__progress-bar"></div>
+                    <span class="ecosystem-projects-section__category-list-item__title">Algorand IDEs</span>
+                </li>  
+            
+                <li class="ecosystem-projects-section__category-list-item" onclick="handleEcosystemProjectsCategoryListItemClick(2)">
+                    <div class="ecosystem-projects-section__category-list-item__progress-bar"></div>
+                    <span class="ecosystem-projects-section__category-list-item__title">Developer Forums</span>
+                </li>  
+            
+                <li class="ecosystem-projects-section__category-list-item" onclick="handleEcosystemProjectsCategoryListItemClick(3)">
+                    <div class="ecosystem-projects-section__category-list-item__progress-bar"></div>
+                    <span class="ecosystem-projects-section__category-list-item__title">Block Explorers</span>
+                </li>  
+            
+                <li class="ecosystem-projects-section__category-list-item" onclick="handleEcosystemProjectsCategoryListItemClick(4)">
+                    <div class="ecosystem-projects-section__category-list-item__progress-bar"></div>
+                    <span class="ecosystem-projects-section__category-list-item__title">Wallets</span>
+                </li>  
+            
+                <li class="ecosystem-projects-section__category-list-item" onclick="handleEcosystemProjectsCategoryListItemClick(5)">
+                    <div class="ecosystem-projects-section__category-list-item__progress-bar"></div>
+                    <span class="ecosystem-projects-section__category-list-item__title">Applications</span>
+                </li>  
+                          
+            </ul>
+            
+            <div class="ecosystem-projects-section__category-projects-content__container">
+                
+                <div class="ecosystem-projects-section__category-projects-content" id="tabContent1">
+                    <ul class="ecosystem-projects-section__category-projects-list">
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algodeskio" aria-labelledby="algodeskio">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/algodesk.jpeg--resize_then_crop--w__160--h__160--q__70.jpg?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algodeskio" class="typography--large-button text-color--main">Algodesk.io</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algorand-studio" aria-labelledby="algorand-studio">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/icon.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algorand-studio" class="typography--large-button text-color--main">Algorand Studio</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algorand-vs-code-extension" aria-labelledby="algorand-vs-code-extension">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/VS.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algorand-vs-code-extension" class="typography--large-button text-color--main">Algorand VS Code Extension</span>
+                            </a>
+                        </li>   
+                                             
+                    </ul>
+                </div>            
+                
+                <div class="ecosystem-projects-section__category-projects-content" id="tabContent2">
+                    <ul class="ecosystem-projects-section__category-projects-list">
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#developer-forums" aria-labelledby="developer-forums">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/algorand_logo.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="developer-forums" class="typography--large-button text-color--main">Developer Forums</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#discord" aria-labelledby="discord">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/discord.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="discord" class="typography--large-button text-color--main">Discord</span>
+                            </a>
+                        </li>   
+                                             
+                    </ul>
+                </div>            
+                
+                <div class="ecosystem-projects-section__category-projects-content" id="tabContent3">
+                    <ul class="ecosystem-projects-section__category-projects-list">
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#goalseeker" aria-labelledby="goalseeker">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/goalseeker-1024.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="goalseeker" class="typography--large-button text-color--main">GoalSeeker</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algo-explorer" aria-labelledby="algo-explorer">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/algoexplorer_1024.jpeg--resize_then_crop--w__160--h__160--q__70.jpg?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algo-explorer" class="typography--large-button text-color--main">Algo Explorer</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#bitquery" aria-labelledby="bitquery">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/SPRK_default_preset_name_custom__1.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="bitquery" class="typography--large-button text-color--main">Bitquery</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algoscan" aria-labelledby="algoscan">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/algoscan_2.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algoscan" class="typography--large-button text-color--main">Algoscan</span>
+                            </a>
+                        </li>   
+                                             
+                    </ul>
+                </div>            
+                
+                <div class="ecosystem-projects-section__category-projects-content" id="tabContent4">
+                    <ul class="ecosystem-projects-section__category-projects-list">
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#pera-wallet" aria-labelledby="pera-wallet">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2022/03/01/pera.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="pera-wallet" class="typography--large-button text-color--main">Pera Wallet</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#my-algo" aria-labelledby="my-algo">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/myalgo_1024.jpeg--resize_then_crop--w__160--h__160--q__70.jpg?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="my-algo" class="typography--large-button text-color--main">My Algo</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algosigner" aria-labelledby="algosigner">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/algosigner-1024.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algosigner" class="typography--large-button text-color--main">AlgoSigner</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#exodus" aria-labelledby="exodus">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/exodus.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="exodus" class="typography--large-button text-color--main">Exodus</span>
+                            </a>
+                        </li>   
+                                             
+                    </ul>
+                </div>            
+                
+                <div class="ecosystem-projects-section__category-projects-content" id="tabContent5">
+                    <ul class="ecosystem-projects-section__category-projects-list">
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#tinyman" aria-labelledby="tinyman">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/tinyman.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="tinyman" class="typography--large-button text-color--main">Tinyman</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#yieldly" aria-labelledby="yieldly">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/yieldly.jpeg--resize_then_crop--w__160--h__160--q__70.jpg?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="yieldly" class="typography--large-button text-color--main">Yieldly</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#lofty-ai" aria-labelledby="lofty-ai">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/Lofty_Owl_1.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="lofty-ai" class="typography--large-button text-color--main">Lofty AI</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#aa-notarization" aria-labelledby="aa-notarization">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/AA-Notarization-logo.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="aa-notarization" class="typography--large-button text-color--main">AA Notarization</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algonim" aria-labelledby="algonim">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/algonim.jpg--resize_then_crop--w__160--h__160--q__70.jpg?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algonim" class="typography--large-button text-color--main">AlgoNim</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#trackalgo" aria-labelledby="trackalgo">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/logo_transparent_1024.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="trackalgo" class="typography--large-button text-color--main">TrackAlgo</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#tree-certificates" aria-labelledby="tree-certificates">
+                                
+                                    <div class="ecosystem-projects-section__category-project__logo ecosystem-projects-section__category-project__logo--fallback"><svg class="" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.33333 22.6665L13.3333 14.6665L5.33333 6.6665" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 25.3335H26.6667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+                                
+                                <span id="tree-certificates" class="typography--large-button text-color--main">Tree Certificates</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algoworld" aria-labelledby="algoworld">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/image1.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algoworld" class="typography--large-button text-color--main">AlgoWorld</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#nft-jam" aria-labelledby="nft-jam">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/09/29/nftjam.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="nft-jam" class="typography--large-button text-color--main">NFT Jam</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#securecerts" aria-labelledby="securecerts">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2021/10/06/securecerts.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="securecerts" class="typography--large-button text-color--main">SecureCerts</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#polymeta-ndftrade" aria-labelledby="polymeta-ndftrade">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2022/02/08/NFTTrade.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="polymeta-ndftrade" class="typography--large-button text-color--main">PolyMeta - NDFTrade</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#samuraivia" aria-labelledby="samuraivia">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2022/02/08/Samuraivia.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="samuraivia" class="typography--large-button text-color--main">Samuraivia</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algorisex" aria-labelledby="algorisex">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2022/02/08/Algorise.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algorisex" class="typography--large-button text-color--main">AlgoriseX</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#pyramidion-cryptocurrency" aria-labelledby="pyramidion-cryptocurrency">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2022/02/08/Pyramidion.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="pyramidion-cryptocurrency" class="typography--large-button text-color--main">Pyramidion Cryptocurrency</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="ecosystem-projects-section__category-projects-list-item">
+                            <a class="ecosystem-projects-section__category-project__link" href="ecosystem-projects/index.html#algogatorfinance" aria-labelledby="algogatorfinance">
+                                
+                                    <img src="s3.amazonaws.com/algorand-devloper-portal-app-images/prism-images/static/ecosystem-project-logos/2022/02/08/AlgogatorFianace.png--resize_then_crop--w__160--h__160--q__70.png?w=160&amp;cmd=resize_then_crop&amp;height=160&amp;quality=70" class="ecosystem-projects-section__category-project__logo"
+                                    alt="Community project logo">
+                                
+                                <span id="algogatorfinance" class="typography--large-button text-color--main">Algogator.Finance</span>
+                            </a>
+                        </li>   
+                                             
+                    </ul>
+                </div>            
+                
+            </div>
+        </div>
+    </div>  
+</section>
+
+<script>
+    const ECOSYSTEM_PROJECTS_ANIMATION_DURATION = 6000;
+    let activeIndex = 0;
+    let ecosystemProjectsCategoryListTimer = setInterval(
+      updateActiveIndex,
+      ECOSYSTEM_PROJECTS_ANIMATION_DURATION
+    );
+
+    // Start initial animation without any interaction
+    handleEcosystemProjectsCategoryListItemClick(1);
+
+    function handleEcosystemProjectsCategoryListItemClick(selectedIndex) {
+      const isLargeScreen = window.matchMedia("(min-width: 768px)").matches;
+      activeIndex = selectedIndex;
+        
+    // When selecting any item, the current animation should be finished and the selected item animation starts again
+      clearInterval(ecosystemProjectsCategoryListTimer);
+      showSelectedEcosystemProjectsCategory(activeIndex);
+
+      if (isLargeScreen) {
+        ecosystemProjectsCategoryListTimer = setInterval(
+          updateActiveIndex,
+          ECOSYSTEM_PROJECTS_ANIMATION_DURATION
+        );
+      }
+    }
+
+    function showSelectedEcosystemProjectsCategory(selectedIndex) {
+      const tabContents = document.querySelectorAll(
+          ".ecosystem-projects-section__category-projects-content"
+      );
+      const progressBarClassName = "ecosystem-projects-section__category-list-item--is-running"  
+      activeIndex = selectedIndex || 0;  
+
+      if (selectedIndex >= tabContents.length + 1) {
+        activeIndex = 1;
+      }  
+      
+      tabContents.forEach((tabContent) => {
+        // Display the matching content and remove the rest
+        if (tabContent.id === `tabContent${activeIndex}`) {
+          tabContent.classList.add(
+            "ecosystem-projects-section__category-projects-content--is-displayed"
+          );
+        } else {
+          tabContent.classList.remove(
+            "ecosystem-projects-section__category-projects-content--is-displayed"
+          );
+        }  
+        document
+        .querySelectorAll(".ecosystem-projects-section__category-list-item")
+        .forEach((progressBar, currentIndex) => {
+          if (currentIndex + 1 === activeIndex) {
+            progressBar.classList.add(progressBarClassName);
+          } else {
+            progressBar.classList.remove(progressBarClassName);
+          }
+        });
+      });
+    }
+
+    function updateActiveIndex() {
+      activeIndex += 1;
+      showSelectedEcosystemProjectsCategory(activeIndex)
+    }
+  </script>
+</div>
+
+
+
+  
+  <footer class="footer">
+    
+
+<div class="footer-content">
+    <div class="footer__row">
+        <div class="footer__column">
+            <svg class="footer-algorand-icon" width="98" height="26" viewBox="0 0 98 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.3033 5.4704V20.3632H21.286V5.4704H24.3033Z" />
+<path d="M36.6 10.3168V20.384C36.6 23.504 34.182 25.4176 31.2267 25.4176C28.3747 25.4176 26.246 23.6288 26.0393 21.112L29.036 21.1328C29.16 22.1936 30.09 22.672 31.33 22.672C32.4873 22.672 33.5827 22.048 33.5827 20.4048V19.136C32.818 19.6352 31.826 19.9264 30.7307 19.9264C27.982 19.9264 25.7707 17.68 25.7707 15.1008C25.7707 12.1056 27.982 10.088 30.7307 10.088C31.826 10.088 32.818 10.3792 33.5827 10.8784V10.3376L36.6 10.3168ZM33.5827 16.2448V13.7904C32.9627 12.896 32.1153 12.584 31.268 12.584C29.78 12.584 28.7673 13.5824 28.7673 15.1008C28.7673 16.224 29.8007 17.4304 31.268 17.4304C32.1153 17.4512 32.9833 17.1392 33.5827 16.2448Z"/>
+<path d="M48.628 15.2256C48.628 18.3248 46.3547 20.5296 43.296 20.5296C40.2167 20.5296 37.9433 18.3248 37.9433 15.2256C37.9433 12.1472 40.2167 9.90076 43.296 9.90076C46.3547 9.90076 48.628 12.1472 48.628 15.2256ZM45.714 15.2256C45.714 13.7696 44.7633 12.584 43.296 12.584C41.808 12.584 40.8573 13.7696 40.8573 15.2256C40.8573 16.7232 41.808 17.8464 43.296 17.8464C44.7633 17.8256 45.714 16.7232 45.714 15.2256Z" />
+<path d="M67.352 10.3376V20.3424L64.3967 20.3632V19.8016C63.632 20.3008 62.64 20.6128 61.5447 20.6128C58.796 20.6128 56.5847 18.2624 56.5847 15.3712C56.5847 12.4592 58.796 10.1088 61.5447 10.1088C62.64 10.1088 63.632 10.4208 64.3967 10.92V10.3584L67.352 10.3376ZM64.376 16.8896V13.832C63.756 12.9376 62.888 12.688 62.02 12.688C60.5113 12.688 59.4573 13.9152 59.4573 15.3712C59.4573 16.8064 60.5113 18.0336 62.02 18.0336C62.888 18.0336 63.756 17.784 64.376 16.8896Z" />
+<path d="M79.504 14.9344V20.3632H76.59V15.288C76.59 13.6448 75.784 12.792 74.3373 12.792C73.5933 12.792 72.746 13.2288 72.0433 14.0608V20.3632H69.0673V10.3584H72.0433V11.1072C72.8493 10.4624 73.8 10.1088 74.916 10.1088C77.5613 10.1088 79.504 11.9808 79.504 14.9344Z" />
+<path d="M94.57 5.84479H93.826V7.61279H93.392V5.84479H92.648V5.44958H94.5493V5.84479H94.57Z" />
+<path d="M97.0914 7.63358H96.6574V6.40639L96.0994 7.30079H95.8307L95.252 6.38558V7.61279H94.818V5.44958H95.128L95.9547 6.75999L96.7814 5.44958H97.0914V7.63358Z" />
+<path d="M19.9013 20.3424H16.8427L14.838 12.8752L10.5393 20.3424H7.10867L13.7427 8.77758L12.668 4.74239L3.71933 20.3424H0.288666L11.6347 0.561584H14.652L15.954 5.49119H19.054L16.946 9.19358L19.9013 20.3424Z" />
+<path d="M91.5113 5.4704V20.3632H88.494V19.8016C87.7293 20.3008 86.7373 20.6128 85.642 20.6128C82.8933 20.6128 80.682 18.2624 80.682 15.3504C80.682 12.4592 82.8933 10.1088 85.642 10.1088C86.7373 10.1088 87.7293 10.4208 88.494 10.92V5.4704H91.5113ZM88.494 16.8896V13.8112C87.874 12.9168 86.9853 12.6672 86.1173 12.6672C84.588 12.6672 83.534 13.8944 83.534 15.3504C83.534 16.8272 84.588 18.0544 86.1173 18.0544C86.9853 18.0544 87.8533 17.8048 88.494 16.8896Z" />
+<path d="M56.0267 12.8752C55.3654 12.9584 53.836 13.0416 52.9267 14.2896V20.3632H49.9507V10.3792H52.9267V11.128C53.6087 10.5456 54.6214 10.192 56.0267 10.3376" />
+</svg>
+            <span class="typography--small-body footer__copy-right-text">© 2022 Algorand. All rights reserved.</span>
+            <ul class="footer__social-media-featured-list"> 
+                <li class="footer__social-media-featured-list-item">
+                    <a class="footer__social-media-link footer__social-media-link--featured" href="https://discord.gg/84AActu3at" aria-label="discord" rel="noopener" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="1" y="3" width="22" height="18" fill="black">
+<rect fill="white" x="1" y="3" width="22" height="18"/>
+<path d="M20.9503 15.2752L18.4014 6.58758C18.3503 6.41246 18.2616 6.25125 18.1417 6.11578C18.0217 5.98031 17.8737 5.87401 17.7083 5.8047C17.543 5.73539 18.6023 7.1582 18.6023 7.1582L17.7092 5.80249C16.8726 5.45371 16.0048 5.1889 15.1181 5.01178C15.0408 4.99607 14.9613 4.99607 14.884 5.0118C14.8066 5.02753 14.7331 5.05868 14.6676 5.10346C14.6021 5.14825 14.5458 5.20579 14.502 5.27281C14.4582 5.33983 14.4278 5.41501 14.4124 5.49406C14.397 5.57311 14.397 5.65448 14.4124 5.73353C14.4278 5.81257 14.4583 5.88775 14.5021 5.95476C14.5459 6.02177 14.6021 6.0793 14.6677 6.12407C14.7332 6.16885 14.8067 6.19998 14.8841 6.21569C15.2205 6.28409 15.5502 6.36458 15.8733 6.45715C15.9998 6.52102 16.1001 6.62853 16.1567 6.7607C16.2132 6.89287 16.2222 7.04122 16.1822 7.17955C16.1422 7.31788 16.0557 7.43731 15.9379 7.51676C15.8201 7.59621 15.6787 7.63058 15.5386 7.61379C13.2441 7.01106 10.8384 7.00622 8.54156 7.59971C8.39885 7.63559 8.24823 7.61665 8.11827 7.54649C7.98831 7.47633 7.88807 7.35982 7.83656 7.21909C7.78505 7.07835 7.78586 6.92318 7.83884 6.78302C7.89183 6.64285 7.99329 6.52746 8.12397 6.45872L8.12654 6.45962C8.44936 6.36718 8.77949 6.28658 9.11694 6.21783C9.27305 6.18607 9.41044 6.0922 9.49887 5.95687C9.58731 5.82155 9.61955 5.65585 9.58851 5.49621C9.55747 5.33658 9.46569 5.19609 9.33336 5.10564C9.20102 5.0152 9.03897 4.9822 8.88285 5.01392C7.99614 5.19105 7.12837 5.45586 6.29175 5.80463C6.1264 5.87395 5.97833 5.98025 5.85839 6.11572C5.73846 6.25119 5.6497 6.41239 5.59864 6.58751L3.04971 15.2752C2.98387 15.5025 2.98342 15.7444 3.04844 15.972C3.11346 16.1995 3.24118 16.4031 3.41635 16.5584C3.48797 16.6221 3.56138 16.6846 3.63582 16.7465C3.63758 16.7479 3.63908 16.7496 3.64084 16.7511C4.85856 17.7611 6.45459 18.5328 8.25637 18.9825C8.41101 19.0211 8.57431 18.9953 8.71035 18.9108C8.8464 18.8263 8.94404 18.69 8.9818 18.5319C9.01955 18.3737 8.99433 18.2068 8.91168 18.0677C8.82903 17.9286 8.69573 17.8287 8.54109 17.7901C7.73078 17.591 6.94284 17.3064 6.18991 16.9412L6.19486 16.9415C6.08928 16.8437 6.02122 16.7105 6.00286 16.566C5.9845 16.4215 6.01704 16.2751 6.09465 16.1529C6.17226 16.0307 6.28988 15.9407 6.42645 15.899C6.56303 15.8574 6.70963 15.8668 6.84002 15.9257C8.26443 16.5744 10.054 16.9776 12 16.9776C13.946 16.9776 15.7368 16.5739 17.1612 15.9252C17.2916 15.8667 17.4381 15.8576 17.5745 15.8994C17.7109 15.9412 17.8283 16.0313 17.9057 16.1535C17.9831 16.2757 18.0155 16.422 17.9971 16.5664C17.9787 16.7108 17.9106 16.8437 17.8051 16.9415L17.8101 16.9412C17.0572 17.3064 16.2692 17.591 15.4589 17.7901C15.3043 17.8287 15.171 17.9286 15.0883 18.0677C15.0057 18.2068 14.9805 18.3737 15.0182 18.5319C15.056 18.69 15.1536 18.8263 15.2896 18.9108C15.4257 18.9953 15.589 19.0211 15.7436 18.9825C17.5454 18.5328 19.1414 17.7611 20.3592 16.7511C20.361 16.7496 20.3625 16.7479 20.3643 16.7463C20.4387 16.6845 20.5121 16.622 20.5837 16.5583C20.7589 16.403 20.8866 16.1994 20.9516 15.9719C21.0166 15.7444 21.0161 15.5025 20.9503 15.2752Z"/>
+</mask>
+<path d="M20.9503 15.2752L22.3911 14.8579L22.3896 14.8529L20.9503 15.2752ZM18.4014 6.58758L16.9613 7.00725L16.962 7.00987L18.4014 6.58758ZM18.6023 7.1582L17.3992 8.05401L19.8549 6.33299L18.6023 7.1582ZM17.7092 5.80249L18.9618 4.97728L18.7096 4.59442L18.2864 4.41799L17.7092 5.80249ZM15.1181 5.01178L14.8193 6.48172L14.8243 6.48273L15.1181 5.01178ZM14.8841 6.21569L15.1829 4.74576L15.1829 4.74576L14.8841 6.21569ZM15.8733 6.45715L16.5493 5.11813L16.4228 5.05425L16.2865 5.0152L15.8733 6.45715ZM15.5386 7.61379L15.1575 9.06457L15.2575 9.09084L15.3602 9.10314L15.5386 7.61379ZM8.54156 7.59971L8.90733 9.05446L8.91683 9.05201L8.54156 7.59971ZM8.12397 6.45872L8.62022 5.04319L8.00383 4.8271L7.42574 5.13114L8.12397 6.45872ZM8.12654 6.45962L7.63029 7.87516L8.08068 8.03305L8.5395 7.90166L8.12654 6.45962ZM9.11694 6.21783L8.81789 4.74794L8.8175 4.74802L9.11694 6.21783ZM8.88285 5.01392L9.17669 6.48486L9.18145 6.4839L8.88285 5.01392ZM6.29175 5.80463L5.71458 4.42011L5.71177 4.42129L6.29175 5.80463ZM5.59864 6.58751L7.03797 7.0098L7.03866 7.00742L5.59864 6.58751ZM3.04971 15.2752L1.61037 14.8529L1.60895 14.8579L3.04971 15.2752ZM3.41635 16.5584L4.41305 15.4374L4.41146 15.436L3.41635 16.5584ZM3.63582 16.7465L2.67693 17.9L2.67862 17.9014L3.63582 16.7465ZM3.64084 16.7511L2.68161 17.9043L2.68322 17.9056L3.64084 16.7511ZM8.25637 18.9825L8.61969 17.5272L8.61962 17.5271L8.25637 18.9825ZM8.54109 17.7901L8.90441 16.3348L8.89909 16.3335L8.54109 17.7901ZM6.18991 16.9412L6.3032 15.4454L5.53515 18.2907L6.18991 16.9412ZM6.19486 16.9415L6.08157 18.4372L10.3646 18.7616L7.21463 15.8415L6.19486 16.9415ZM6.84002 15.9257L7.46175 14.5606L7.45669 14.5583L6.84002 15.9257ZM17.1612 15.9252L16.5476 14.5564L16.5395 14.5601L17.1612 15.9252ZM17.8051 16.9415L16.7854 15.8415L13.6353 18.7616L17.9184 18.4372L17.8051 16.9415ZM17.8101 16.9412L18.4649 18.2907L17.6968 15.4454L17.8101 16.9412ZM15.4589 17.7901L15.1009 16.3334L15.0956 16.3348L15.4589 17.7901ZM15.7436 18.9825L15.3804 17.5271L15.3803 17.5272L15.7436 18.9825ZM20.3592 16.7511L19.4094 15.5901L19.4015 15.5966L20.3592 16.7511ZM20.3643 16.7463L19.4052 15.593L19.3974 15.5996L19.3896 15.6062L20.3643 16.7463ZM20.5837 16.5583L19.5885 15.436L19.5871 15.4373L20.5837 16.5583ZM22.3896 14.8529L19.8407 6.16529L16.962 7.00987L19.511 15.6975L22.3896 14.8529ZM19.8415 6.16791C19.729 5.78201 19.5327 5.42417 19.2648 5.12152L17.0185 7.11004C16.9905 7.07833 16.9717 7.04291 16.9613 7.00725L19.8415 6.16791ZM19.2648 5.12152C18.9968 4.81875 18.6636 4.57867 18.2882 4.42133L17.1284 7.18807C17.0838 7.16936 17.0467 7.14187 17.0185 7.11004L19.2648 5.12152ZM18.2882 4.42133C18.2078 4.38761 17.8353 4.23052 17.3577 4.34121C17.0743 4.4069 16.785 4.56147 16.5588 4.82271C16.3455 5.06914 16.257 5.33064 16.2203 5.51404C16.1551 5.83965 16.2163 6.09983 16.2334 6.17107C16.259 6.27823 16.2912 6.36238 16.3101 6.40871C16.3749 6.56795 16.4632 6.71195 16.5007 6.77291C16.6027 6.93875 16.7425 7.14224 16.8665 7.3186C16.9959 7.5024 17.129 7.68611 17.2285 7.82228C17.2786 7.89076 17.3208 7.94811 17.3507 7.98855C17.3657 8.00879 17.3775 8.02483 17.3858 8.03597C17.3899 8.04154 17.3932 8.04589 17.3954 8.04893C17.3966 8.05044 17.3974 8.05163 17.3981 8.05248C17.3984 8.05291 17.3986 8.05325 17.3988 8.0535C17.3989 8.05363 17.399 8.05374 17.3991 8.05382C17.3991 8.05386 17.3991 8.05391 17.3991 8.05393C17.3992 8.05397 17.3992 8.05401 18.6023 7.1582C19.8055 6.2624 19.8055 6.26242 19.8055 6.26244C19.8055 6.26244 19.8055 6.26246 19.8055 6.26246C19.8055 6.26245 19.8055 6.26243 19.8055 6.26238C19.8054 6.26229 19.8053 6.26212 19.8051 6.26186C19.8047 6.26134 19.8041 6.26049 19.8032 6.25932C19.8014 6.25697 19.7987 6.25334 19.7952 6.24851C19.788 6.23884 19.7773 6.22438 19.7636 6.20585C19.7362 6.16875 19.6969 6.11549 19.6503 6.05167C19.5564 5.92322 19.435 5.75556 19.3201 5.59231C19.2 5.42164 19.106 5.28242 19.0559 5.20098C19.0173 5.1383 19.0499 5.18251 19.0885 5.2772C19.1008 5.3074 19.1282 5.37762 19.1511 5.47323C19.1654 5.53291 19.2258 5.78392 19.1619 6.10292C19.1259 6.28301 19.0386 6.54185 18.827 6.78627C18.6026 7.0455 18.3156 7.19873 18.035 7.26376C17.7775 7.32342 17.5614 7.30185 17.431 7.27795C17.2967 7.25332 17.1924 7.21489 17.1284 7.18807L18.2882 4.42133ZM19.8549 6.33299L18.9618 4.97728L16.4566 6.6277L17.3497 7.98341L19.8549 6.33299ZM18.2864 4.41799C17.3587 4.03121 16.396 3.73739 15.412 3.54084L14.8243 6.48273C15.6137 6.6404 16.3866 6.87621 17.132 7.18699L18.2864 4.41799ZM15.417 3.54185C15.1424 3.48602 14.8594 3.48605 14.5849 3.54193L15.183 6.48168C15.0631 6.5061 14.9393 6.50611 14.8193 6.48172L15.417 3.54185ZM14.5849 3.54193C14.3103 3.59779 14.0509 3.70808 13.8213 3.86501L15.5139 6.34192C15.4153 6.40928 15.303 6.45728 15.183 6.48168L14.5849 3.54193ZM13.8213 3.86501C13.5917 4.02187 13.3968 4.22194 13.2463 4.45238L15.7577 6.09324C15.6948 6.18964 15.6124 6.27462 15.5139 6.34192L13.8213 3.86501ZM13.2463 4.45238C13.0957 4.68274 12.9921 4.93949 12.94 5.20776L15.8848 5.78036C15.8634 5.89053 15.8207 5.99691 15.7577 6.09324L13.2463 4.45238ZM12.94 5.20776C12.8878 5.476 12.8878 5.75188 12.94 6.02009L15.8848 5.44696C15.9062 5.55708 15.9062 5.67021 15.8848 5.78036L12.94 5.20776ZM12.94 6.02009C12.9923 6.28834 13.0959 6.54507 13.2465 6.77542L15.7577 5.1341C15.8206 5.23042 15.8633 5.3368 15.8848 5.44696L12.94 6.02009ZM13.2465 6.77542C13.3971 7.00583 13.592 7.20586 13.8216 7.36269L15.5137 4.88546C15.6122 4.95274 15.6946 5.03771 15.7577 5.1341L13.2465 6.77542ZM13.8216 7.36269C14.0513 7.51957 14.3107 7.62981 14.5852 7.68563L15.1829 4.74576C15.3028 4.77014 15.4152 4.81812 15.5137 4.88546L13.8216 7.36269ZM14.5852 7.68563C14.884 7.74637 15.1756 7.81758 15.46 7.8991L16.2865 5.0152C15.9249 4.91157 15.557 4.82182 15.1829 4.74576L14.5852 7.68563ZM15.1972 7.79617C15.0035 7.69838 14.8577 7.53796 14.7775 7.35055L17.5358 6.17085C17.3426 5.71909 16.996 5.34366 16.5493 5.11813L15.1972 7.79617ZM14.7775 7.35055C14.6976 7.16372 14.6853 6.95633 14.7413 6.76265L17.6231 7.59645C17.7592 7.1261 17.7288 6.62202 17.5358 6.17085L14.7775 7.35055ZM14.7413 6.76265C14.7975 6.56855 14.9211 6.39331 15.099 6.27331L16.7769 8.76021C17.1902 8.48131 17.4869 8.06721 17.6231 7.59645L14.7413 6.76265ZM15.099 6.27331C15.2776 6.15276 15.4969 6.09807 15.717 6.12444L15.3602 9.10314C15.8605 9.16308 16.3627 9.03967 16.7769 8.76021L15.099 6.27331ZM15.9197 6.16301C13.3773 5.49518 10.7112 5.48981 8.1663 6.14741L8.91683 9.05201C10.9655 8.52263 13.1108 8.52695 15.1575 9.06457L15.9197 6.16301ZM8.1758 6.14498C8.39823 6.08906 8.6322 6.11931 8.83087 6.22656L7.40567 8.86641C7.86426 9.114 8.39948 9.18212 8.90733 9.05443L8.1758 6.14498ZM8.83087 6.22656C9.02859 6.33331 9.17278 6.50572 9.24518 6.70354L6.42794 7.73463C6.60335 8.21392 6.94803 8.61934 7.40567 8.86641L8.83087 6.22656ZM9.24518 6.70354C9.31736 6.90076 9.31626 7.11681 9.24195 7.31338L6.43574 6.25265C6.25547 6.72955 6.25274 7.25595 6.42794 7.73463L9.24518 6.70354ZM9.24195 7.31338C9.16741 7.51058 9.02126 7.68161 8.8222 7.78631L7.42574 5.13114C6.96531 5.3733 6.61624 5.77512 6.43574 6.25265L9.24195 7.31338ZM7.62773 7.87426L7.63029 7.87516L8.62278 5.04409L8.62022 5.04319L7.62773 7.87426ZM8.5395 7.90166C8.82391 7.82021 9.11615 7.7488 9.41638 7.68764L8.8175 4.74802C8.44283 4.82435 8.0748 4.91414 7.71357 5.01759L8.5395 7.90166ZM9.41599 7.68772C9.97139 7.57472 10.4504 7.24278 10.7545 6.77744L8.24322 5.13631C8.37044 4.94162 8.57472 4.79741 8.81789 4.74794L9.41599 7.68772ZM10.7545 6.77744C11.0579 6.31324 11.166 5.7501 11.0609 5.20991L8.11609 5.78251C8.07313 5.56159 8.11673 5.32986 8.24322 5.13631L10.7545 6.77744ZM11.0609 5.20991C10.9558 4.66924 10.6432 4.18396 10.1798 3.86725L8.48697 6.34404C8.28824 6.20821 8.15914 6.00392 8.11609 5.78251L11.0609 5.20991ZM10.1798 3.86725C9.71505 3.54964 9.1404 3.43097 8.58425 3.54394L9.18145 6.4839C8.93755 6.53344 8.687 6.48075 8.48697 6.34404L10.1798 3.86725ZM8.58901 3.54298C7.605 3.73955 6.64233 4.03336 5.71458 4.42011L6.86893 7.18914C7.6144 6.87837 8.38728 6.64255 9.17669 6.48485L8.58901 3.54298ZM5.71177 4.42129C5.33648 4.57864 5.00331 4.81868 4.7353 5.1214L6.98148 7.11004C6.95334 7.14182 6.91633 7.16927 6.87174 7.18796L5.71177 4.42129ZM4.7353 5.1214C4.4674 5.424 4.27112 5.78176 4.15861 6.16759L7.03866 7.00742C7.02828 7.04302 7.00951 7.07837 6.98148 7.11004L4.7353 5.1214ZM4.15931 6.16521L1.61038 14.8529L4.48904 15.6975L7.03797 7.0098L4.15931 6.16521ZM1.60895 14.8579C1.46464 15.356 1.46367 15.8854 1.60616 16.3841L4.49072 15.5599C4.50317 15.6034 4.50309 15.649 4.49047 15.6926L1.60895 14.8579ZM1.60616 16.3841C1.74869 16.8829 2.03 17.3339 2.42124 17.6808L4.41146 15.436C4.45237 15.4723 4.47822 15.5161 4.49072 15.5599L1.60616 16.3841ZM2.41965 17.6794C2.50705 17.7571 2.59371 17.8308 2.67693 17.9L4.59471 15.593C4.52905 15.5384 4.46888 15.4871 4.41305 15.4374L2.41965 17.6794ZM2.67862 17.9014C2.65084 17.8783 2.62926 17.8587 2.61625 17.8466C2.60963 17.8405 2.60436 17.8355 2.60122 17.8325C2.59835 17.8297 2.59598 17.8274 2.59651 17.828C2.59651 17.828 2.59658 17.828 2.59664 17.8281C2.5967 17.8281 2.5968 17.8282 2.59692 17.8284C2.59716 17.8286 2.59753 17.8289 2.59797 17.8294C2.59885 17.8302 2.60026 17.8316 2.60199 17.8332C2.60538 17.8365 2.6109 17.8417 2.61777 17.8481C2.63128 17.8607 2.65336 17.8808 2.68161 17.9043L4.60007 15.5979C4.62744 15.6207 4.64867 15.64 4.66135 15.6518C4.6678 15.6578 4.67292 15.6627 4.6759 15.6655C4.67857 15.6681 4.68087 15.6703 4.68015 15.6696C4.68011 15.6696 4.67935 15.6688 4.67846 15.668C4.6775 15.6671 4.67602 15.6656 4.67421 15.6639C4.67066 15.6605 4.66499 15.6551 4.65795 15.6486C4.64411 15.6357 4.62168 15.6153 4.59302 15.5916L2.67862 17.9014ZM2.68322 17.9056C4.10158 19.0821 5.91082 19.9431 7.89311 20.4378L8.61962 17.5271C6.99836 17.1225 5.61553 16.4402 4.59846 15.5966L2.68322 17.9056ZM7.89304 20.4378C8.44343 20.5752 9.02309 20.4824 9.50185 20.185L7.91885 17.6366C8.12554 17.5082 8.37859 17.467 8.61969 17.5272L7.89304 20.4378ZM9.50185 20.185C9.97931 19.8884 10.3128 19.4164 10.4408 18.8802L7.52281 18.1835C7.57532 17.9636 7.71349 17.7642 7.91885 17.6366L9.50185 20.185ZM10.4408 18.8802C10.5687 18.3447 10.4842 17.7777 10.2012 17.3015L7.62212 18.8338C7.50448 18.6358 7.47045 18.4028 7.52281 18.1835L10.4408 18.8802ZM10.2012 17.3015C9.91765 16.8242 9.45396 16.472 8.90441 16.3348L8.17776 19.2454C7.9375 19.1855 7.74042 19.0329 7.62212 18.8338L10.2012 17.3015ZM8.89909 16.3335C8.19149 16.1595 7.503 15.911 6.84467 15.5916L5.53515 18.2907C6.38268 18.7019 7.27006 19.0224 8.18308 19.2468L8.89909 16.3335ZM6.07662 18.4369L6.08157 18.4372L6.30814 15.4458L6.3032 15.4454L6.07662 18.4369ZM7.21463 15.8415C7.37051 15.986 7.46546 16.1768 7.49089 16.377L4.51482 16.7551C4.57698 17.2443 4.80805 17.7013 5.17509 18.0416L7.21463 15.8415ZM7.49089 16.377C7.5163 16.5769 7.47194 16.7821 7.36088 16.957L4.82842 15.3487C4.56213 15.768 4.45269 16.2661 4.51482 16.7551L7.49089 16.377ZM7.36088 16.957C7.24935 17.1326 7.07523 17.2694 6.86383 17.3339L5.98908 14.4642C5.50454 14.6119 5.09518 14.9287 4.82842 15.3487L7.36088 16.957ZM6.86383 17.3339C6.65179 17.3985 6.42384 17.3834 6.22335 17.293L7.45669 14.5583C6.99542 14.3502 6.47426 14.3163 5.98908 14.4642L6.86383 17.3339ZM6.21829 17.2907C7.85123 18.0345 9.85467 18.4776 12 18.4776V15.4776C10.2534 15.4776 8.67762 15.1143 7.46174 14.5606L6.21829 17.2907ZM12 18.4776C14.1455 18.4776 16.1501 18.0339 17.783 17.2903L16.5395 14.5601C15.3235 15.1139 13.7465 15.4776 12 15.4776V18.4776ZM17.7749 17.2939C17.5743 17.3838 17.3465 17.3984 17.1347 17.3335L18.0143 14.4653C17.5298 14.3167 17.009 14.3496 16.5476 14.5564L17.7749 17.2939ZM17.1347 17.3335C16.9236 17.2687 16.7499 17.1318 16.6386 16.9562L19.1728 15.3507C18.9067 14.9307 18.4982 14.6137 18.0143 14.4653L17.1347 17.3335ZM16.6386 16.9562C16.5278 16.7814 16.4837 16.5763 16.5092 16.3765L19.485 16.7563C19.5474 16.2677 19.4384 15.7699 19.1728 15.3507L16.6386 16.9562ZM16.5092 16.3765C16.5347 16.1765 16.6296 15.9859 16.7854 15.8415L18.8249 18.0416C19.1917 17.7016 19.4227 17.245 19.485 16.7563L16.5092 16.3765ZM17.9184 18.4372L17.9234 18.4369L17.6968 15.4454L17.6919 15.4458L17.9184 18.4372ZM17.1553 15.5916C16.497 15.911 15.8085 16.1595 15.1009 16.3335L15.8169 19.2468C16.7299 19.0224 17.6173 18.7019 18.4649 18.2907L17.1553 15.5916ZM15.0956 16.3348C14.5461 16.472 14.0824 16.8242 13.7988 17.3015L16.3779 18.8338C16.2596 19.033 16.0625 19.1855 15.8222 19.2454L15.0956 16.3348ZM13.7988 17.3015C13.5158 17.7777 13.4313 18.3447 13.5592 18.8802L16.4772 18.1835C16.5296 18.4028 16.4955 18.6358 16.3779 18.8338L13.7988 17.3015ZM13.5592 18.8802C13.6872 19.4164 14.0207 19.8884 14.4981 20.185L16.0812 17.6366C16.2865 17.7642 16.4247 17.9636 16.4772 18.1835L13.5592 18.8802ZM14.4981 20.185C14.9769 20.4824 15.5566 20.5752 16.107 20.4378L15.3803 17.5272C15.6214 17.467 15.8745 17.5082 16.0812 17.6366L14.4981 20.185ZM16.1069 20.4378C18.0892 19.9431 19.8984 19.0821 21.3168 17.9056L19.4015 15.5966C18.3845 16.4402 17.0016 17.1225 15.3804 17.5271L16.1069 20.4378ZM21.309 17.9121C21.3385 17.8879 21.3619 17.8669 21.3773 17.8527C21.3851 17.8455 21.3915 17.8395 21.3959 17.8353C21.4002 17.8312 21.4035 17.828 21.4045 17.827C21.4067 17.8249 21.4042 17.8273 21.4031 17.8283C21.4012 17.8302 21.3972 17.8341 21.3919 17.839C21.3817 17.8487 21.3631 17.8659 21.3391 17.8865L19.3896 15.6062C19.3646 15.6275 19.3452 15.6455 19.3341 15.656C19.3285 15.6614 19.324 15.6657 19.3216 15.6679C19.3204 15.6691 19.3195 15.67 19.3191 15.6703C19.319 15.6705 19.3189 15.6705 19.3189 15.6706C19.3188 15.6706 19.3188 15.6706 19.3188 15.6706C19.3188 15.6707 19.3188 15.6707 19.3188 15.6707C19.3188 15.6707 19.3189 15.6706 19.3191 15.6704C19.3196 15.6699 19.3225 15.6671 19.3264 15.6634C19.3303 15.6596 19.3363 15.654 19.3437 15.6472C19.3582 15.6338 19.3807 15.6135 19.4094 15.5901L21.309 17.9121ZM21.3234 17.8996C21.4062 17.8308 21.4929 17.7571 21.5804 17.6793L19.5871 15.4373C19.5314 15.4868 19.4712 15.5382 19.4052 15.593L21.3234 17.8996ZM21.579 17.6806C21.9701 17.3337 22.2514 16.8828 22.3939 16.3839L19.5093 15.5599C19.5218 15.5161 19.5476 15.4723 19.5885 15.436L21.579 17.6806ZM22.3939 16.3839C22.5363 15.8853 22.5354 15.356 22.3911 14.8579L19.5095 15.6926C19.4969 15.649 19.4968 15.6034 19.5093 15.5599L22.3939 16.3839Z" fill="#9D9EA2" mask="url(#path-1-outside-1)"/>
+<circle cx="8.5" cy="12.5" r="1.25" stroke="#9D9EA2" stroke-width="1.5"/>
+<circle cx="15.5" cy="12.5" r="1.25" stroke="#9D9EA2" stroke-width="1.5"/>
+</svg>
+<span class="typography--uppercase-caption footer__social-media-name">discord</span></a> 
+                </li>                
+                <li class="footer__social-media-featured-list-item">
+                    <a class="footer__social-media-link footer__social-media-link--featured" href="https://forum.algorand.org/"
+                rel="noopener" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" stroke="#9D9EA2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<span class="typography--uppercase-caption footer__social-media-name">forum</span></a>
+                </li>
+            </ul>
+            <ul class="footer__social-media-list">
+                <li>
+                    <a class="footer__social-media-link" href="https://www.youtube.com/algorand/" aria-label="youtube" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.583 6.37141C21.354 5.36741 20.676 4.57541 19.814 4.30341C18.255 3.81641 12 3.81641 12 3.81641C12 3.81641 5.748 3.81641 4.186 4.30341C3.327 4.57141 2.649 5.36341 2.417 6.37141C2 8.19341 2 11.9984 2 11.9984C2 11.9984 2 15.8034 2.417 17.6254C2.646 18.6294 3.324 19.4214 4.186 19.6934C5.748 20.1804 12 20.1804 12 20.1804C12 20.1804 18.255 20.1804 19.814 19.6934C20.673 19.4254 21.351 18.6334 21.583 17.6254C22 15.8034 22 11.9984 22 11.9984C22 11.9984 22 8.19341 21.583 6.37141Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.002 15L15.198 12L10.002 9V15Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li>            
+                <li>
+                    <a class="footer__social-media-link" href="https://twitter.com/Algorand/" aria-label="twitter" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.7L3.49843 11.5896C0.684924 8.5561 0.519294 4.18556 2.8 1C3.907 3.059 5.974 4.959 8.2 5.5C8.286 2.9 10.049 1 12.7 1C14.505 1 15.567 1.688 16.3 2.8H19L17.2 5.5H17.199L17.1971 5.80837C17.0812 11.9463 13.4967 16.3 7.3 16.3C3.7 16.3 2.257 14.421 1 12.7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></a>
+                </li>  
+                <li>
+                    <a class="footer__social-media-link" href="https://www.facebook.com/algorand/" aria-label="facebook" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3H16.504C18.987 3 21 5.013 21 7.496V16.505C21 18.987 18.987 21 16.504 21H7.496C5.013 21 3 18.987 3 16.504V7.5C3 5.015 5.015 3 7.5 3V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.1 12.8984H16.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5 8.39844H15.555C14.089 8.39844 12.9 9.58744 12.9 11.0534V11.9984V20.9984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li>  
+                <li>
+                    <a class="footer__social-media-link" href="https://t.me/algorand/" aria-label="telegram" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.795 16.9066L9.73 18.9156C9.372 19.2636 8.773 19.1096 8.628 18.6316L7.252 14.1016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.104 10.9275C14.104 10.9275 11.515 13.2635 10.187 14.4625C9.79 14.8205 9.823 15.4505 10.253 15.7675L15.631 19.7405C16.16 20.1315 16.916 19.8445 17.053 19.2005L19.694 6.75348C19.822 6.15148 19.231 5.64848 18.657 5.86948L3.142 11.8535C2.685 12.0295 2.707 12.6825 3.174 12.8285L7.251 14.1005" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li>  
+                <li>
+                    <a class="footer__social-media-link" href="https://www.linkedin.com/company/algorand/" aria-label="linkedin" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3H16.504C18.987 3 21 5.013 21 7.496V16.505C21 18.987 18.987 21 16.504 21H7.496C5.013 21 3 18.987 3 16.504V7.5C3 5.015 5.015 3 7.5 3V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.12 11.1016V16.5016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.719 16.5016V13.3516C11.719 12.1086 12.726 11.1016 13.969 11.1016C15.212 11.1016 16.219 12.1086 16.219 13.3516V16.5016" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.118 7.83984C7.994 7.83984 7.893 7.94084 7.894 8.06484C7.894 8.18884 7.995 8.28984 8.119 8.28984C8.243 8.28984 8.344 8.18884 8.344 8.06484C8.344 7.93984 8.243 7.83984 8.118 7.83984" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li> 
+                <li>
+                    <a class="footer__social-media-link" href="https://www.reddit.com/r/AlgorandOfficial/" aria-label="reddit" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.498 13C15.222 13 14.998 13.224 15 13.5C15 13.776 15.224 14 15.5 14C15.776 14 16 13.776 16 13.5C16 13.224 15.776 13 15.498 13Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.498 13C8.222 13 7.99801 13.224 8.00001 13.5C8.00001 13.776 8.224 14 8.5 14C8.776 14 8.99999 13.776 8.99999 13.5C8.99999 13.224 8.776 13 8.498 13Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.054 5.24875C18.2 5.10175 18.199 4.86475 18.053 4.71875C17.906 4.57275 17.669 4.57275 17.523 4.71975C17.377 4.86675 17.377 5.10375 17.523 5.24975C17.669 5.39575 17.907 5.39575 18.054 5.24875" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.284 16.4062C14.32 16.7592 13.22 16.9692 12 16.9692C10.78 16.9692 9.68 16.7592 8.716 16.4062" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.70109 14.3836C3.71362 14.0417 3.53974 13.7261 3.29 13.4923V13.4923C2.468 12.7183 2.428 11.4253 3.202 10.6033C3.967 9.79028 5.24 9.74528 6.064 10.4943C7.563 9.42028 9.655 8.73828 12 8.73828C14.345 8.73828 16.437 9.42028 17.936 10.4933C18.759 9.74428 20.032 9.78928 20.798 10.6023C21.572 11.4243 21.532 12.7183 20.71 13.4913C20.57 13.6233 20.405 13.7243 20.234 13.8113C20.274 14.0373 20.301 14.2653 20.301 14.4963C20.301 17.5883 16.641 20.2553 12 20.2553C7.359 20.2553 3.699 17.5883 3.699 14.4963C3.699 14.4586 3.69972 14.4211 3.70109 14.3836Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 8.73861L12.629 5.93361C12.867 4.87261 13.908 4.19661 14.974 4.41061L17.429 4.90261" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li> 
+                <li>
+                    <a class="footer__social-media-link" href="https://github.com/algorand/" aria-label="github" rel="noopener" target="_blank"><svg class="footer__social-media-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.496 21H9V19.964C9 19.964 8.983 18.343 9.874 16.973C7.843 16.831 6.231 15.019 6.231 12.782C6.231 11.997 6.529 11.265 7.04 10.635L7.092 8.702C7.105 8.211 7.596 7.876 8.058 8.043L10.133 8.793C10.719 8.647 11.346 8.564 12 8.564C12.654 8.564 13.281 8.647 13.867 8.794L15.942 8.044C16.404 7.877 16.895 8.212 16.908 8.703L16.96 10.635C17.47 11.265 17.769 11.997 17.769 12.782C17.769 15.019 16.157 16.831 14.126 16.973C15.017 18.343 15 19.964 15 19.964V21H16.504C18.987 21 21 18.987 21 16.505V7.496C21 5.013 18.987 3 16.504 3H7.5C5.015 3 3 5.015 3 7.5V16.504C3 18.987 5.013 21 7.496 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+                </li> 
+            </ul>
+        </div>
+        <div class="footer__column footer__column--discover">
+            <h4 class="typography--large-button footer__column__title">Discover</h4>
+            <ul class="footer__list">
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="docs/index.html">Documentation</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="blog/index.html">Developer Blog</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="ecosystem-projects/index.html">Ecosystem Projects</a>
+                </li>          
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://metrics.algorand.org/" rel="noopener" target="_blank">MainNet Metrics</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__column footer__column--partner-sites">
+            <h4 class="typography--large-button footer__column__title">Partner Sites</h4>
+            <ul class="footer__list">
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://www.algorand.com/" rel="noopener"
+                    target="_blank">Algorand</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://algorand.foundation/" rel="noopener"
+                    target="_blank">Algorand Foundation</a>
+                </li>
+                <li class="footer__list-item">
+                    <a class="footer__list-item__link typography--regular-body" href="https://algorandwallet.com/" rel="noopener"
+                    target="_blank">Algorand Wallet</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__column">
+            <div id="hubspot-newsletter-form-root" class="footer__hubspot-newsletter-form-root"></div>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <ul class="footer__bottom__list">            
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="pages/support/index.html">Support</a>
+            </li>
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="pages/contact-us/index.html">Contact Us</a>
+            </li>            
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="pages/terms-of-use/index.html">Terms of Use</a>
+            </li>
+            <li class="footer__bottom__list-item">
+                <a class="footer__list-item__link typography--regular-body"
+                href="pages/privacy-policy/index.html">Privacy Policy</a>
+            </li>
+        </ul>
+
+        
+            
+
+<div class="language-section__container" id="language-section-container"></div>
+<div class="language-section" id="language-section">
+    <button aria-label="Toggle language option" aria-expanded="false" class="button language-section__button" id="language-section-button">
+        <span id="language-section-button-text" class="typography--small-button language-section__button__text"></span>
+        <svg class="language-section__button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 10L12 14L16 10" stroke="#18181B" stroke-width="1.5"/>
+</svg>
+
+    </button>
+    <div class="language-section__overlay" id="language-section-overlay">
+        <form action="https://developer.algorand.org/i18n/setlang/" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="skBIOcxIuBJZCm2KCXV7Qstfw3pz9xIk468n0oPgrc08dI8Gkiki1ybSiPbWOgEo">
+            <ul class="language-section__overlay__list">
+                
+                
+                <li class="language-section__overlay__list-item">
+                    <input type="radio" class="language-section__overlay__list-item__input" value="en" name="language"
+                        id="en" onchange="this.form.submit()" 
+                        checked="checked"  data-language-name="English" data-name="language">
+                    <label for="en" class="language-section__overlay__list-item__label">
+                        <span class="typography--medium-button language-section__overlay__list-item__label-text">English</span>
+                    </label>
+                </li>
+            
+                <li class="language-section__overlay__list-item">
+                    <input type="radio" class="language-section__overlay__list-item__input" value="zh-hans" name="language"
+                        id="zh-hans" onchange="this.form.submit()"  data-language-name="简体中文" data-name="language">
+                    <label for="zh-hans" class="language-section__overlay__list-item__label">
+                        <span class="typography--medium-button language-section__overlay__list-item__label-text">简体中文</span>
+                    </label>
+                </li>
+            
+            </ul>
+        </form>
+    </div>
+</div>
+        
+    </div>
+</div>
+  </footer>
+  
+
+  
+
+  <script type="text/javascript" src="algorand-devloper-portal-app.s3.amazonaws.com/static/dist/algorand-app-c95c91cdb8d4aee4fc62.js" ></script>
+  
+<script type="text/javascript" src="algorand-devloper-portal-app.s3.amazonaws.com/static/dist/landingPage-1f00d69e2b74071147eb.js" ></script>
+
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'7089f22848dc5cff',m:'9P1uYJOxxy9egcFrE3ItYQ0PTDw_7AoZSpOFdMxhrYU-1652094179-0-Ad0oTVihuXr06ZuqjcpBNCbFlTCpcqURq7cvQgMd14kWxFL3xz22znJq+svF5FZ0/w4nnKbi2mNllPjqwrvzZMo20QhXaPIIyDBInghT6WCBqXiceRotUC+HoTng3jJG8g==',s:[0x42b2b5c43e,0xfafac7f0f1],}})();</script></body>
+
+
+<!-- Mirrored from developer.algorand.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 May 2022 11:01:55 GMT -->
+</html>
